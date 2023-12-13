@@ -1,0 +1,17 @@
+include <params.scad>
+include <util.scad>
+
+use <tcneck.scad>
+use <tcbody.scad>
+
+module TCMain()
+{
+    translate([0,0,-THICKNESS/2])
+    linear_extrude(THICKNESS) TCBody();
+    
+    translate([THICKNESS/2,0,0])
+    rotate([0,-90,0])
+    linear_extrude(THICKNESS) TCNeck();
+}
+
+rotate([90,0,0]) TCMain();
