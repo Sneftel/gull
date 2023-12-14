@@ -26,7 +26,7 @@ module SpineRiser_Neg()
         translate([SPINE_RISER_WIDTH-THICKNESS,LARGE+INTER_CONNECTION_OFFSET,0]) rotate([0,0,-90])
             TSlot();
         translate([SPINE_RISER_WIDTH-THICKNESS/2, LARGE-INTER_CONNECTION_OFFSET, 0])
-            circle(d=BOLT_DIAMETER);
+            circle(d=INTERCONNECT_BOLT_DIAMETER);
     }
 }
 
@@ -53,7 +53,7 @@ module SpineBase_Neg()
     translate([-INTER_CONNECTION_OFFSET, SPINE_BASE_HEIGHT-THICKNESS, 0])
         TSlot();
     translate([-3*INTER_CONNECTION_OFFSET, SPINE_BASE_HEIGHT-THICKNESS/2, 0])
-        circle(d=BOLT_DIAMETER);
+        circle(d=INTERCONNECT_BOLT_DIAMETER);
 }
 
 module SpineBase()

@@ -23,6 +23,9 @@ TC_CUTOUT_DEPTH = 3;
 
 TC_CUTOUT_MAJOR_RADIUS = TC_CUTOUT_MINOR_RADIUS + TC_CUTOUT_DEPTH;
 
+TC_LEG_CUTOUT_WIDTH = 13;
+TC_LEG_CUTOUT_DEPTH = 2.2;
+
 module PaddleGuide()
 {
     EXTRA=1;
@@ -32,8 +35,8 @@ module PaddleGuide()
     translate([-TC_PADDLE_GUIDE_MAJOR_WIDTH/2, -TC_PADDLE_GUIDE_DEPTH, 0])
         square([TC_PADDLE_GUIDE_MAJOR_WIDTH, TC_PADDLE_GUIDE_SLOT_HEIGHT], center=false);
     
-    translate([-LEG_SLOT_WIDTH/2, -TC_PADDLE_GUIDE_DEPTH-LEG_SLOT_DEPTH, 0])
-        square([LEG_SLOT_WIDTH, LEG_SLOT_DEPTH], center=false);
+    translate([-TC_LEG_CUTOUT_WIDTH/2, -TC_PADDLE_GUIDE_DEPTH-TC_LEG_CUTOUT_DEPTH, 0])
+        square([TC_LEG_CUTOUT_WIDTH, TC_LEG_CUTOUT_DEPTH], center=false);
 }
 
 module BodyArm_Pos()

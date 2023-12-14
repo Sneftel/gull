@@ -3,11 +3,8 @@ include <params.scad>
 
 // PARAMETERS SPECIFIC TO THIS ASSEMBLY
 
-// The (un-reduced by the connection step) width of the front and back legs
-LEG_WIDTH = 20;
-
 // The height of the lowest point of the top side of the fingerboard (the fingerboard PCB will go as low as this)
-FINGERBOARD_CENTER_HEIGHT = 35;
+FINGERBOARD_CENTER_HEIGHT = 30;
 
 // The thickness of the fingerboard body
 RIB_THICKNESS = 12;
@@ -33,23 +30,18 @@ module CableSlot()
     translate([0, -LEG_SLOT_DEPTH, 0])
         square([LARGE,LEG_SLOT_DEPTH+EXTRA], center=false);
 }
-module CableSlotAt(radius, x)
-{
-    rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
-        CableSlot();
-}
 
-module TSlotAt(radius, x)
-{
-    rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
-        TSlot();
-}
-
-module FootAt(radius, x)
+module Foot()
 {
     EXTRA = 1;
-    rotate([0,0,angleFromLen(radius, x - FOOT_LENGTH)]) translate([0,-radius-EXTRA,0])
+    translate([0,-EXTRA,0])
         square([FOOT_LENGTH, FOOT_HEIGHT+EXTRA], center=false);
+}
+
+module OnArc(radius, x)
+{
+    rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
+        children();
 }
 
 module Fingerboard_Pos(minorRadius)
@@ -61,18 +53,18 @@ module Fingerboard_Pos(minorRadius)
     rotate([0,0,FINGERBOARD_ANGLE_BIAS])
         CocktailSausage(minorRadius, FINGERBOARD_TOTAL_ANGLE, RIB_THICKNESS);
     
-    FootAt(minorRadius, -38);
+    OnArc(minorRadius, -38) Foot();
 }
 
 module Fingerboard_Neg(minorRadius)
 {
-    LegSlotAt(minorRadius, -30);
-    TSlotAt(minorRadius, -20);
-    LegSlotAt(minorRadius, -10);
-    TSlotAt(minorRadius, 0);
-    LegSlotAt(minorRadius, 10);
-    TSlotAt(minorRadius, 20);
-    CableSlotAt(minorRadius, 29);
+    OnArc(minorRadius, -30) LegSlot();
+    OnArc(minorRadius, -20) TSlot();
+    OnArc(minorRadius, -10) LegSlot();
+    OnArc(minorRadius, 0) TSlot();
+    OnArc(minorRadius, 10) LegSlot();
+    OnArc(minorRadius, 20) TSlot();
+    OnArc(minorRadius, 29) CableSlot();
 }
 
 module Fingerboard()
@@ -107,7 +99,7 @@ module Supports_Neg(shift, minorRadius)
     translate([-SPINES_OUTER_SPACING/2-EXTRA, -EXTRA])
         square([THICKNESS+EXTRA,2*INTER_CONNECTION_OFFSET+EXTRA], center=false);
     translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, 3*INTER_CONNECTION_OFFSET])
-        circle(d=BOLT_DIAMETER);
+        circle(d=INTERCONNECT_BOLT_DIAMETER);
     
     translate([SPINES_OUTER_SPACING/2-THICKNESS, INTER_CONNECTION_OFFSET])
     rotate([0,0,-90])
@@ -115,7 +107,7 @@ module Supports_Neg(shift, minorRadius)
     translate([SPINES_OUTER_SPACING/2-THICKNESS, -EXTRA])
         square([THICKNESS+EXTRA,2*INTER_CONNECTION_OFFSET+EXTRA], center=false);
     translate([SPINES_OUTER_SPACING/2-THICKNESS/2, 3*INTER_CONNECTION_OFFSET])
-        circle(d=BOLT_DIAMETER);
+        circle(d=INTERCONNECT_BOLT_DIAMETER);
 
 }
 

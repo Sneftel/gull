@@ -74,7 +74,7 @@ module TCBody_Neg()
     
     // Stem
     translate([0, -TC_ARM_HEIGHT])
-        circle(d=BOLT_DIAMETER);
+        circle(d=INTERCONNECT_BOLT_DIAMETER);
 }
 
 module TCBody()

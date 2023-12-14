@@ -3,26 +3,32 @@
 $fs = 0.1;
 $fa = 2;
 
-// The thickness of the sheet material
-THICKNESS = 8; //0.01
+// The nominal thickness of the sheet material. Parts will still mate and work properly if they vary from this width (but see INTERCONNECT_BOLT_EXTRA_LENGTH).
+THICKNESS = 8; //0.1
 
-// The distance between the connection step and the middle of the bolt hole or T-slot
+// The distance between the connection step and the middle of the bolt hole or T-slot on either side.
 INTER_CONNECTION_OFFSET = 7;
 
 // The diameter of the bolt holes and minor width of the T-slots
-BOLT_DIAMETER = 3;
+INTERCONNECT_BOLT_DIAMETER = 3;
+
+// The length of the bolts to be used in interconnects between sheet parts. If washers are used, this should be reduced by the washer thickness.
+INTERCONNECT_BOLT_LENGTH = 12;
+
+// The extra depth below the nut area of T-slots. This should be at least the length of the taper at the bottom of the bolts, plus the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
+INTERCONNECT_BOLT_EXTRA_LENGTH = 3;
 
 // The radius of the strain reliefs in the T-slots
 STRAIN_RELIEF_RADIUS = 0.25; //0.01
 
 // The total depth of the T-slot from the opening to the end of the bolt area
-T_SLOT_DEPTH = 7; //0.1
+T_SLOT_DEPTH = INTERCONNECT_BOLT_LENGTH + INTERCONNECT_BOLT_EXTRA_LENGTH - THICKNESS;
 
 // The width of the T-slot; this should be the width of your nuts
 T_SLOT_WIDTH = 6; //0.1
 
 // The width of the bolt area
-T_SLOT_MINOR_WIDTH = BOLT_DIAMETER;
+T_SLOT_MINOR_WIDTH = INTERCONNECT_BOLT_DIAMETER;
 
 // The depth of the nut area of the T-slot; this should be the thickness of your nuts
 T_SLOT_NUT_DEPTH = 2; //0.1
