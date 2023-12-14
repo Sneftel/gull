@@ -8,15 +8,15 @@ module TCNeck_Pos()
 {
     LARGE = 1000;
 
-    translate([-TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE])
-    translate([-TC_PADDLE_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
     union() {
         BodyArm_Pos();
-        translate([TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+        translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
         rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
             TCElbow_Pos();
-        translate([-TC_PADDLE_WIDTH/2,-TC_ARM_HEIGHT/2,0])
+        translate([-TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2,0])
             circle(d=TC_ARM_HEIGHT);
     }
     
@@ -34,12 +34,12 @@ module TCNeck_Neg()
 {
     LARGE = 1000;
 
-    translate([-TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE])
-    translate([-TC_PADDLE_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
     union() {
     BodyArm_Neg();
-        translate([TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+        translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
         rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
             TCElbow_Neg();
     }

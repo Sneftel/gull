@@ -16,32 +16,32 @@ module TCBody_Pos()
     BodyArm_Pos();
 
     // Left body arm
-    translate([-TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE])
-    translate([-TC_PADDLE_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
     union() {
         BodyArm_Pos();
-        translate([-TC_PADDLE_WIDTH/2,-TC_ARM_HEIGHT/2,0])
+        translate([-TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2,0])
             circle(d=TC_ARM_HEIGHT);
     }
     
     // Right body arm
-    translate([TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,TC_INTER_PADDLE_ANGLE])
-    translate([TC_PADDLE_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
+    translate([TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
     union() {
         BodyArm_Pos();
-        translate([TC_PADDLE_WIDTH/2,-TC_ARM_HEIGHT/2,0])
+        translate([TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2,0])
             circle(d=TC_ARM_HEIGHT);
     }
     
     // Left elbow
-    translate([-TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE/2])
         TCElbow_Pos();
     
     // Right elbow
-    translate([TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
         TCElbow_Pos();
     
@@ -55,20 +55,20 @@ module TCBody_Neg()
     BodyArm_Neg();
     
     // Left body arm
-    translate([-TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0]) rotate([0,0,-TC_INTER_PADDLE_ANGLE]) translate([-TC_PADDLE_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0]) rotate([0,0,-TC_INTER_PADDLE_ANGLE]) translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
         BodyArm_Neg();
     
     // Right body arm
-    translate([TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0]) rotate([0,0,TC_INTER_PADDLE_ANGLE]) translate([TC_PADDLE_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
+    translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0]) rotate([0,0,TC_INTER_PADDLE_ANGLE]) translate([TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
         BodyArm_Neg();
     
     // Left elbow
-    translate([-TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE/2])
         TCElbow_Neg();
     
     // Right elbow
-    translate([TC_PADDLE_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
         TCElbow_Neg();
     
