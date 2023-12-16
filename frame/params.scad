@@ -4,7 +4,7 @@ $fs = 0.1;
 $fa = 2;
 
 // The nominal thickness of the sheet material. Parts will still mate and work properly if they vary from this width (but see INTERCONNECT_BOLT_EXTRA_LENGTH).
-THICKNESS = 8; //0.1
+THICKNESS = 6; //0.1
 
 // The distance between the connection step and the middle of the bolt hole or T-slot on either side.
 INTER_CONNECTION_OFFSET = 7;
@@ -86,3 +86,7 @@ PELVIS_REAR_HALF_WIDTH = 30; //5
 
 // The height of the bottom bar of the spine
 SPINE_BASE_HEIGHT = 20;
+
+
+CABLE_GUIDE_LENGTH = 7;
+CABLE_GUIDE_WIDTH = 1;

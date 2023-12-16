@@ -80,3 +80,13 @@ module Sausage(minorRadius, angle, thickness)
 function angleFromLen(radius, length) = length / radius * 180 / PI;
 
 
+module CableGuide()
+{
+    hull()
+    {
+        translate([0,CABLE_GUIDE_LENGTH/2])
+            circle(d=CABLE_GUIDE_WIDTH);
+        translate([0,-CABLE_GUIDE_LENGTH/2])
+            circle(d=CABLE_GUIDE_WIDTH);
+    }
+}

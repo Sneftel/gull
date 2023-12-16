@@ -2,8 +2,10 @@ include <params.scad>
 include <util.scad>
 
 use <spine.scad>
-use <rib.scad>
 use <pelvis.scad>
+use <rib_a.scad>
+use <rib_b.scad>
+use <rib_c.scad>
 
 ACTUAL_THICKNESS = THICKNESS;
 
@@ -24,17 +26,17 @@ module Side()
         rotate([90,0,0])
         translate(RIB_A_POS) rotate([0,0,RIB_A_ANGLE])
         rotate([0,90,0]) translate([(THICKNESS-ACTUAL_THICKNESS)/2,0,-THICKNESS/2])
-            linear_extrude(ACTUAL_THICKNESS,center=false) Rib(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH);
+            linear_extrude(ACTUAL_THICKNESS,center=false) Rib_A();
         
         rotate([90,0,0])
         translate(RIB_B_POS) rotate([0,0,RIB_B_ANGLE])
         rotate([0,90,0]) translate([(THICKNESS-ACTUAL_THICKNESS)/2,0,-THICKNESS/2])
-            linear_extrude(ACTUAL_THICKNESS,center=false) Rib(RIB_B_SHIFT, RIB_B_RADIUS, RIB_B_PITCH);
+            linear_extrude(ACTUAL_THICKNESS,center=false) Rib_B();
         
         rotate([90,0,0])
         translate(RIB_C_POS) rotate([0,0,RIB_C_ANGLE])
         rotate([0,90,0]) translate([(THICKNESS-ACTUAL_THICKNESS)/2,0,-THICKNESS/2])
-            linear_extrude(ACTUAL_THICKNESS,center=false) Rib(RIB_C_SHIFT, RIB_C_RADIUS, RIB_C_PITCH);
+            linear_extrude(ACTUAL_THICKNESS,center=false) Rib_C();
     }
 }
 

@@ -17,6 +17,20 @@ FOOT_HEIGHT = 1.0;
 FOOT_LENGTH = 2.0;
 
 
+FIRST_CABLE_GUIDE_LOC = [5,5];
+CABLE_GUIDE_OFFSET = [-5,0];
+
+
+module CableGuides(n)
+{
+    if(n>0)
+    {
+        CableGuide();
+        translate(CABLE_GUIDE_OFFSET)
+            CableGuides(n-1);
+    }
+}
+
 module LegSlotAt(radius, x)
 {
     rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
@@ -89,7 +103,7 @@ module Supports_Pos(shift, minorRadius)
     }
 }
 
-module Supports_Neg(shift, minorRadius)
+module Supports_Neg(shift, minorRadius, numGuides)
 {
     EXTRA=1;
 
@@ -109,13 +123,16 @@ module Supports_Neg(shift, minorRadius)
     translate([SPINES_OUTER_SPACING/2-THICKNESS/2, 3*INTER_CONNECTION_OFFSET])
         circle(d=INTERCONNECT_BOLT_DIAMETER);
 
+    translate(FIRST_CABLE_GUIDE_LOC)
+        CableGuides(numGuides);
+
 }
 
-module Supports(shift, minorRadius)
+module Supports(shift, minorRadius, numGuides)
 {
     difference() {
         Supports_Pos(shift, minorRadius);
-        Supports_Neg(shift, minorRadius);
+        Supports_Neg(shift, minorRadius, numGuides);
     }
 }
 
@@ -128,20 +145,20 @@ module Rib_Pos(shift, minorRadius, cantAngle)
         Fingerboard_Pos(minorRadius);
 }
 
-module Rib_Neg(shift, minorRadius, cantAngle)
+module Rib_Neg(shift, minorRadius, cantAngle, numGuides)
 {
-    Supports_Neg(shift, minorRadius);
+    Supports_Neg(shift, minorRadius, numGuides);
     translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT,0]) rotate([0,0,cantAngle])
         Fingerboard_Neg(minorRadius);
 }
 
-module Rib(shift, minorRadius, cantAngle)
+module Rib(shift, minorRadius, cantAngle, numGuides)
 {
     translate([SPINES_OUTER_SPACING/2 - THICKNESS/2, -2*INTER_CONNECTION_OFFSET])
     difference() {
         Rib_Pos(shift, minorRadius, cantAngle);
-        Rib_Neg(shift, minorRadius, cantAngle);
+        Rib_Neg(shift, minorRadius, cantAngle, numGuides);
     }
 }
 
-Rib(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH);
+Rib(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3);

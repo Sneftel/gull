@@ -28,6 +28,10 @@ module SpineRiser_Neg()
         translate([SPINE_RISER_WIDTH-THICKNESS/2, LARGE-INTER_CONNECTION_OFFSET, 0])
             circle(d=INTERCONNECT_BOLT_DIAMETER);
     }
+
+    translate([-SPINE_RISER_WIDTH/2,-5])
+        CableGuide();
+
 }
 
 module SpineRiser()

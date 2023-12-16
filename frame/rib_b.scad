@@ -1,4 +1,9 @@
 include <params.scad>
 use <rib.scad>
 
-Rib(RIB_B_SHIFT, RIB_B_RADIUS, RIB_B_PITCH);
+module Rib_B()
+{
+	Rib(RIB_B_SHIFT, RIB_B_RADIUS, RIB_B_PITCH, 2);
+}
+
+Rib_B();
