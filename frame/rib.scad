@@ -34,7 +34,7 @@ module CableSlot()
 module Foot()
 {
     EXTRA = 1;
-    translate([0,-EXTRA,0])
+    translate([-FOOT_LENGTH,-EXTRA,0])
         square([FOOT_LENGTH, FOOT_HEIGHT+EXTRA], center=false);
 }
 
