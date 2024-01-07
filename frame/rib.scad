@@ -17,9 +17,14 @@ FOOT_HEIGHT = 1.0;
 FOOT_LENGTH = 2.0;
 
 
-FIRST_CABLE_GUIDE_LOC = [5,5];
+FIRST_CABLE_GUIDE_LOC = [5,25];
 CABLE_GUIDE_OFFSET = [-5,0];
 
+FORWARD_STABILIZER_LOC = 30;
+
+STABILIZER_SEAT_ANGLE = 10;
+
+STABILIZER_SEAT_EXTRA_WIDTH = 2;
 
 module CableGuides(n)
 {
@@ -43,6 +48,27 @@ module CableSlot()
     LARGE = 100;
     translate([0, -LEG_SLOT_DEPTH, 0])
         square([LARGE,LEG_SLOT_DEPTH+EXTRA], center=false);
+}
+
+module RearwardStabilizerSlot()
+{
+    EXTRA = 1;
+
+    WIDTH = THICKNESS + STABILIZER_SEAT_EXTRA_WIDTH;
+
+    INNER_DEPTH = STABILIZER_HEIGHT + THICKNESS * tan(STABILIZER_SEAT_ANGLE);
+    OUTER_DEPTH = STABILIZER_HEIGHT - STABILIZER_SEAT_EXTRA_WIDTH * tan(STABILIZER_SEAT_ANGLE);
+
+    polygon(points = [
+        [-WIDTH + THICKNESS/2, -OUTER_DEPTH],
+        [THICKNESS/2, -INNER_DEPTH],
+        [THICKNESS/2, EXTRA],
+        [-WIDTH + THICKNESS/2, EXTRA]]);
+}
+
+module ForwardStabilizerSlot()
+{
+    scale([-1,1,1]) RearwardStabilizerSlot();
 }
 
 module Foot()
@@ -72,13 +98,15 @@ module Fingerboard_Pos(minorRadius)
 
 module Fingerboard_Neg(minorRadius)
 {
-    OnArc(minorRadius, -30) LegSlot();
+    //OnArc(minorRadius, -30) LegSlot();
+    OnArc(minorRadius, -30) RearwardStabilizerSlot();
     OnArc(minorRadius, -20) TSlot();
     OnArc(minorRadius, -10) LegSlot();
     OnArc(minorRadius, 0) TSlot();
     OnArc(minorRadius, 10) LegSlot();
     OnArc(minorRadius, 20) TSlot();
-    OnArc(minorRadius, 29) CableSlot();
+    //OnArc(minorRadius, 29) CableSlot();
+    OnArc(minorRadius, 30) ForwardStabilizerSlot();
 }
 
 module Fingerboard()

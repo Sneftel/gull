@@ -4,7 +4,7 @@ DEPS = params.scad util.scad tccommon.scad
 
 OPENSCAD = openscad
 
-PARTS = pelvis spine rib_a rib_b rib_c tcbody tcneck
+PARTS = pelvis spine rib_a rib_b rib_c tcbody tcneck stabilizer
 
 $(addprefix dxf/, $(PARTS:=.dxf)): dxf/%.dxf: %.scad $(DEPS)
 	mkdir -p dxf
