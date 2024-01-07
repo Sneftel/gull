@@ -1,0 +1,21 @@
+{
+    "layout": {
+        "alternation": "rows",
+        "vspace": "2mm"
+    },
+    "tabs": {
+        "type": "annotation",
+        "tabfootprints": "PCM_kikit:Tab"
+    },
+    "cuts": {
+        "type": "vcuts",
+        "offset": "-0.2mm",
+        "layer": "F.SilkS"
+    },
+    "framing": {
+        "type": "frame",
+        "mintotalheight": "80mm",
+        "mintotalwidth": "80mm",
+        "cuts": "none"
+    }
+}
