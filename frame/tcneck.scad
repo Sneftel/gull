@@ -2,8 +2,12 @@ include <util.scad>
 include <params.scad>
 include <tccommon.scad>
 
-NECK_STEM_WIDTH = 12;
+NECK_STEM_WIDTH = 14;
 NECK_STEM_LENGTH = 8;
+
+// A hack, because the PCB assumes 8mm thickness
+TC_THICKNESS = 8;
+
 module TCNeck_Pos()
 {
     LARGE = 1000;
@@ -22,11 +26,11 @@ module TCNeck_Pos()
     
     difference() {
         BodyArm_Pos();
-        translate([-THICKNESS/2, -LARGE/2])
+        translate([-TC_THICKNESS/2, -LARGE/2])
             square([LARGE,LARGE]);
     }
     
-    translate([-NECK_STEM_WIDTH - THICKNESS/2, -TC_ARM_HEIGHT - NECK_STEM_LENGTH])
+    translate([-NECK_STEM_WIDTH - TC_THICKNESS/2, -TC_ARM_HEIGHT - NECK_STEM_LENGTH])
         square([NECK_STEM_WIDTH, TC_ARM_HEIGHT + NECK_STEM_LENGTH], center=false);
 }
 
@@ -46,11 +50,11 @@ module TCNeck_Neg()
     
     difference() {
         BodyArm_Neg();
-        translate([-THICKNESS/2, -LARGE/2])
+        translate([-TC_THICKNESS/2, -LARGE/2])
             square([LARGE,LARGE]);
     }
     
-    translate([-THICKNESS/2, -TC_ARM_HEIGHT])
+    translate([-TC_THICKNESS/2, -TC_ARM_HEIGHT])
     rotate([0,0,-90])
         TSlot();
 }
