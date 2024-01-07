@@ -4,10 +4,10 @@ include <params.scad>
 // PARAMETERS SPECIFIC TO THIS ASSEMBLY
 
 // The height of the lowest point of the top side of the fingerboard (the fingerboard PCB will go as low as this)
-FINGERBOARD_CENTER_HEIGHT = 30;
+FINGERBOARD_CENTER_HEIGHT = 40;
 
 // The thickness of the fingerboard body
-RIB_THICKNESS = 12;
+RIB_THICKNESS = 15;
 
 RIB_FORWARD_EXTENT = 37;
 RIB_REARWARD_EXTENT = 40;
