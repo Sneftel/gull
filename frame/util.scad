@@ -1,5 +1,5 @@
 include <params.scad>
-
+include <pn.scad>
 
 ANCHOR_TL = 0+0;
 ANCHOR_TC = 0+1;
@@ -31,6 +31,21 @@ module TSlot()
         circle(r=STRAIN_RELIEF_RADIUS);
     translate([T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
         circle(r=STRAIN_RELIEF_RADIUS);
+}
+
+module Interconnect(name)
+{
+    EXTRA = 1;
+    pn_neg() {
+        translate([-EXTRA, -THICKNESS_TOLERANCE])
+            square([EXTRA+2*INTER_CONNECTION_OFFSET, THICKNESS_TOLERANCE+THICKNESS]);
+        translate([3*INTER_CONNECTION_OFFSET, THICKNESS/2])
+            circle(d=INTERCONNECT_BOLT_DIAMETER);
+        translate([INTER_CONNECTION_OFFSET, THICKNESS]) rotate([0,0,180])
+            TSlot();
+    }
+    translate([2*INTER_CONNECTION_OFFSET, THICKNESS])
+        pn_anchor(name) children();
 }
 
 module LegSlot()
@@ -82,11 +97,13 @@ function angleFromLen(radius, length) = length / radius * 180 / PI;
 
 module CableGuide()
 {
-    hull()
-    {
-        translate([0,CABLE_GUIDE_LENGTH/2])
-            circle(d=CABLE_GUIDE_WIDTH);
-        translate([0,-CABLE_GUIDE_LENGTH/2])
-            circle(d=CABLE_GUIDE_WIDTH);
+    pn_neg() {
+        hull()
+        {
+            translate([0,CABLE_GUIDE_LENGTH/2])
+                circle(d=CABLE_GUIDE_WIDTH);
+            translate([0,-CABLE_GUIDE_LENGTH/2])
+                circle(d=CABLE_GUIDE_WIDTH);
+        }
     }
 }

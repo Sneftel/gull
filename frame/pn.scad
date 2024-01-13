@@ -1,4 +1,4 @@
-$PN_FILTER_LABEL = undef;
+//$PN_FILTER_LABEL = undef;
 module _pn_label(label)
 {
 	assert(is_string(label), "A string giving the label must be passed to _pn_label");
@@ -13,8 +13,6 @@ module _pn_label(label)
 module _pn_filter(label)
 {
 	assert(is_string(label), "A string giving the label must be passed to _pn_filter");
-	assert(is_undef($PN_FILTER_LABEL) || $PN_FILTER_LABEL == label, 
-		str("Can't filter for label ", label, " while filtering for label ", $PN_FILTER_LABEL));
 
 	let($PN_FILTER_LABEL = label)
 	{
@@ -41,13 +39,23 @@ module pn_posneg()
 
 module pn_top()
 {
-	if(is_undef($PN_FILTER_LABEL)) {
-		difference()
-		{
-			_pn_filter("pos") children();
-			_pn_filter("neg") children();
-		}
-	} else {
+	difference()
+	{
+		_pn_filter("pos") children();
+		_pn_filter("neg") children();
+	}
+}
+
+module pn_anchor(name)
+{
+	_pn_label(str("anchor_", name))
+	{
+		assert($children != 0, str("Children were not passed through to anchor ", name))
 		children();
 	}
+}
+
+module pn_attach(name)
+{
+	_pn_filter(str("anchor_", name)) children();
 }

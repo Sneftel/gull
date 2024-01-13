@@ -6,6 +6,8 @@ $fa = 2;
 // The nominal thickness of the sheet material. Parts will still mate and work properly if they vary from this width (but see INTERCONNECT_BOLT_EXTRA_LENGTH).
 THICKNESS = 6; //0.1
 
+THICKNESS_TOLERANCE = 1; //0.1
+
 // The distance between the connection step and the middle of the bolt hole or T-slot on either side.
 INTER_CONNECTION_OFFSET = 7;
 
