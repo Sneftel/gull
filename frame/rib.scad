@@ -134,15 +134,20 @@ module Supports(shift, minorRadius, numGuides)
 
 module Rib(shift, minorRadius, cantAngle, numGuides)
 {
-    translate([SPINES_OUTER_SPACING/2 - THICKNESS/2, -2*INTER_CONNECTION_OFFSET])
-    {
-        Supports(shift, minorRadius, numGuides) children();
+    Supports(shift, minorRadius, numGuides) children();
 
-        translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT,0]) rotate([0,0,cantAngle])
-            Fingerboard(minorRadius) children();
-    }
+    translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT,0]) rotate([0,0,cantAngle])
+        Fingerboard(minorRadius) children();
 }
 
-pn_top() Rib(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3);
+
+module Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
+{
+    rotate([0,0,90])
+    translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, -2*INTER_CONNECTION_OFFSET])
+        Rib(shift, minorRadius, cantAngle, numGuides) children();
+}
+
+pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3);
 
 //pn_top() Supports(RIB_A_SHIFT, RIB_A_RADIUS, 3);

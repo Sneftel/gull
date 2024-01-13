@@ -12,41 +12,36 @@ ACTUAL_THICKNESS = THICKNESS;
 
 module Side(name)
 {
-    pn_attach(str(name, "_front")) Pelvis()
-    translate([0,0,THICKNESS/2]) rotate([90,0,0]) 
+    pn_attach(str(name, "_front")) Pelvis() rotate([90,0,0])
+    color("silver")
+    linear_extrude(ACTUAL_THICKNESS, center=true) 
+        pn_top() Spine_Anchored();
+
+    pn_attach(str(name, "_rear")) Pelvis() rotate([90,0,0])
     {
         color("silver")
-        linear_extrude(ACTUAL_THICKNESS) 
+        linear_extrude(ACTUAL_THICKNESS, center=true) 
             pn_top() Spine_Anchored();
 
-        pn_attach("riserA") Spine_Anchored() 
-        rotate([-90,90,0]) translate([-THICKNESS/2,0,-THICKNESS]) 
-        linear_extrude(ACTUAL_THICKNESS) 
-            pn_top() Rib_A();
+        pn_attach("riserA") Spine_Anchored() rotate([90,0,0])
+        linear_extrude(ACTUAL_THICKNESS, center=true) 
+            pn_top() Rib_A_Anchored();
 
-        pn_attach("riserB") Spine_Anchored() 
-        rotate([-90,90,0]) translate([-THICKNESS/2,0,-THICKNESS]) 
-        linear_extrude(ACTUAL_THICKNESS) 
-            pn_top() Rib_B();
+        pn_attach("riserB") Spine_Anchored() rotate([90,0,0])
+        linear_extrude(ACTUAL_THICKNESS, center=true) 
+            pn_top() Rib_B_Anchored();
 
-        pn_attach("riserC") Spine_Anchored() 
-        rotate([-90,90,0]) translate([-THICKNESS/2,0,-THICKNESS]) 
-        linear_extrude(ACTUAL_THICKNESS) 
-            pn_top() Rib_C();
+        pn_attach("riserC") Spine_Anchored() rotate([90,0,0])
+        linear_extrude(ACTUAL_THICKNESS, center=true) 
+            pn_top() Rib_C_Anchored();
 
     }
-
-    pn_attach(str(name, "_rear")) Pelvis() 
-    translate([0,0,THICKNESS/2]) rotate([90,0,0])
-    color("silver")
-    linear_extrude(ACTUAL_THICKNESS) 
-        pn_top() Spine_Anchored();
 
 }
 
 module Main()
 {
-    linear_extrude(ACTUAL_THICKNESS) pn_top() Pelvis();
+    linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() Pelvis();
 
     Side("left");
     Side("right");

@@ -44,7 +44,7 @@ module Interconnect(name)
         translate([INTER_CONNECTION_OFFSET, THICKNESS]) rotate([0,0,180])
             TSlot();
     }
-    translate([2*INTER_CONNECTION_OFFSET, THICKNESS])
+    translate([2*INTER_CONNECTION_OFFSET, THICKNESS/2])
         pn_anchor(name) children();
 }
 
