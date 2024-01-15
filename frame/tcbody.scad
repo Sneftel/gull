@@ -9,13 +9,9 @@ include <tccommon.scad>
 TCBODY_STEM_WIDTH = 10;
 TCBODY_STEM_LENGTH = 8;
 
-
-module TCBody()
+module TCBodyLeftSide()
 {
-    // Center body arm
-    BodyArm();
-
-    // Left body arm
+    // body arm
     translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE])
     translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
@@ -27,29 +23,25 @@ module TCBody()
                 circle(d=TC_ARM_HEIGHT);
         }
     }
-    
-    // Right body arm
-    translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
-    rotate([0,0,TC_INTER_PADDLE_ANGLE])
-    translate([TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
-    union() {
-        BodyArm();
 
-        pn_pos() {
-            translate([TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2,0])
-                circle(d=TC_ARM_HEIGHT);
-        }
-    }
-    
-    // Left elbow
+    // elbow
     translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE/2])
         TCElbow();
-    
-    // Right elbow
-    translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
-    rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
-        TCElbow();
+}
+
+module TCBodyRightSide()
+{
+    scale([-1,1,1]) TCBodyLeftSide();
+}
+
+module TCBody()
+{
+    // Center body arm
+    BodyArm();
+
+    TCBodyLeftSide();
+    TCBodyRightSide();
     
     // Stem
     pn_pos() {
@@ -67,4 +59,4 @@ module TCBody_Anchored()
         TCBody() children();
 }
 
-pn_top() TCBody_Anchored();
+pn_top() TCBody();
