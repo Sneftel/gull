@@ -35,56 +35,44 @@ TC_INTER_PADDLE_INSET_ANGLE = angleFromLen(TC_CUTOUT_MINOR_RADIUS, TC_INTER_PADD
 module PCBGuide()
 {
     EXTRA=1;
-    translate([-TC_PCB_GUIDE_MINOR_WIDTH/2, -TC_PCB_GUIDE_DEPTH, 0])
-        square([TC_PCB_GUIDE_MINOR_WIDTH, TC_PCB_GUIDE_DEPTH+EXTRA], center=false);
-    
-    translate([-TC_PCB_GUIDE_MAJOR_WIDTH/2, -TC_PCB_GUIDE_DEPTH, 0])
-        square([TC_PCB_GUIDE_MAJOR_WIDTH, TC_PCB_GUIDE_SLOT_HEIGHT], center=false);
-    
-    translate([-TC_LEG_CUTOUT_WIDTH/2, -TC_PCB_GUIDE_DEPTH-TC_LEG_CUTOUT_DEPTH, 0])
-        square([TC_LEG_CUTOUT_WIDTH, TC_LEG_CUTOUT_DEPTH], center=false);
-}
 
-module BodyArm_Pos()
-{
-    translate([-TC_ARM_BASE_WIDTH/2, -TC_ARM_HEIGHT, 0])
-        square([TC_ARM_BASE_WIDTH, TC_ARM_HEIGHT], center=false);
-}
-
-module BodyArm_Neg()
-{
-    PCBGuide();
+    pn_neg() {
+        translate([-TC_PCB_GUIDE_MINOR_WIDTH/2, -TC_PCB_GUIDE_DEPTH, 0])
+            square([TC_PCB_GUIDE_MINOR_WIDTH, TC_PCB_GUIDE_DEPTH+EXTRA], center=false);
+        
+        translate([-TC_PCB_GUIDE_MAJOR_WIDTH/2, -TC_PCB_GUIDE_DEPTH, 0])
+            square([TC_PCB_GUIDE_MAJOR_WIDTH, TC_PCB_GUIDE_SLOT_HEIGHT], center=false);
+        
+        translate([-TC_LEG_CUTOUT_WIDTH/2, -TC_PCB_GUIDE_DEPTH-TC_LEG_CUTOUT_DEPTH, 0])
+            square([TC_LEG_CUTOUT_WIDTH, TC_LEG_CUTOUT_DEPTH], center=false);
+    }
 }
 
 module BodyArm()
 {
-    difference() {
-        BodyArm_Pos();
-        BodyArm_Neg();
+    pn_pos() {
+        translate([-TC_ARM_BASE_WIDTH/2, -TC_ARM_HEIGHT, 0])
+            square([TC_ARM_BASE_WIDTH, TC_ARM_HEIGHT], center=false);
     }
-}
 
-module TCElbow_Pos()
-{
-    EXTRA_ANGLE = 0.1;
-    difference() {
-        Wedge(TC_INTER_PADDLE_RADIUS+TC_ARM_HEIGHT, TC_INTER_PADDLE_ANGLE+EXTRA_ANGLE);
-        circle(r=TC_INTER_PADDLE_RADIUS);
-    }
-}
-
-module TCElbow_Neg()
-{
-    difference() {
-        Wedge(TC_CUTOUT_MAJOR_RADIUS, TC_INTER_PADDLE_ANGLE - 2*TC_INTER_PADDLE_INSET_ANGLE);
-        circle(r=TC_CUTOUT_MINOR_RADIUS);
-    }
+    PCBGuide();
 }
 
 module TCElbow()
 {
-    difference() {
-        TCElbow_Pos();
-        TCElbow_Neg();
+    EXTRA_ANGLE = 0.1;
+
+    pn_pos() {
+        difference() {
+            Wedge(TC_INTER_PADDLE_RADIUS+TC_ARM_HEIGHT, TC_INTER_PADDLE_ANGLE+EXTRA_ANGLE);
+            circle(r=TC_INTER_PADDLE_RADIUS);
+        }
+    }
+
+    pn_neg() {
+        difference() {
+            Wedge(TC_CUTOUT_MAJOR_RADIUS, TC_INTER_PADDLE_ANGLE - 2*TC_INTER_PADDLE_INSET_ANGLE);
+            circle(r=TC_CUTOUT_MINOR_RADIUS);
+        }
     }
 }

@@ -1,5 +1,6 @@
 include <params.scad>
 include <util.scad>
+include <pn.scad>
 
 use <tcneck.scad>
 use <tcbody.scad>
@@ -16,4 +17,4 @@ module TCMain()
     linear_extrude(THICKNESS) TCNeck();
 }
 
-rotate([90,0,0]) TCMain();
+pn_top() rotate([90,0,0]) TCMain();
