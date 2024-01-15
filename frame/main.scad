@@ -19,13 +19,15 @@ module RibAssembly(riserName, shift, minorRadius, cantAngle, numGuides)
         pn_attach("pcb") Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
         FingerboardPCB(minorRadius);
 
-        pn_attach("forwardStabilizer") Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
-        rotate([0,90,0])
-            linear_extrude(ACTUAL_THICKNESS, center=true) Stabilizer();
+        color("silver") {
+            pn_attach("forwardStabilizer") Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
+            rotate([0,90,0])
+                linear_extrude(ACTUAL_THICKNESS, center=true) Stabilizer();
 
-        pn_attach("rearwardStabilizer") Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
-        rotate([0,90,0])
-            linear_extrude(ACTUAL_THICKNESS, center=true) Stabilizer();
+            pn_attach("rearwardStabilizer") Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
+            rotate([0,90,0])
+                linear_extrude(ACTUAL_THICKNESS, center=true) Stabilizer();
+        }
     }
 }
 
