@@ -12,8 +12,7 @@ ACTUAL_THICKNESS = THICKNESS;
 
 module RibAssembly(riserName, shift, minorRadius, cantAngle, numGuides)
 {
-    pn_attach(riserName) Spine_Anchored() rotate([90,0,0])
-    {
+    pn_attach(riserName) Spine_Anchored() rotate([90,0,0]) {
         linear_extrude(ACTUAL_THICKNESS, center=true) 
             pn_top() Rib_Anchored(shift, minorRadius, cantAngle, numGuides);
 
@@ -37,8 +36,7 @@ module Side(name)
     linear_extrude(ACTUAL_THICKNESS, center=true) 
         pn_top() Spine_Anchored();
 
-    pn_attach(str(name, "_rear")) Pelvis() rotate([90,0,0])
-    {
+    pn_attach(str(name, "_rear")) Pelvis() rotate([90,0,0]) {
         color("silver")
         linear_extrude(ACTUAL_THICKNESS, center=true) 
             pn_top() Spine_Anchored();

@@ -13,8 +13,7 @@ module TCNeck()
 {
     LARGE = 1000;
 
-    pn_pos()
-    {
+    pn_pos() {
         translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
         rotate([0,0,-TC_INTER_PADDLE_ANGLE])
         translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
@@ -37,8 +36,7 @@ module TCNeck()
             square([NECK_STEM_WIDTH, TC_ARM_HEIGHT + NECK_STEM_LENGTH], center=false);
     }
 
-    pn_neg()
-    {
+    pn_neg() {
         translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
         rotate([0,0,-TC_INTER_PADDLE_ANGLE])
         translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])

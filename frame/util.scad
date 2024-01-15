@@ -85,8 +85,7 @@ module Wedge(radius, angle)
 module CocktailSausage(minorRadius, angle, thickness)
 {
     halfRadius = minorRadius + thickness/2;
-    difference()
-    {
+    difference() {
         Wedge(minorRadius+thickness, angle);
         circle(minorRadius);
     }
@@ -94,8 +93,7 @@ module CocktailSausage(minorRadius, angle, thickness)
 module Sausage(minorRadius, angle, thickness)
 {
     halfRadius = minorRadius + thickness/2;
-    difference()
-    {
+    difference() {
         union() {
             Wedge(minorRadius+thickness, angle);
             translate([-halfRadius * sin(angle/2), -halfRadius * cos(angle/2), 0])
@@ -113,8 +111,7 @@ function angleFromLen(radius, length) = length / radius * 180 / PI;
 module CableGuide()
 {
     pn_neg() {
-        hull()
-        {
+        hull() {
             translate([0,CABLE_GUIDE_LENGTH/2])
                 circle(d=CABLE_GUIDE_WIDTH);
             translate([0,-CABLE_GUIDE_LENGTH/2])

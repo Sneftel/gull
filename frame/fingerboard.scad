@@ -16,7 +16,7 @@ module FingerboardPCB(radius)
 	linear_extrude(PCB_WIDTH, center=true)
 	translate([0,radius,0])
 	rotate([0,0,REAR_ANGLE/2-FRONT_ANGLE/2])
-	CocktailSausage(minorRadius=radius-PCB_THICKNESS, angle=REAR_ANGLE+FRONT_ANGLE, thickness=PCB_THICKNESS);
+		CocktailSausage(minorRadius=radius-PCB_THICKNESS, angle=REAR_ANGLE+FRONT_ANGLE, thickness=PCB_THICKNESS);
 }
 
 FingerboardPCB(80);
