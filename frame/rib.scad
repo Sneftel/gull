@@ -9,9 +9,6 @@ FINGERBOARD_CENTER_HEIGHT = 40;
 // The thickness of the fingerboard body
 RIB_THICKNESS = 15;
 
-RIB_FORWARD_EXTENT = 37;
-RIB_REARWARD_EXTENT = 40;
-
 FOOT_HEIGHT = 1.0;
 
 FOOT_LENGTH = 2.0;
@@ -28,18 +25,11 @@ STABILIZER_SEAT_EXTRA_WIDTH = 2;
 
 module CableGuides(n)
 {
-    if(n>0)
-    {
+    if(n>0) {
         CableGuide();
         translate(CABLE_GUIDE_OFFSET)
             CableGuides(n-1);
     }
-}
-
-module LegSlotAt(radius, x)
-{
-    rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
-        LegSlot();
 }
 
 module CableSlot()
@@ -50,7 +40,7 @@ module CableSlot()
         square([LARGE,LEG_SLOT_DEPTH+EXTRA], center=false);
 }
 
-module RearwardStabilizerSlot()
+module StabilizerSlot(name)
 {
     EXTRA = 1;
 
@@ -59,16 +49,24 @@ module RearwardStabilizerSlot()
     INNER_DEPTH = STABILIZER_HEIGHT + THICKNESS * tan(STABILIZER_SEAT_ANGLE);
     OUTER_DEPTH = STABILIZER_HEIGHT - STABILIZER_SEAT_EXTRA_WIDTH * tan(STABILIZER_SEAT_ANGLE);
 
-    polygon(points = [
-        [-WIDTH + THICKNESS/2, -OUTER_DEPTH],
-        [THICKNESS/2, -INNER_DEPTH],
-        [THICKNESS/2, EXTRA],
-        [-WIDTH + THICKNESS/2, EXTRA]]);
+    pn_neg() {
+        polygon(points = [
+            [-WIDTH + THICKNESS/2, -OUTER_DEPTH],
+            [THICKNESS/2, -INNER_DEPTH],
+            [THICKNESS/2, EXTRA],
+            [-WIDTH + THICKNESS/2, EXTRA]]);
+    }
+
+    pn_anchor(name) children();
 }
 
+module RearwardStabilizerSlot()
+{
+    StabilizerSlot("rearwardStabilizer") children();
+}
 module ForwardStabilizerSlot()
 {
-    scale([-1,1,1]) RearwardStabilizerSlot();
+    scale([-1,1,1]) StabilizerSlot("forwardStabilizer") children();
 }
 
 module Foot()
@@ -96,17 +94,15 @@ module Fingerboard(minorRadius)
         OnArc(minorRadius, -38) Foot();
     }
 
-    pn_neg() {
-        //OnArc(minorRadius, -30) LegSlot();
-        OnArc(minorRadius, -30) RearwardStabilizerSlot();
-        OnArc(minorRadius, -20) TSlot();
-        OnArc(minorRadius, -10) LegSlot();
-        OnArc(minorRadius, 0) TSlot();
-        OnArc(minorRadius, 10) LegSlot();
-        OnArc(minorRadius, 20) TSlot();
-        //OnArc(minorRadius, 29) CableSlot();
-        OnArc(minorRadius, 30) ForwardStabilizerSlot();
-    }
+    OnArc(minorRadius, -20) TSlot();
+    OnArc(minorRadius, -10) LegSlot();
+    OnArc(minorRadius, 0) TSlot();
+    OnArc(minorRadius, 10) LegSlot();
+    OnArc(minorRadius, 20) TSlot();
+
+    OnArc(minorRadius, -30) RearwardStabilizerSlot() children();
+    OnArc(minorRadius, 30) ForwardStabilizerSlot() children();
+    OnArc(minorRadius, 0) pn_anchor("pcb") children();
 }
 
 module Supports(shift, minorRadius, numGuides)
@@ -116,8 +112,7 @@ module Supports(shift, minorRadius, numGuides)
     LARGE=100;
 
     pn_pos() {
-        difference()
-        {
+        difference() {
             translate([-SPINES_OUTER_SPACING/2,0])
                 square([SPINES_OUTER_SPACING, LARGE]);
             translate([shift, minorRadius+FINGERBOARD_CENTER_HEIGHT, 0])

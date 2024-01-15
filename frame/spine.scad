@@ -25,8 +25,7 @@ module SpineRiser(name)
 {
     LARGE = 1000;
     
-    pn_pos()
-    {
+    pn_pos() {
         translate([-SPINE_RISER_WIDTH+THICKNESS/2,-LARGE,0])
             square([SPINE_RISER_WIDTH, LARGE+2*INTER_CONNECTION_OFFSET], center=false);
     }

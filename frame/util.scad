@@ -23,14 +23,23 @@ module TSlot()
 {
     EXTRA = 1;
     
-    translate([-T_SLOT_MINOR_WIDTH/2, -T_SLOT_DEPTH, 0])
-        square([T_SLOT_MINOR_WIDTH, T_SLOT_DEPTH+EXTRA], center=false);
-    translate([-T_SLOT_WIDTH/2, -(T_SLOT_NUT_DEPTH+T_SLOT_NUT_OFFSET), 0])
-        square([T_SLOT_WIDTH, T_SLOT_NUT_DEPTH], center=false);
-    translate([-T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
-        circle(r=STRAIN_RELIEF_RADIUS);
-    translate([T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
-        circle(r=STRAIN_RELIEF_RADIUS);
+    pn_neg() {
+        translate([-T_SLOT_MINOR_WIDTH/2, -T_SLOT_DEPTH, 0])
+            square([T_SLOT_MINOR_WIDTH, T_SLOT_DEPTH+EXTRA], center=false);
+        translate([-T_SLOT_WIDTH/2, -(T_SLOT_NUT_DEPTH+T_SLOT_NUT_OFFSET), 0])
+            square([T_SLOT_WIDTH, T_SLOT_NUT_DEPTH], center=false);
+        translate([-T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
+            circle(r=STRAIN_RELIEF_RADIUS);
+        translate([T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
+            circle(r=STRAIN_RELIEF_RADIUS);
+    }
+}
+
+module InterconnectBoltHole()
+{
+    pn_neg() {
+        circle(d=INTERCONNECT_BOLT_DIAMETER);
+    }
 }
 
 module Interconnect(name)
@@ -39,11 +48,14 @@ module Interconnect(name)
     pn_neg() {
         translate([-EXTRA, -THICKNESS_TOLERANCE])
             square([EXTRA+2*INTER_CONNECTION_OFFSET, THICKNESS_TOLERANCE+THICKNESS]);
-        translate([3*INTER_CONNECTION_OFFSET, THICKNESS/2])
-            circle(d=INTERCONNECT_BOLT_DIAMETER);
-        translate([INTER_CONNECTION_OFFSET, THICKNESS]) rotate([0,0,180])
-            TSlot();
     }
+
+    translate([3*INTER_CONNECTION_OFFSET, THICKNESS/2])
+        InterconnectBoltHole();
+
+    translate([INTER_CONNECTION_OFFSET, THICKNESS]) rotate([0,0,180])
+        TSlot();
+
     translate([2*INTER_CONNECTION_OFFSET, THICKNESS/2])
         pn_anchor(name) children();
 }
@@ -51,8 +63,11 @@ module Interconnect(name)
 module LegSlot()
 {
     EXTRA = 1;
-    translate([-LEG_SLOT_WIDTH/2, -LEG_SLOT_DEPTH, 0])
-        square([LEG_SLOT_DEPTH,LEG_SLOT_WIDTH+EXTRA], center=false);
+
+    pn_neg() {
+        translate([-LEG_SLOT_WIDTH/2, -LEG_SLOT_DEPTH, 0])
+            square([LEG_SLOT_DEPTH,LEG_SLOT_WIDTH+EXTRA], center=false);
+    }
 }
 
 module Wedge(radius, angle)
