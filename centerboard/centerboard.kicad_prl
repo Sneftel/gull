@@ -78,23 +78,11 @@
         "open": false,
         "window": {
           "display": 1,
-          "maximized": false,
-          "pos_x": 1269,
-          "pos_y": 0,
-          "size_x": 2581,
-          "size_y": 2122
-        }
-      },
-      {
-        "name": "centerboard.kicad_sch",
-        "open": false,
-        "window": {
-          "display": 1,
-          "maximized": false,
-          "pos_x": 1269,
-          "pos_y": 0,
-          "size_x": 1789,
-          "size_y": 1461
+          "maximized": true,
+          "pos_x": -11,
+          "pos_y": -11,
+          "size_x": 3862,
+          "size_y": 2134
         }
       }
     ]
