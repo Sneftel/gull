@@ -74,27 +74,27 @@
   "project": {
     "files": [
       {
-        "name": "thumbboard.kicad_sch",
+        "name": "thumbboard.kicad_pcb",
         "open": false,
         "window": {
           "display": 1,
-          "maximized": false,
-          "pos_x": 1269,
-          "pos_y": 0,
-          "size_x": 1789,
-          "size_y": 1461
+          "maximized": true,
+          "pos_x": -11,
+          "pos_y": -11,
+          "size_x": 3862,
+          "size_y": 2134
         }
       },
       {
-        "name": "thumbboard.kicad_pcb",
+        "name": "thumbboard.kicad_sch",
         "open": true,
         "window": {
           "display": 1,
           "maximized": false,
           "pos_x": 1269,
           "pos_y": 0,
-          "size_x": 2581,
-          "size_y": 2122
+          "size_x": 1300,
+          "size_y": 1066
         }
       }
     ]
