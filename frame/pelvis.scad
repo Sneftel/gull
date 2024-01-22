@@ -42,21 +42,36 @@ module ClippedPelvisRightSide()
         ClippedPelvisSide("right") children();
 }
 
-module Pelvis_Pos()
-{
-    ClippedPelvisLeftSide() children();
-    ClippedPelvisRightSide() children();
-}
+CENTERBOARD_REARWARD_OFFSET = -7;
+REAR_MOUNTING_HOLE_DISTANCE = 22;
+FRONT_MOUNTING_HOLE_DISTANCE = 25;
+FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE = 32;
+PCB_MOUNT_MARGIN = 0;
 
-module CenterboardCutout()
+module PCBMount()
 {
-    
+    translate([0, CENTERBOARD_REARWARD_OFFSET])
+    {
+        pn_pos() {
+        translate([-REAR_MOUNTING_HOLE_DISTANCE/2-PCB_MOUNT_MARGIN, -FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE-PCB_MOUNT_MARGIN])
+            square([REAR_MOUNTING_HOLE_DISTANCE+2*PCB_MOUNT_MARGIN, FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE+2*PCB_MOUNT_MARGIN], center=false);
+        }
+        translate([-REAR_MOUNTING_HOLE_DISTANCE/2, 0])
+            InterconnectBoltHole();
+        translate([REAR_MOUNTING_HOLE_DISTANCE/2, 0])
+            InterconnectBoltHole();
+        translate([-FRONT_MOUNTING_HOLE_DISTANCE/2, -FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE])
+            InterconnectBoltHole();
+        translate([FRONT_MOUNTING_HOLE_DISTANCE/2, -FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE])
+            InterconnectBoltHole();
+    }
 }
 
 module Pelvis()
 {
     ClippedPelvisLeftSide() children();
     ClippedPelvisRightSide() children();
+    PCBMount() children();
 }
 
 pn_top() Pelvis();

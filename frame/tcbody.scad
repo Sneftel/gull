@@ -4,11 +4,6 @@ include <tccommon.scad>
 
 // PARAMETERS SPECIFIC TO THIS ASSEMBLY
 
-
-
-TCBODY_STEM_WIDTH = 10;
-TCBODY_STEM_LENGTH = 8;
-
 module TCBodyLeftSide()
 {
     // body arm
@@ -42,20 +37,23 @@ module TCBody()
 
     TCBodyLeftSide();
     TCBodyRightSide();
-    
+    /*
     // Stem
     pn_pos() {
         translate([-TCBODY_STEM_WIDTH/2, -TC_ARM_HEIGHT - TCBODY_STEM_LENGTH])
             square([TCBODY_STEM_WIDTH,TCBODY_STEM_LENGTH], center=false);
     }
-
+*/
     translate([0, -TC_ARM_HEIGHT])
+    {
         InterconnectBoltHole();
+        pn_anchor("tcHole") children();
+    }
 }
 
 module TCBody_Anchored()
 {
-    translate([0,TC_ARM_HEIGHT+TCBODY_STEM_LENGTH])
+    translate([0,TC_ARM_HEIGHT])
         TCBody() children();
 }
 

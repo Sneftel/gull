@@ -59,7 +59,7 @@ RIB_A_PITCH = 10;
 
 
 // The position of the join point between the second ribs and the spine, in the plane of the spine
-RIB_B_POS = [-90,30];
+RIB_B_POS = [-87,35];
 // The angle in the plane of the spine by which the second ribs are rolled away from the center
 RIB_B_ANGLE = 20;
 // The distance by which the second ribs are shifted backwards from having their lowest point centered between the spines
@@ -70,7 +70,7 @@ RIB_B_RADIUS = 80; //5
 RIB_B_PITCH = 0;
 
 // The position of the join point between the outer ribs and the spine, in the plane of the spine
-RIB_C_POS = [-140,15];
+RIB_C_POS = [-130,25];
 // The angle in the plane of the spine by which the outer ribs are rolled away from the center
 RIB_C_ANGLE = 10;
 // The distance by which the outer ribs are shifted backwards from having their lowest point centered between the spines
@@ -97,4 +97,4 @@ STABILIZER_HEIGHT = 8;
 
 
 RIB_FORWARD_EXTENT = 37;
-RIB_REARWARD_EXTENT = 40;
+RIB_REARWARD_EXTENT = 50;

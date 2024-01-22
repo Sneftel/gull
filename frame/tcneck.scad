@@ -32,8 +32,21 @@ module TCNeck()
             square([NECK_STEM_WIDTH, TC_ARM_HEIGHT + NECK_STEM_LENGTH], center=false);
     }
 
+    BodyArm();
+    
+    pn_neg() {
+        translate([-TC_THICKNESS/2, -LARGE/2])
+            square([LARGE, LARGE], center=false);
+    }
+
     translate([-TC_THICKNESS/2, -TC_ARM_HEIGHT]) rotate([0,0,-90])
         TSlot();
+}
+
+module TCNeck_Anchored()
+{
+    translate([TC_THICKNESS/2, TC_ARM_HEIGHT])
+        TCNeck() children();
 }
 
 pn_top() TCNeck();

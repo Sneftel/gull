@@ -1,27 +1,33 @@
 include <util.scad>
 include <params.scad>
 
+use <tcbody.scad>
+
 // PARAMETERS SPECIFIC TO THIS ASSEMBLY
 
 // The height of the lowest point of the top side of the fingerboard (the fingerboard PCB will go as low as this)
 FINGERBOARD_CENTER_HEIGHT = 40;
 
 // The thickness of the fingerboard body
-RIB_THICKNESS = 15;
+RIB_THICKNESS = 20;
 
 FOOT_HEIGHT = 1.0;
 
 FOOT_LENGTH = 2.0;
 
 
-FIRST_CABLE_GUIDE_LOC = [5,25];
-CABLE_GUIDE_OFFSET = [-5,0];
+FIRST_CABLE_GUIDE_LOC = [7,5];
+CABLE_GUIDE_OFFSET = [-4,0];
 
 FORWARD_STABILIZER_LOC = 30;
 
 STABILIZER_SEAT_ANGLE = 10;
 
 STABILIZER_SEAT_EXTRA_WIDTH = 2;
+
+RIB_TCBODY_POINT = -45;
+
+RIB_TCBODY_HEIGHT = -5;
 
 module CableGuides(n)
 {
@@ -40,7 +46,7 @@ module CableSlot()
         square([LARGE,LEG_SLOT_DEPTH+EXTRA], center=false);
 }
 
-module StabilizerSlot(name)
+module RearwardStabilizerSlot()
 {
     EXTRA = 1;
 
@@ -57,16 +63,12 @@ module StabilizerSlot(name)
             [-WIDTH + THICKNESS/2, EXTRA]]);
     }
 
-    pn_anchor(name) children();
+    pn_anchor("stabilizer") children();
 }
 
-module RearwardStabilizerSlot()
-{
-    StabilizerSlot("rearwardStabilizer") children();
-}
 module ForwardStabilizerSlot()
 {
-    scale([-1,1,1]) StabilizerSlot("forwardStabilizer") children();
+    scale([-1,1,1]) RearwardStabilizerSlot() children();
 }
 
 module Foot()
@@ -82,7 +84,7 @@ module OnArc(radius, x)
         children();
 }
 
-module Fingerboard(minorRadius)
+module Fingerboard(minorRadius, withTC)
 {
     FINGERBOARD_TOTAL_ANGLE = angleFromLen(minorRadius, RIB_FORWARD_EXTENT+RIB_REARWARD_EXTENT);
     FINGERBOARD_ANGLE_BIAS = angleFromLen(minorRadius, (RIB_FORWARD_EXTENT-RIB_REARWARD_EXTENT)/2);
@@ -103,6 +105,11 @@ module Fingerboard(minorRadius)
     OnArc(minorRadius, -30) RearwardStabilizerSlot() children();
     OnArc(minorRadius, 30) ForwardStabilizerSlot() children();
     OnArc(minorRadius, 0) pn_anchor("pcb") children();
+
+    if(withTC) {
+        OnArc(minorRadius, RIB_TCBODY_POINT) translate([0,RIB_TCBODY_HEIGHT]) rotate([0,0,90])
+            TCBody_Anchored() children();
+    }
 }
 
 module Supports(shift, minorRadius, numGuides)
@@ -127,22 +134,22 @@ module Supports(shift, minorRadius, numGuides)
         CableGuides(numGuides);
 }
 
-module Rib(shift, minorRadius, cantAngle, numGuides)
+module Rib(shift, minorRadius, cantAngle, numGuides, withTC)
 {
     Supports(shift, minorRadius, numGuides) children();
 
     translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT,0]) rotate([0,0,cantAngle])
-        Fingerboard(minorRadius) children();
+        Fingerboard(minorRadius, withTC) children();
 }
 
 
-module Rib_Anchored(shift, minorRadius, cantAngle, numGuides)
+module Rib_Anchored(shift, minorRadius, cantAngle, numGuides, withTC)
 {
     rotate([0,0,90])
     translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, -2*INTER_CONNECTION_OFFSET])
-        Rib(shift, minorRadius, cantAngle, numGuides) children();
+        Rib(shift, minorRadius, cantAngle, numGuides, withTC) children();
 }
 
-pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3);
+pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3, true);
 
 //pn_top() Supports(RIB_A_SHIFT, RIB_A_RADIUS, 3);

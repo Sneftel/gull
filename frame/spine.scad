@@ -4,8 +4,8 @@ include <pn.scad>
 
 // PARAMETERS SPECIFIC TO THIS ASSEMBLY
 
-SPINE_LENGTH = 160;
 SPINE_RISER_WIDTH = 20;
+SPINE_LENGTH = -RIB_C_POS.x + SPINE_RISER_WIDTH/2;
 
 module SpineBase()
 {
@@ -29,6 +29,9 @@ module SpineRiser(name)
         translate([-SPINE_RISER_WIDTH+THICKNESS/2,-LARGE,0])
             square([SPINE_RISER_WIDTH, LARGE+2*INTER_CONNECTION_OFFSET], center=false);
     }
+
+    translate([-SPINE_RISER_WIDTH/2,-5])
+        CableGuide();
 
     translate([THICKNESS/2,2*INTER_CONNECTION_OFFSET]) scale([-1,1,1]) rotate([0,0,-90])
         Interconnect(name) children();

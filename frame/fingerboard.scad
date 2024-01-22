@@ -12,7 +12,7 @@ module FingerboardPCB(radius)
 	REAR_ANGLE = angleFromLen(radius, RIB_REARWARD_EXTENT);
 	FRONT_ANGLE = angleFromLen(radius, RIB_FORWARD_EXTENT);
 
-	color("tan")
+	color("#FF9209")
 	linear_extrude(PCB_WIDTH, center=true)
 	translate([0,radius,0])
 	rotate([0,0,REAR_ANGLE/2-FRONT_ANGLE/2])

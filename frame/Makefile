@@ -1,10 +1,10 @@
 .PHONY: dxfs svgs clean
 
-DEPS = params.scad util.scad tccommon.scad
+DEPS = params.scad util.scad pn.scad tccommon.scad tcbody.scad
 
 OPENSCAD = openscad
 
-PARTS = pelvis spine rib_a rib_b rib_c tcbody tcneck stabilizer
+PARTS = pelvis spine rib_a rib_b rib_c tcneck stabilizer
 
 $(addprefix dxf/, $(PARTS:=.dxf)): dxf/%.dxf: %.scad $(DEPS)
 	mkdir -p dxf
