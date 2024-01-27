@@ -1,31 +1,31 @@
 include <params.scad>
 include <pn.scad>
 
-ANCHOR_TL = 0+0;
-ANCHOR_TC = 0+1;
-ANCHOR_TR = 0+2;
+ANCHOR_BL = 0+0;
+ANCHOR_BC = 0+1;
+ANCHOR_BR = 0+2;
 ANCHOR_CL = 0+3;
 ANCHOR_CC = 0+4;
 ANCHOR_CR = 0+5;
-ANCHOR_BL = 0+6;
-ANCHOR_BC = 0+7;
-ANCHOR_BR = 0+8;
+ANCHOR_TL = 0+6;
+ANCHOR_TC = 0+7;
+ANCHOR_TR = 0+8;
 
-module Rect(width, height, anchor)
+module Rect(width, height, anchor, extraX=0, extraY=0)
 {
-    txm = anchor%3 == 0 ? -1 : anchor%3 == 1 ? -0.5 : 0;
-    tym = anchor/3 == 0 ? 0 : anchor/3 == 1 ? -0.5 : -1;
-    translate([width*txm, height*tym, 0])
-        square([width, height], center=false);
+    tx = anchor%3 == 0 ? -extraX : anchor%3 == 1 ? -width/2 : -width;
+    ty = floor(anchor/3) == 0 ? -extraY : floor(anchor/3) == 1 ? -height/2 : -height;
+    translate([tx, ty, 0])
+        square([width+extraX, height+extraY], center=false);
 }
 
-module TSlot()
+module TSlot(diameter, depth)
 {
     EXTRA = 1;
     
     pn_neg() {
-        translate([-T_SLOT_MINOR_WIDTH/2, -T_SLOT_DEPTH, 0])
-            square([T_SLOT_MINOR_WIDTH, T_SLOT_DEPTH+EXTRA], center=false);
+        translate([-diameter/2, -depth, 0])
+            square([diameter, depth+EXTRA], center=false);
         translate([-T_SLOT_WIDTH/2, -(T_SLOT_NUT_DEPTH+T_SLOT_NUT_OFFSET), 0])
             square([T_SLOT_WIDTH, T_SLOT_NUT_DEPTH], center=false);
         translate([-T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
@@ -33,6 +33,16 @@ module TSlot()
         translate([T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
             circle(r=STRAIN_RELIEF_RADIUS);
     }
+}
+
+module FingerboardTSlot()
+{
+    TSlot(FINGERBOARD_BOLT_DIAMETER, FINGERBOARD_BOLT_LENGTH-FINGERBOARD_THICKNESS+T_SLOT_EXTRA_DEPTH);
+}
+
+module InterconnectTSlot()
+{
+    TSlot(INTERCONNECT_BOLT_DIAMETER, INTERCONNECT_BOLT_LENGTH-THICKNESS+T_SLOT_EXTRA_DEPTH);
 }
 
 module InterconnectBoltHole()
@@ -54,7 +64,7 @@ module Interconnect(name)
         InterconnectBoltHole();
 
     translate([INTER_CONNECTION_OFFSET, THICKNESS]) rotate([0,0,180])
-        TSlot();
+        InterconnectTSlot();
 
     translate([2*INTER_CONNECTION_OFFSET, THICKNESS/2])
         pn_anchor(name) children();
@@ -112,9 +122,9 @@ module CableGuide()
 {
     pn_neg() {
         hull() {
-            translate([0,CABLE_GUIDE_LENGTH/2])
+            translate([0,CABLE_GUIDE_LENGTH/2 - CABLE_GUIDE_WIDTH])
                 circle(d=CABLE_GUIDE_WIDTH);
-            translate([0,-CABLE_GUIDE_LENGTH/2])
+            translate([0,-CABLE_GUIDE_LENGTH/2 + CABLE_GUIDE_WIDTH])
                 circle(d=CABLE_GUIDE_WIDTH);
         }
     }
