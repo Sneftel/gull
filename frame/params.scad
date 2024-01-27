@@ -18,19 +18,13 @@ INTERCONNECT_BOLT_DIAMETER = 3;
 INTERCONNECT_BOLT_LENGTH = 12;
 
 // The extra depth below the nut area of T-slots. This should be at least the length of the taper at the bottom of the bolts, plus the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
-INTERCONNECT_BOLT_EXTRA_LENGTH = 3;
+T_SLOT_EXTRA_DEPTH = 1;
 
 // The radius of the strain reliefs in the T-slots
 STRAIN_RELIEF_RADIUS = 0.25; //0.01
 
-// The total depth of the T-slot from the opening to the end of the bolt area
-T_SLOT_DEPTH = INTERCONNECT_BOLT_LENGTH + INTERCONNECT_BOLT_EXTRA_LENGTH - THICKNESS;
-
 // The width of the T-slot; this should be the width of your nuts
 T_SLOT_WIDTH = 6; //0.1
-
-// The width of the bolt area
-T_SLOT_MINOR_WIDTH = INTERCONNECT_BOLT_DIAMETER;
 
 // The depth of the nut area of the T-slot; this should be the thickness of your nuts
 T_SLOT_NUT_DEPTH = 2; //0.1
@@ -89,12 +83,22 @@ PELVIS_REAR_HALF_WIDTH = 30; //5
 // The height of the bottom bar of the spine
 SPINE_BASE_HEIGHT = 20;
 
-
+// The length of the capsule-shaped cable guide cutouts. Should be greater than the width of the FFC ribbons.
 CABLE_GUIDE_LENGTH = 7;
+
+// The width of the capsule-shaped cable guide cutouts. Should be wide enough to make inserting the FFC ribbons easy.
 CABLE_GUIDE_WIDTH = 1;
 
+// The height of the stabilizers.
 STABILIZER_HEIGHT = 8;
 
+// The length of the fingerboard forward of the center of the middle bolt hole
+FINGERBOARD_FORWARD_EXTENT = 38;
 
-RIB_FORWARD_EXTENT = 37;
-RIB_REARWARD_EXTENT = 50;
+// The length of the fingerboard rearward of the center of the middle bolt hole
+FINGERBOARD_REARWARD_EXTENT = 38;
+
+
+FINGERBOARD_THICKNESS = 0.8;
+FINGERBOARD_BOLT_DIAMETER = 3;
+FINGERBOARD_BOLT_LENGTH = 6;

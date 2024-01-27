@@ -40,7 +40,7 @@ module TCNeck()
     }
 
     translate([-TC_THICKNESS/2, -TC_ARM_HEIGHT]) rotate([0,0,-90])
-        TSlot();
+        InterconnectTSlot();
 }
 
 module TCNeck_Anchored()

@@ -29,6 +29,11 @@ RIB_TCBODY_POINT = -45;
 
 RIB_TCBODY_HEIGHT = -5;
 
+RIB_TCBODY_ANGLE = -10;
+
+CONNECTOR_CUTOUT_HEIGHT = 2;
+
+
 module CableGuides(n)
 {
     if(n>0) {
@@ -75,7 +80,14 @@ module Foot()
 {
     EXTRA = 1;
     translate([-FOOT_LENGTH,-EXTRA,0])
-        square([FOOT_LENGTH, FOOT_HEIGHT+EXTRA], center=false);
+        pn_pos() square([FOOT_LENGTH, FOOT_HEIGHT+EXTRA], center=false);
+}
+
+module ConnectorCutout()
+{
+    EXTRA = 1;
+    LARGE = 100;
+    pn_neg() Rect(LARGE, CONNECTOR_CUTOUT_HEIGHT, ANCHOR_TL, extraY=EXTRA);
 }
 
 module OnArc(radius, x)
@@ -84,30 +96,38 @@ module OnArc(radius, x)
         children();
 }
 
-module Fingerboard(minorRadius, withTC)
+module FingerboardPlatform(minorRadius, withTC)
 {
-    FINGERBOARD_TOTAL_ANGLE = angleFromLen(minorRadius, RIB_FORWARD_EXTENT+RIB_REARWARD_EXTENT);
-    FINGERBOARD_ANGLE_BIAS = angleFromLen(minorRadius, (RIB_FORWARD_EXTENT-RIB_REARWARD_EXTENT)/2);
-    
-    pn_pos() {
-        rotate([0,0,FINGERBOARD_ANGLE_BIAS])
-            CocktailSausage(minorRadius, FINGERBOARD_TOTAL_ANGLE, RIB_THICKNESS);
-        
-        OnArc(minorRadius, -38) Foot();
-    }
+    // The length of the rib's fingerboard platform forward of the center of the middle bolt hole
+    RIB_FORWARD_EXTENT = FINGERBOARD_FORWARD_EXTENT;
 
-    OnArc(minorRadius, -20) TSlot();
+    // The length of the rib's fingerboard platform forward of the center of the middle bolt hole
+    RIB_REARWARD_EXTENT = FINGERBOARD_REARWARD_EXTENT + FOOT_LENGTH + (withTC ? 10 : 0);
+
+
+    TOTAL_ANGLE = angleFromLen(minorRadius, RIB_FORWARD_EXTENT+RIB_REARWARD_EXTENT);
+    ANGLE_BIAS = angleFromLen(minorRadius, (RIB_FORWARD_EXTENT-RIB_REARWARD_EXTENT)/2);
+    
+    rotate([0,0,ANGLE_BIAS])
+    pn_pos()
+        CocktailSausage(minorRadius, TOTAL_ANGLE, RIB_THICKNESS);
+        
+    OnArc(minorRadius, -FINGERBOARD_REARWARD_EXTENT) Foot();
+
+    OnArc(minorRadius, -20) FingerboardTSlot();
     OnArc(minorRadius, -10) LegSlot();
-    OnArc(minorRadius, 0) TSlot();
+    OnArc(minorRadius, 0) FingerboardTSlot();
     OnArc(minorRadius, 10) LegSlot();
-    OnArc(minorRadius, 20) TSlot();
+    OnArc(minorRadius, 20) FingerboardTSlot();
 
     OnArc(minorRadius, -30) RearwardStabilizerSlot() children();
     OnArc(minorRadius, 30) ForwardStabilizerSlot() children();
     OnArc(minorRadius, 0) pn_anchor("pcb") children();
 
+    OnArc(minorRadius, 34) ConnectorCutout();
+
     if(withTC) {
-        OnArc(minorRadius, RIB_TCBODY_POINT) translate([0,RIB_TCBODY_HEIGHT]) rotate([0,0,90])
+        OnArc(minorRadius, RIB_TCBODY_POINT) translate([0,RIB_TCBODY_HEIGHT]) rotate([0,0,90-RIB_TCBODY_ANGLE])
             TCBody_Anchored() children();
     }
 }
@@ -139,7 +159,7 @@ module Rib(shift, minorRadius, cantAngle, numGuides, withTC)
     Supports(shift, minorRadius, numGuides) children();
 
     translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT,0]) rotate([0,0,cantAngle])
-        Fingerboard(minorRadius, withTC) children();
+        FingerboardPlatform(minorRadius, withTC) children();
 }
 
 
