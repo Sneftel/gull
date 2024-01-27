@@ -51,10 +51,13 @@ module Side(name)
 
 module Main()
 {
-    linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() Pelvis();
+    translate([0,0,SPINE_BASE_HEIGHT-THICKNESS/2])
+    {
+        linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() Pelvis();
 
-    Side("left");
-    Side("right");
+        Side("left");
+        Side("right");
+    }
 }
 
 Main();
