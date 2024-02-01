@@ -24,7 +24,7 @@ T_SLOT_EXTRA_DEPTH = 0.5;
 STRAIN_RELIEF_RADIUS = 0.25; //0.01
 
 // The width of the T-slot; this should be the width of your nuts
-T_SLOT_WIDTH = 5.5; //0.1
+$T_SLOT_NUT_WIDTH = 5.5; //0.1
 
 // The depth of the nut area of the T-slot; this should be the thickness of your nuts
 $T_SLOT_NUT_DEPTH = 2; //0.1

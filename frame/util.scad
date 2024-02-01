@@ -30,10 +30,10 @@ module TSlot(diameter, length)
     pn_neg() {
         Rect(diameter, innerLength + T_SLOT_EXTRA_DEPTH, ANCHOR_TC, extraY=EXTRA);
         translate([0, -innerLength + T_SLOT_NUT_OFFSET])
-            Rect(T_SLOT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_BC);
-        translate([-T_SLOT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
+            Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_BC);
+        translate([-$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
             circle(r=STRAIN_RELIEF_RADIUS);
-        translate([T_SLOT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
+        translate([$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
             circle(r=STRAIN_RELIEF_RADIUS);
     }
 
