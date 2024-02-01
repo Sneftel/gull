@@ -1,3 +1,5 @@
+// Visualization of the thumb cluster parts only (and not even the attached rib).
+
 include <params.scad>
 include <util.scad>
 include <pn.scad>

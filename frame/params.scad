@@ -1,4 +1,4 @@
-// USED BY MULTIPLE PARTS
+// Parameters which are used by multiple parts
 
 $fs = 0.1;
 $fa = 2;

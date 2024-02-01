@@ -1,3 +1,5 @@
+// The "neck" of the thumb cluster which extends perpendicularly from the body and holds one key.
+
 include <util.scad>
 include <params.scad>
 include <tccommon.scad>

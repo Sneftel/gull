@@ -1,3 +1,5 @@
+// The outer-most ribs.
+
 include <params.scad>
 use <rib.scad>
 

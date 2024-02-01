@@ -1,3 +1,5 @@
+// Various utilities used throughout other files.
+
 include <params.scad>
 include <pn.scad>
 

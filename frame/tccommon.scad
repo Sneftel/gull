@@ -1,3 +1,5 @@
+// Common utilities for the thumb cluster body and neck.
+
 include <util.scad>
 include <params.scad>
 

@@ -1,3 +1,7 @@
+// A saddle shape which sits astride the front or back of a rib and supports the corners of the
+// fingerboard to keep them from drooping. Held in place by friction, compressive force, and the 
+// legs of keyswitches.
+
 include <util.scad>
 include <params.scad>
 

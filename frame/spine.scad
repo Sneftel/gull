@@ -1,3 +1,5 @@
+// The forward-backward-perpendicular-ish shapes which extend out from the pelvis and support the ribs.
+
 include <util.scad>
 include <params.scad>
 include <pn.scad>

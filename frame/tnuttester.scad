@@ -1,3 +1,5 @@
+// A tool to find the best value for $T_SLOT_NUT_DEPTH (one which will lightly grip the nut for assembly). 
+
 include <util.scad>
 include <params.scad>
 include <pn.scad>

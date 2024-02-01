@@ -1,3 +1,6 @@
+// The body of the thumb cluster, including three keys. This shape is not output directly, but
+// incorporated into the "A" ribs.
+
 include <util.scad>
 include <params.scad>
 include <tccommon.scad>

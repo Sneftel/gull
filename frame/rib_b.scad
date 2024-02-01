@@ -1,3 +1,5 @@
+// The middle (relative to others on that side) ribs.
+
 include <params.scad>
 use <rib.scad>
 

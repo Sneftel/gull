@@ -1,3 +1,6 @@
+// The left-right-perpendicular-ish rib shape, which extends between the two spines on a side and
+// supports a fingerboard. Also potentially includes the body of the thumb cluster. 
+
 include <util.scad>
 include <params.scad>
 

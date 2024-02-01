@@ -1,3 +1,5 @@
+// Visualization of full keyboard, minus fasteners, cables, and thumb and center PCBs
+
 include <params.scad>
 include <util.scad>
 include <pn.scad>

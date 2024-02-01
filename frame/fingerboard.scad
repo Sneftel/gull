@@ -1,3 +1,5 @@
+// Curved fingerboard PCB shape. Used only by main.scad.
+
 include <util.scad>
 include <params.scad>
 include <pn.scad>

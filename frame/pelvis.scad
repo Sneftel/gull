@@ -1,3 +1,5 @@
+// The horizontal center shape, which joins to the four spines and supports the center PCB
+
 include <util.scad>
 include <params.scad>
 include <pn.scad>
