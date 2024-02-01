@@ -4,3 +4,4 @@ fp-info-cache
 plot/
 plot.zip
 thumbboard-panelized.*
+*.kicad_prl
