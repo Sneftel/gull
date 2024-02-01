@@ -19,30 +19,38 @@ module Rect(width, height, anchor, extraX=0, extraY=0)
         square([width+extraX, height+extraY], center=false);
 }
 
-module TSlot(diameter, depth)
+module TSlot(diameter, length)
 {
     EXTRA = 1;
+
+    innerLength = length - THICKNESS;
     
     pn_neg() {
-        translate([-diameter/2, -depth, 0])
-            square([diameter, depth+EXTRA], center=false);
-        translate([-T_SLOT_WIDTH/2, -(T_SLOT_NUT_DEPTH+T_SLOT_NUT_OFFSET), 0])
-            square([T_SLOT_WIDTH, T_SLOT_NUT_DEPTH], center=false);
-        translate([-T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
+        Rect(diameter, innerLength + T_SLOT_EXTRA_DEPTH, ANCHOR_TC, extraY=EXTRA);
+        translate([0, -innerLength + T_SLOT_NUT_OFFSET])
+            Rect(T_SLOT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_BC);
+        translate([-T_SLOT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
             circle(r=STRAIN_RELIEF_RADIUS);
-        translate([T_SLOT_WIDTH/2, -T_SLOT_NUT_OFFSET, 0])
+        translate([T_SLOT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
             circle(r=STRAIN_RELIEF_RADIUS);
+    }
+
+    pn_pos() {
+        translate([-diameter/2-T_SLOT_BUMPER_RADIUS, 0])
+            circle(r=T_SLOT_BUMPER_RADIUS);
+        translate([diameter/2+T_SLOT_BUMPER_RADIUS, 0])
+            circle(r=T_SLOT_BUMPER_RADIUS);
     }
 }
 
 module FingerboardTSlot()
 {
-    TSlot(FINGERBOARD_BOLT_DIAMETER, FINGERBOARD_BOLT_LENGTH-FINGERBOARD_THICKNESS+T_SLOT_EXTRA_DEPTH);
+    TSlot(FINGERBOARD_BOLT_DIAMETER, FINGERBOARD_BOLT_LENGTH);
 }
 
 module InterconnectTSlot()
 {
-    TSlot(INTERCONNECT_BOLT_DIAMETER, INTERCONNECT_BOLT_LENGTH-THICKNESS+T_SLOT_EXTRA_DEPTH);
+    TSlot(INTERCONNECT_BOLT_DIAMETER, INTERCONNECT_BOLT_LENGTH);
 }
 
 module InterconnectBoltHole()

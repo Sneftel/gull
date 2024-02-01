@@ -15,22 +15,24 @@ INTER_CONNECTION_OFFSET = 7;
 INTERCONNECT_BOLT_DIAMETER = 3;
 
 // The length of the bolts to be used in interconnects between sheet parts. If washers are used, this should be reduced by the washer thickness.
-INTERCONNECT_BOLT_LENGTH = 12;
+INTERCONNECT_BOLT_LENGTH = 14;
 
-// The extra depth below the nut area of T-slots. This should be at least the length of the taper at the bottom of the bolts, plus the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
-T_SLOT_EXTRA_DEPTH = 1;
+// The extra depth below the nut area of T-slots. This should be at least the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
+T_SLOT_EXTRA_DEPTH = 0.5;
 
 // The radius of the strain reliefs in the T-slots
 STRAIN_RELIEF_RADIUS = 0.25; //0.01
 
 // The width of the T-slot; this should be the width of your nuts
-T_SLOT_WIDTH = 6; //0.1
+T_SLOT_WIDTH = 5.5; //0.1
 
 // The depth of the nut area of the T-slot; this should be the thickness of your nuts
-T_SLOT_NUT_DEPTH = 2; //0.1
+$T_SLOT_NUT_DEPTH = 2; //0.1
 
-// The offset of the nut area below the opening of the T-slot
-T_SLOT_NUT_OFFSET = 3; //0.1
+// The offset of the nut area above the end of the screw in the T-slot. This should be at least the taper length
+T_SLOT_NUT_OFFSET = 1.5; //0.1
+
+T_SLOT_BUMPER_RADIUS = 0.25;
 
 // The distance between the outer extents of the front and back legs
 SPINES_OUTER_SPACING = 50;
@@ -101,4 +103,4 @@ FINGERBOARD_REARWARD_EXTENT = 38;
 
 FINGERBOARD_THICKNESS = 0.8;
 FINGERBOARD_BOLT_DIAMETER = 3;
-FINGERBOARD_BOLT_LENGTH = 6;
+FINGERBOARD_BOLT_LENGTH = 14;
