@@ -15,12 +15,12 @@ DEPTHS = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8];
 
 WIDTHS = [4.5, 4.75, 5, 5.25, 5.5, 5.75, 6];
 
-X_SPACING = $T_SLOT_NUT_WIDTH + 4;
+X_SPACING = $T_SLOT_NUT_WIDTH + 2;
 Y_SPACING = 5;
 SECOND_ROW_EXTRA_SPACING = 1;
 
 TESTER_WIDTH = (len(WIDTHS)+1) * X_SPACING;
-TESTER_DEPTH = (len(DEPTHS)+1) * Y_SPACING + 3;
+TESTER_DEPTH = (len(DEPTHS)+1) * Y_SPACING + 2;
 
 
 module NutHatch()
@@ -37,7 +37,7 @@ module TNutTester()
 {
 	pn_pos() Rect(TESTER_WIDTH, TESTER_DEPTH, ANCHOR_TL);
 	for(iw = [0:len(WIDTHS)-1]) {
-		translate([(iw+1)*X_SPACING, -TESTER_DEPTH + 2])
+		translate([(iw+1)*X_SPACING, -TESTER_DEPTH + 1])
 		 	pn_neg() text(text=str(WIDTHS[iw]), halign="center", valign="bottom", size=2);
 		for(id = [0:len(DEPTHS)-1]) {
 			let($T_SLOT_NUT_WIDTH = WIDTHS[iw], $T_SLOT_NUT_DEPTH = DEPTHS[id]) {
@@ -52,7 +52,7 @@ module TNutTester()
 		}
 	}
 	for(id = [0:len(DEPTHS)-1]) {
-		translate([1, -(len(DEPTHS)-id)*Y_SPACING])
+		translate([0.5, -(len(DEPTHS)-id)*Y_SPACING])
 			pn_neg() text(text=str(DEPTHS[id]), halign="left", valign="top", size=2);
 	}
 }
