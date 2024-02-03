@@ -9,10 +9,7 @@ module PelvisSide(side)
     EXTRA = 1;
     BIG = 100;
 
-    pn_pos() {
-        translate([-PELVIS_REAR_HALF_WIDTH,-SPINES_OUTER_SPACING,0])
-            square([BIG, SPINES_OUTER_SPACING], center=false);
-    }
+    pn_pos() Rect(BIG, SPINES_OUTER_SPACING, ANCHOR_TL, extraX=PELVIS_REAR_HALF_WIDTH);
 
     translate([-PELVIS_REAR_HALF_WIDTH,0]) scale([1,-1,1])
         Interconnect(str(side, "_", "rear")) children();
@@ -23,13 +20,12 @@ module PelvisSide(side)
 
 module ClippedPelvisSide(side)
 {
-    BIG = 100;
+    LARGE = 1000;
 
     difference() {
         rotate([0,0,-PELVIS_HALF_ANGLE])
             PelvisSide(side) children();
-        translate([0,-BIG,0])
-            square([BIG,2*BIG], center=false);
+        pn_pos() Rect(LARGE, LARGE, ANCHOR_CL);
     }
 }
 

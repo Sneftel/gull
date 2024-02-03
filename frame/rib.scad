@@ -50,7 +50,7 @@ module CableSlot()
 {
     EXTRA = 1;
     LARGE = 100;
-    translate([0, -LEG_SLOT_DEPTH, 0])
+    translate([0, -LEG_SLOT_DEPTH])
         square([LARGE,LEG_SLOT_DEPTH+EXTRA], center=false);
 }
 
@@ -82,8 +82,7 @@ module ForwardStabilizerSlot()
 module Foot()
 {
     EXTRA = 1;
-    translate([-FOOT_LENGTH,-EXTRA,0])
-        pn_pos() square([FOOT_LENGTH, FOOT_HEIGHT+EXTRA], center=false);
+    pn_pos() Rect(FOOT_LENGTH, FOOT_HEIGHT, ANCHOR_TR, extraY=EXTRA);
 }
 
 module ConnectorCutout()
@@ -143,9 +142,8 @@ module Supports(shift, minorRadius, numGuides)
 
     pn_pos() {
         difference() {
-            translate([-SPINES_OUTER_SPACING/2,0])
-                square([SPINES_OUTER_SPACING, LARGE]);
-            translate([shift, minorRadius+FINGERBOARD_CENTER_HEIGHT, 0])
+            Rect(SPINES_OUTER_SPACING, LARGE, ANCHOR_BC);
+            translate([shift, minorRadius+FINGERBOARD_CENTER_HEIGHT])
                 circle(r=FINGERBOARD_MAJOR_RADIUS-EXTRA);
         }
     }
@@ -161,7 +159,7 @@ module Rib(shift, minorRadius, cantAngle, numGuides, withTC)
 {
     Supports(shift, minorRadius, numGuides) children();
 
-    translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT,0]) rotate([0,0,cantAngle])
+    translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT]) rotate([0,0,cantAngle])
         FingerboardPlatform(minorRadius, withTC) children();
 }
 
