@@ -17,6 +17,9 @@ INTERCONNECT_BOLT_DIAMETER = 3;
 // The length of the bolts to be used in interconnects between sheet parts. If washers are used, this should be reduced by the washer thickness.
 INTERCONNECT_BOLT_LENGTH = 14;
 
+// The radius of a corner cutout in the interconnect to seat parts better
+INTERCONNECT_CORNER_CUTOUT_RADIUS = 0.5;
+
 // The extra depth below the nut area of T-slots. This should be at least the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
 T_SLOT_EXTRA_DEPTH = 0.5;
 

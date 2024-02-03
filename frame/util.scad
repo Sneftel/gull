@@ -65,10 +65,9 @@ module InterconnectBoltHole()
 module Interconnect(name)
 {
     EXTRA = 1;
-    pn_neg() {
-        translate([-EXTRA, -THICKNESS_TOLERANCE])
-            square([EXTRA+2*INTER_CONNECTION_OFFSET, THICKNESS_TOLERANCE+THICKNESS]);
-    }
+    pn_neg() Rect(2*INTER_CONNECTION_OFFSET, THICKNESS, ANCHOR_BL, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
+    translate([2*INTER_CONNECTION_OFFSET,THICKNESS])
+        pn_neg() circle(r=INTERCONNECT_CORNER_CUTOUT_RADIUS);
 
     translate([3*INTER_CONNECTION_OFFSET, THICKNESS/2])
         InterconnectBoltHole();
