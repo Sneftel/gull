@@ -57,9 +57,8 @@ module InterconnectTSlot()
 
 module InterconnectBoltHole()
 {
-    pn_neg() {
-        circle(d=INTERCONNECT_BOLT_DIAMETER);
-    }
+    pn_pos() circle(d=INTERCONNECT_WASHER_DIAMETER);
+    pn_neg() circle(d=INTERCONNECT_BOLT_DIAMETER);
 }
 
 module Interconnect(name)

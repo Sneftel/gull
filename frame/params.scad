@@ -17,6 +17,9 @@ INTERCONNECT_BOLT_DIAMETER = 3;
 // The length of the bolts to be used in interconnects between sheet parts. If washers are used, this should be reduced by the washer thickness.
 INTERCONNECT_BOLT_LENGTH = 14;
 
+// The diameter of a positive area surrounding the interconnect bolt hole
+INTERCONNECT_WASHER_DIAMETER = 8;
+
 // The radius of a corner cutout in the interconnect to seat parts better
 INTERCONNECT_CORNER_CUTOUT_RADIUS = 0.5;
 
