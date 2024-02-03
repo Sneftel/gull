@@ -15,16 +15,16 @@ module TCNeck()
 {
     LARGE = 1000;
 
-    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE])
-    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0]) {
+    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS]) {
         BodyArm();
-        translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+        translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
         rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
             TCElbow();
 
         pn_pos() {
-            translate([-TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2,0])
+            translate([-TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2])
                 circle(d=TC_ARM_HEIGHT);
         }
     }
@@ -35,7 +35,7 @@ module TCNeck()
     BodyArm();
     
     pn_neg() Rect(LARGE, LARGE, ANCHOR_CL, extraX=TC_THICKNESS/2);
-    
+
     translate([-TC_THICKNESS/2, -TC_ARM_HEIGHT]) rotate([0,0,-90])
         InterconnectTSlot();
 }

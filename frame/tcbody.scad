@@ -10,20 +10,17 @@ include <tccommon.scad>
 module TCBodyLeftSide()
 {
     // body arm
-    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE])
-    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS,0])
-    union() {
+    translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS]) {
         BodyArm();
 
-        pn_pos() {
-            translate([-TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2,0])
-                circle(d=TC_ARM_HEIGHT);
-        }
+        translate([-TC_PCB_WIDTH/2,-TC_ARM_HEIGHT/2])
+            pn_pos() circle(d=TC_ARM_HEIGHT);
     }
 
     // elbow
-    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS,0])
+    translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
     rotate([0,0,-TC_INTER_PADDLE_ANGLE/2])
         TCElbow();
 }
@@ -40,15 +37,8 @@ module TCBody()
 
     TCBodyLeftSide();
     TCBodyRightSide();
-    /*
-    // Stem
-    pn_pos() {
-        translate([-TCBODY_STEM_WIDTH/2, -TC_ARM_HEIGHT - TCBODY_STEM_LENGTH])
-            square([TCBODY_STEM_WIDTH,TCBODY_STEM_LENGTH], center=false);
-    }
-*/
-    translate([0, -TC_ARM_HEIGHT])
-    {
+
+    translate([0, -TC_ARM_HEIGHT]) {
         InterconnectBoltHole();
         pn_anchor("tcHole") children();
     }

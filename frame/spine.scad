@@ -14,7 +14,7 @@ module SpineBase()
     LARGE = 1000;
 
     pn_pos() {
-        translate([-SPINE_LENGTH,0,0])
+        translate([-SPINE_LENGTH,0])
             square([SPINE_LENGTH, SPINE_BASE_HEIGHT], center=false);
     }
 
@@ -27,10 +27,8 @@ module SpineRiser(name)
 {
     LARGE = 1000;
     
-    pn_pos() {
-        translate([-SPINE_RISER_WIDTH+THICKNESS/2,-LARGE,0])
-            square([SPINE_RISER_WIDTH, LARGE+2*INTER_CONNECTION_OFFSET], center=false);
-    }
+    translate([THICKNESS/2, 0])
+        pn_pos() Rect(SPINE_RISER_WIDTH, LARGE, ANCHOR_TR, extraY=2*INTER_CONNECTION_OFFSET);
 
     translate([-SPINE_RISER_WIDTH/2,-5])
         CableGuide();
@@ -41,14 +39,13 @@ module SpineRiser(name)
 
 module SpineRisers()
 {
+    LARGE = 1000;
+
     translate(RIB_A_POS) rotate([0,0,RIB_A_ANGLE]) SpineRiser("riserA") children();
     translate(RIB_B_POS) rotate([0,0,RIB_B_ANGLE]) SpineRiser("riserB") children();
     translate(RIB_C_POS) rotate([0,0,RIB_C_ANGLE]) SpineRiser("riserC") children();
 
-    pn_neg() {
-        LARGE = 1000;
-        translate([-LARGE/2, -LARGE]) square([LARGE, LARGE], center=false);
-    }
+    pn_neg() Rect(LARGE, LARGE, ANCHOR_TC);
 }
 
 module Spine()
