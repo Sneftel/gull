@@ -171,6 +171,4 @@ module Rib_Anchored(shift, minorRadius, cantAngle, numGuides, withTC)
         Rib(shift, minorRadius, cantAngle, numGuides, withTC) children();
 }
 
-pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3, true);
-
-//pn_top() Supports(RIB_A_SHIFT, RIB_A_RADIUS, 3);
+Dekerf() pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3, true);

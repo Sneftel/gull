@@ -137,3 +137,12 @@ module CableGuide()
         }
     }
 }
+
+module Dekerf()
+{
+    if(KERF > 0) {
+        offset(delta=KERF/2) children();
+    } else {
+        children();
+    }
+}

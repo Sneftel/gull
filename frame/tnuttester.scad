@@ -38,7 +38,7 @@ module TNutTester()
 	pn_pos() Rect(TESTER_WIDTH, TESTER_DEPTH, ANCHOR_LT);
 	for(iw = [0:len(WIDTHS)-1]) {
 		translate([(iw+1)*X_SPACING, -TESTER_DEPTH + 1])
-		 	pn_neg() text(text=str(WIDTHS[iw]), halign="center", valign="bottom", size=2);
+		 	_pn_label("text") text(text=str(WIDTHS[iw]), halign="center", valign="bottom", font="Calibri:style=Light", size=2);
 		for(id = [0:len(DEPTHS)-1]) {
 			let($T_SLOT_NUT_WIDTH = WIDTHS[iw], $T_SLOT_NUT_DEPTH = DEPTHS[id]) {
 				if(id == len(DEPTHS)-1) {
@@ -53,10 +53,12 @@ module TNutTester()
 	}
 	for(id = [0:len(DEPTHS)-1]) {
 		translate([0.5, -(len(DEPTHS)-id)*Y_SPACING])
-			pn_neg() text(text=str(DEPTHS[id]), halign="left", valign="top", size=2);
+			_pn_label("text") text(text=str(DEPTHS[id]), halign="left", valign="top", font="Calibri:style=Light", size=2);
 	}
 }
 
-/*			 
-			 	*/
-pn_top() TNutTester();
+difference() {
+	Dekerf() pn_top() TNutTester();
+	_pn_filter("text") TNutTester();
+}
+
