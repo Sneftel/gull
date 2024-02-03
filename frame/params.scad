@@ -89,7 +89,7 @@ SPINE_BASE_HEIGHT = 20;
 CABLE_GUIDE_LENGTH = 7;
 
 // The width of the capsule-shaped cable guide cutouts. Should be wide enough to make inserting the FFC ribbons easy.
-CABLE_GUIDE_WIDTH = 1;
+CABLE_GUIDE_WIDTH = 2;
 
 // The height of the stabilizers.
 STABILIZER_HEIGHT = 8;
