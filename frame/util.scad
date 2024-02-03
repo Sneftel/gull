@@ -3,15 +3,15 @@
 include <params.scad>
 include <pn.scad>
 
-ANCHOR_BL = 0+0;
-ANCHOR_BC = 0+1;
-ANCHOR_BR = 0+2;
-ANCHOR_CL = 0+3;
+ANCHOR_LB = 0+0;
+ANCHOR_CB = 0+1;
+ANCHOR_RB = 0+2;
+ANCHOR_LC = 0+3;
 ANCHOR_CC = 0+4;
-ANCHOR_CR = 0+5;
-ANCHOR_TL = 0+6;
-ANCHOR_TC = 0+7;
-ANCHOR_TR = 0+8;
+ANCHOR_RC = 0+5;
+ANCHOR_LT = 0+6;
+ANCHOR_CT = 0+7;
+ANCHOR_RT = 0+8;
 
 module Rect(width, height, anchor, extraX=0, extraY=0)
 {
@@ -28,9 +28,9 @@ module TSlot(diameter, length)
     innerLength = length - THICKNESS;
     
     pn_neg() {
-        Rect(diameter, innerLength + T_SLOT_EXTRA_DEPTH, ANCHOR_TC, extraY=EXTRA);
+        Rect(diameter, innerLength + T_SLOT_EXTRA_DEPTH, ANCHOR_CT, extraY=EXTRA);
         translate([0, -innerLength + T_SLOT_NUT_OFFSET])
-            Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_BC);
+            Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_CB);
         translate([-$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
             circle(r=STRAIN_RELIEF_RADIUS);
         translate([$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
@@ -65,7 +65,7 @@ module InterconnectBoltHole()
 module Interconnect(name)
 {
     EXTRA = 1;
-    pn_neg() Rect(2*INTER_CONNECTION_OFFSET, THICKNESS, ANCHOR_BL, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
+    pn_neg() Rect(2*INTER_CONNECTION_OFFSET, THICKNESS, ANCHOR_LB, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
     translate([2*INTER_CONNECTION_OFFSET,THICKNESS])
         pn_neg() circle(r=INTERCONNECT_CORNER_CUTOUT_RADIUS);
 

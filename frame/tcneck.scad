@@ -30,11 +30,11 @@ module TCNeck()
     }
     
     translate([-TC_THICKNESS/2, 0])
-        pn_pos() Rect(NECK_STEM_WIDTH, TC_ARM_HEIGHT + NECK_STEM_LENGTH, ANCHOR_TR);
+        pn_pos() Rect(NECK_STEM_WIDTH, TC_ARM_HEIGHT + NECK_STEM_LENGTH, ANCHOR_RT);
 
     BodyArm();
     
-    pn_neg() Rect(LARGE, LARGE, ANCHOR_CL, extraX=TC_THICKNESS/2);
+    pn_neg() Rect(LARGE, LARGE, ANCHOR_LC, extraX=TC_THICKNESS/2);
 
     translate([-TC_THICKNESS/2, -TC_ARM_HEIGHT]) rotate([0,0,-90])
         InterconnectTSlot();

@@ -82,14 +82,14 @@ module ForwardStabilizerSlot()
 module Foot()
 {
     EXTRA = 1;
-    pn_pos() Rect(FOOT_LENGTH, FOOT_HEIGHT, ANCHOR_TR, extraY=EXTRA);
+    pn_pos() Rect(FOOT_LENGTH, FOOT_HEIGHT, ANCHOR_RT, extraY=EXTRA);
 }
 
 module ConnectorCutout()
 {
     EXTRA = 1;
     LARGE = 100;
-    pn_neg() Rect(LARGE, CONNECTOR_CUTOUT_HEIGHT, ANCHOR_TL, extraY=EXTRA);
+    pn_neg() Rect(LARGE, CONNECTOR_CUTOUT_HEIGHT, ANCHOR_LT, extraY=EXTRA);
 }
 
 module OnArc(radius, x)
@@ -142,7 +142,7 @@ module Supports(shift, minorRadius, numGuides)
 
     pn_pos() {
         difference() {
-            Rect(SPINES_OUTER_SPACING, LARGE, ANCHOR_BC);
+            Rect(SPINES_OUTER_SPACING, LARGE, ANCHOR_CB);
             translate([shift, minorRadius+FINGERBOARD_CENTER_HEIGHT])
                 circle(r=FINGERBOARD_MAJOR_RADIUS-EXTRA);
         }

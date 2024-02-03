@@ -25,17 +25,17 @@ TESTER_DEPTH = (len(DEPTHS)+1) * Y_SPACING + 2;
 
 module NutHatch()
 {
-	pn_neg() Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_TC);
+	pn_neg() Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_CT);
 	translate([-$T_SLOT_NUT_WIDTH/2, 0])
 		pn_neg() circle(r=STRAIN_RELIEF_RADIUS);
 	translate([$T_SLOT_NUT_WIDTH/2, 0])
 		pn_neg() circle(r=STRAIN_RELIEF_RADIUS);
-	pn_neg() Rect(INTERCONNECT_BOLT_DIAMETER, $T_SLOT_NUT_DEPTH + 1, ANCHOR_TC, extraY = 1);
+	pn_neg() Rect(INTERCONNECT_BOLT_DIAMETER, $T_SLOT_NUT_DEPTH + 1, ANCHOR_CT, extraY = 1);
 }
 
 module TNutTester()
 {
-	pn_pos() Rect(TESTER_WIDTH, TESTER_DEPTH, ANCHOR_TL);
+	pn_pos() Rect(TESTER_WIDTH, TESTER_DEPTH, ANCHOR_LT);
 	for(iw = [0:len(WIDTHS)-1]) {
 		translate([(iw+1)*X_SPACING, -TESTER_DEPTH + 1])
 		 	pn_neg() text(text=str(WIDTHS[iw]), halign="center", valign="bottom", size=2);
