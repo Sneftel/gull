@@ -23,14 +23,8 @@ INTERCONNECT_BOLT_LENGTH = 14;
 // The diameter of a positive area surrounding the interconnect bolt hole
 INTERCONNECT_WASHER_DIAMETER = 8;
 
-// The radius of a corner cutout in the interconnect to seat parts better
-INTERCONNECT_CORNER_CUTOUT_RADIUS = 0.5;
-
 // The extra depth below the nut area of T-slots. This should be at least the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
 T_SLOT_EXTRA_DEPTH = 0.5;
-
-// The radius of the strain reliefs in the T-slots
-STRAIN_RELIEF_RADIUS = 0.3; //0.01
 
 // The width of the T-slot; this should be the width of your nuts
 $T_SLOT_NUT_WIDTH = 5.5; //0.1

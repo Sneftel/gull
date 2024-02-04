@@ -31,11 +31,13 @@ module TSlot(diameter, length)
         Rect(diameter, innerLength + T_SLOT_EXTRA_DEPTH, ANCHOR_CT, extraY=EXTRA);
         translate([0, -innerLength + T_SLOT_NUT_OFFSET])
             Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_CB);
-        translate([-$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
-            circle(r=STRAIN_RELIEF_RADIUS);
-        translate([$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
-            circle(r=STRAIN_RELIEF_RADIUS);
     }
+
+    translate([-$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
+        ClearedCorner(-135);
+    translate([$T_SLOT_NUT_WIDTH/2, -innerLength + T_SLOT_NUT_OFFSET + $T_SLOT_NUT_DEPTH, 0])
+        ClearedCorner(135);
+
 
     pn_pos() {
         translate([-diameter/2-T_SLOT_BUMPER_RADIUS, 0])
@@ -66,7 +68,7 @@ module Interconnect(name)
     EXTRA = 1;
     pn_neg() Rect(2*INTER_CONNECTION_OFFSET, THICKNESS, ANCHOR_LB, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
     translate([2*INTER_CONNECTION_OFFSET,THICKNESS])
-        pn_neg() circle(r=INTERCONNECT_CORNER_CUTOUT_RADIUS);
+        ClearedCorner(-45);
 
     translate([3*INTER_CONNECTION_OFFSET, THICKNESS/2])
         InterconnectBoltHole();
@@ -136,6 +138,12 @@ module CableGuide()
                 circle(d=CABLE_GUIDE_WIDTH);
         }
     }
+}
+
+module ClearedCorner(angle, r=0.01)
+{
+    rotate([0,0,angle])
+        pn_neg() Rect(KERF+2*r, KERF/2+r, ANCHOR_CB, extraY=KERF/2+r);
 }
 
 module Dekerf()

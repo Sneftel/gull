@@ -57,7 +57,13 @@ module PCBGuide()
             DownwardHemisphere(d=TC_PCB_GUIDE_PINCH_DIAMETER);
         translate([TC_PCB_GUIDE_MAJOR_WIDTH/2-TC_PCB_GUIDE_PINCH_DIAMETER/2, -TC_PCB_GUIDE_DEPTH])
             DownwardHemisphere(d=TC_PCB_GUIDE_PINCH_DIAMETER);
+
     }
+
+    translate([-TC_PCB_GUIDE_MAJOR_WIDTH/2, -TC_PCB_GUIDE_DEPTH+TC_PCB_GUIDE_SLOT_HEIGHT])
+        ClearedCorner(45);
+    translate([TC_PCB_GUIDE_MAJOR_WIDTH/2, -TC_PCB_GUIDE_DEPTH+TC_PCB_GUIDE_SLOT_HEIGHT])
+        ClearedCorner(-45);
 }
 
 module BodyArm()

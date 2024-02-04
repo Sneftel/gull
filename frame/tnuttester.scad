@@ -27,9 +27,10 @@ module NutHatch()
 {
 	pn_neg() Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_CT);
 	translate([-$T_SLOT_NUT_WIDTH/2, 0])
-		pn_neg() circle(r=STRAIN_RELIEF_RADIUS);
+		ClearedCorner(-135);
 	translate([$T_SLOT_NUT_WIDTH/2, 0])
-		pn_neg() circle(r=STRAIN_RELIEF_RADIUS);
+		ClearedCorner(135);
+
 	pn_neg() Rect(INTERCONNECT_BOLT_DIAMETER, $T_SLOT_NUT_DEPTH + 1, ANCHOR_CT, extraY = 1);
 }
 
