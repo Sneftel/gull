@@ -9,7 +9,7 @@ THICKNESS = 6; //0.1
 THICKNESS_TOLERANCE = 1; //0.1
 
 // The kerf width of the cutter. Determine this by subtracting the measured width of a cut piece from the nominal width.
-KERF = 0.5;
+KERF = 0.3;
 
 // The distance between the connection step and the middle of the bolt hole or T-slot on either side.
 INTER_CONNECTION_OFFSET = 7;
@@ -27,7 +27,7 @@ INTERCONNECT_WASHER_DIAMETER = 8;
 T_SLOT_EXTRA_DEPTH = 0.5;
 
 // The width of the T-slot; this should be the width of your nuts
-$T_SLOT_NUT_WIDTH = 5.5; //0.1
+$T_SLOT_NUT_WIDTH = 6.2; //0.1
 
 // The depth of the nut area of the T-slot; this should be the thickness of your nuts
 $T_SLOT_NUT_DEPTH = 2; //0.1

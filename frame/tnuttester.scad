@@ -11,17 +11,18 @@ include <util.scad>
 include <params.scad>
 include <pn.scad>
 
-DEPTHS = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8];
+DEPTHS = [1.9, 1.95, 2.0, 2.05, 2.1];
 
-WIDTHS = [4.5, 4.75, 5, 5.25, 5.5, 5.75, 6];
+WIDTHS = [5.8, 5.9, 6, 6.1, 6.2];
 
-X_SPACING = $T_SLOT_NUT_WIDTH + 2;
+X_SPACING = $T_SLOT_NUT_WIDTH + 4;
 Y_SPACING = 5;
 SECOND_ROW_EXTRA_SPACING = 1;
 
 TESTER_WIDTH = (len(WIDTHS)+1) * X_SPACING;
-TESTER_DEPTH = (len(DEPTHS)+1) * Y_SPACING + 2;
+TESTER_DEPTH = (len(DEPTHS)+1) * Y_SPACING + 3;
 
+ESCAPE_WIDTH = INTERCONNECT_BOLT_DIAMETER;
 
 module NutHatch()
 {
@@ -30,8 +31,6 @@ module NutHatch()
 		ClearedCorner(-135);
 	translate([$T_SLOT_NUT_WIDTH/2, 0])
 		ClearedCorner(135);
-
-	pn_neg() Rect(INTERCONNECT_BOLT_DIAMETER, $T_SLOT_NUT_DEPTH + 1, ANCHOR_CT, extraY = 1);
 }
 
 module TNutTester()
@@ -51,6 +50,9 @@ module TNutTester()
 				}
 			}
 		}
+        
+        translate([(iw+1)*X_SPACING, -2*Y_SPACING])
+            pn_neg() Rect(ESCAPE_WIDTH, (len(DEPTHS)-1)*Y_SPACING-1, ANCHOR_CT);
 	}
 	for(id = [0:len(DEPTHS)-1]) {
 		translate([0.5, -(len(DEPTHS)-id)*Y_SPACING])
