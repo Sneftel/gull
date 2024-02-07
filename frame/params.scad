@@ -15,7 +15,7 @@ KERF = 0.3;
 INTER_CONNECTION_OFFSET = 7;
 
 // The diameter of the bolt holes and minor width of the T-slots
-INTERCONNECT_BOLT_DIAMETER = 3;
+INTERCONNECT_BOLT_DIAMETER = 3.2;
 
 // The length of the bolts to be used in interconnects between sheet parts. If washers are used, this should be reduced by the washer thickness.
 INTERCONNECT_BOLT_LENGTH = 14;
