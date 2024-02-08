@@ -148,8 +148,8 @@ module Supports(shift, minorRadius, numGuides)
         }
     }
 
-    translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo");
-    scale([-1,1,1]) translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo");
+    translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
+    scale([-1,1,1]) translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
 
     translate(FIRST_CABLE_GUIDE_LOC)
         CableGuides(numGuides);
@@ -167,7 +167,7 @@ module Rib(shift, minorRadius, cantAngle, numGuides, withTC)
 module Rib_Anchored(shift, minorRadius, cantAngle, numGuides, withTC)
 {
     rotate([0,0,90])
-    translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, -2*INTER_CONNECTION_OFFSET])
+    translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, -2*SPINE_RIB_INTERCONNECT_OFFSET])
         Rib(shift, minorRadius, cantAngle, numGuides, withTC) children();
 }
 

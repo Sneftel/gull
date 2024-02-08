@@ -16,7 +16,7 @@ module SpineBase()
     pn_pos() Rect(SPINE_LENGTH, SPINE_BASE_HEIGHT, ANCHOR_RB);
 
     translate([0,SPINE_BASE_HEIGHT]) rotate([0,0,180]) {
-        Interconnect("foo") children();
+        Interconnect("foo", PELVIS_SPINE_INTERCONNECT_OFFSET) children();
     }
 }
 
@@ -25,13 +25,13 @@ module SpineRiser(name)
     LARGE = 1000;
     
     translate([THICKNESS/2, 0])
-        pn_pos() Rect(SPINE_RISER_WIDTH, LARGE, ANCHOR_RT, extraY=2*INTER_CONNECTION_OFFSET);
+        pn_pos() Rect(SPINE_RISER_WIDTH, LARGE, ANCHOR_RT, extraY=2*SPINE_RIB_INTERCONNECT_OFFSET);
 
     translate([-SPINE_RISER_WIDTH/2,-5])
         CableGuide();
 
-    translate([THICKNESS/2,2*INTER_CONNECTION_OFFSET]) scale([-1,1,1]) rotate([0,0,-90])
-        Interconnect(name) children();
+    translate([THICKNESS/2,2*SPINE_RIB_INTERCONNECT_OFFSET]) scale([-1,1,1]) rotate([0,0,-90])
+        Interconnect(name, SPINE_RIB_INTERCONNECT_OFFSET) children();
 }
 
 module SpineRisers()
@@ -53,7 +53,7 @@ module Spine()
 
 module Spine_Anchored()
 {
-    translate([2*INTER_CONNECTION_OFFSET, -SPINE_BASE_HEIGHT+THICKNESS/2])
+    translate([2*PELVIS_SPINE_INTERCONNECT_OFFSET, -SPINE_BASE_HEIGHT+THICKNESS/2])
         Spine() children();
 }
 

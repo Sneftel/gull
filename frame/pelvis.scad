@@ -12,10 +12,10 @@ module PelvisSide(side)
     pn_pos() Rect(BIG, SPINES_OUTER_SPACING, ANCHOR_LT, extraX=PELVIS_REAR_HALF_WIDTH);
 
     translate([-PELVIS_REAR_HALF_WIDTH,0]) scale([1,-1,1])
-        Interconnect(str(side, "_", "rear")) children();
+        Interconnect(str(side, "_", "rear"), PELVIS_SPINE_INTERCONNECT_OFFSET) children();
 
     translate([-PELVIS_REAR_HALF_WIDTH, -SPINES_OUTER_SPACING])
-        Interconnect(str(side, "_", "front")) children();
+        Interconnect(str(side, "_", "front"), PELVIS_SPINE_INTERCONNECT_OFFSET) children();
 }
 
 module ClippedPelvisSide(side)

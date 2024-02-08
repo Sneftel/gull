@@ -61,20 +61,21 @@ module InterconnectBoltHole()
     pn_neg() circle(d=INTERCONNECT_BOLT_DIAMETER);
 }
 
-module Interconnect(name)
+module Interconnect(name, offsetLength=-1)
 {
+    assert(offsetLength > 0);
     EXTRA = 1;
-    pn_neg() Rect(2*INTER_CONNECTION_OFFSET, THICKNESS, ANCHOR_LB, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
-    translate([2*INTER_CONNECTION_OFFSET,THICKNESS])
+    pn_neg() Rect(2*offsetLength, THICKNESS, ANCHOR_LB, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
+    translate([2*offsetLength,THICKNESS])
         ClearedCorner(-45);
 
-    translate([3*INTER_CONNECTION_OFFSET, THICKNESS/2])
+    translate([3*offsetLength, THICKNESS/2])
         InterconnectBoltHole();
 
-    translate([INTER_CONNECTION_OFFSET, THICKNESS]) rotate([0,0,180])
+    translate([offsetLength, THICKNESS]) rotate([0,0,180])
         InterconnectTSlot();
 
-    translate([2*INTER_CONNECTION_OFFSET, THICKNESS/2])
+    translate([2*offsetLength, THICKNESS/2])
         pn_anchor(name) children();
 }
 
