@@ -16,7 +16,7 @@ ACTUAL_THICKNESS = THICKNESS;
 module RibAssembly(shift, minorRadius, cantAngle, numGuides, withTC)
 {
     rotate([90,0,0]) {
-        linear_extrude(ACTUAL_THICKNESS, center=true) 
+        translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) 
             pn_top() Rib_Anchored(shift, minorRadius, cantAngle, numGuides, withTC);
 
         pn_attach("pcb") Rib_Anchored(shift, minorRadius, cantAngle, numGuides, withTC)
@@ -38,11 +38,11 @@ module Side(name)
 {
     pn_attach(str(name, "_front")) Pelvis() rotate([90,0,0])
     color("#2B3499")
-    linear_extrude(ACTUAL_THICKNESS, center=true) 
+    translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) 
         pn_top() Spine_Anchored();
 
     pn_attach(str(name, "_rear")) Pelvis() rotate([90,0,0]) {
-        color("#2B3499") linear_extrude(ACTUAL_THICKNESS, center=true) 
+        color("#2B3499") translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) 
             pn_top() Spine_Anchored();
 
         pn_attach("riserA") Spine_Anchored() RibAssembly(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 4, true);
@@ -55,7 +55,7 @@ module Main()
 {
     translate([0,0,SPINE_BASE_HEIGHT-THICKNESS/2])
     {
-        linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() Pelvis();
+        translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) pn_top() Pelvis();
 
         Side("left");
         Side("right");
