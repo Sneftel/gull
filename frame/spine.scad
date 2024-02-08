@@ -13,10 +13,7 @@ module SpineBase()
 {
     LARGE = 1000;
 
-    pn_pos() {
-        translate([-SPINE_LENGTH,0])
-            square([SPINE_LENGTH, SPINE_BASE_HEIGHT], center=false);
-    }
+    pn_pos() Rect(SPINE_LENGTH, SPINE_BASE_HEIGHT, ANCHOR_RB);
 
     translate([0,SPINE_BASE_HEIGHT]) rotate([0,0,180]) {
         Interconnect("foo") children();
