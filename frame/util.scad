@@ -21,12 +21,10 @@ module Rect(width, height, anchor, extraX=0, extraY=0)
         square([width+extraX, height+extraY], center=false);
 }
 
-module TSlot(diameter, length)
+module TSlot(diameter, innerLength)
 {
     EXTRA = 1;
 
-    innerLength = length - THICKNESS;
-    
     pn_neg() {
         Rect(diameter, innerLength + T_SLOT_EXTRA_DEPTH, ANCHOR_CT, extraY=EXTRA);
         translate([0, -innerLength + T_SLOT_NUT_OFFSET])
@@ -49,12 +47,12 @@ module TSlot(diameter, length)
 
 module FingerboardTSlot()
 {
-    TSlot(FINGERBOARD_BOLT_DIAMETER, FINGERBOARD_BOLT_LENGTH);
+    TSlot(FINGERBOARD_BOLT_DIAMETER, FINGERBOARD_BOLT_LENGTH - FINGERBOARD_THICKNESS);
 }
 
 module InterconnectTSlot()
 {
-    TSlot(INTERCONNECT_BOLT_DIAMETER, INTERCONNECT_BOLT_LENGTH);
+    TSlot(INTERCONNECT_BOLT_DIAMETER, INTERCONNECT_BOLT_LENGTH - THICKNESS);
 }
 
 module InterconnectBoltHole()
