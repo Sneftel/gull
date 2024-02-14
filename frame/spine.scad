@@ -40,7 +40,7 @@ module SpineRisers()
 
     translate(RIB_A_POS) rotate([0,0,RIB_A_ANGLE]) SpineRiser("riserA") children();
     translate(RIB_B_POS) rotate([0,0,RIB_B_ANGLE]) SpineRiser("riserB") children();
-    translate(RIB_C_POS) rotate([0,0,RIB_C_ANGLE]) SpineRiser("riserC") children();
+    translate(RIB_C_POS) rotate([0,0,RIB_C_ANGLE]) scale([-1, 1,1])SpineRiser("riserC") children();
 
     pn_neg() Rect(LARGE, LARGE, ANCHOR_CT);
 }
