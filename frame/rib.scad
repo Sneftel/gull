@@ -128,9 +128,13 @@ module FingerboardPlatform(minorRadius, withTC)
 
     OnArc(minorRadius, 34) ConnectorCutout();
 
+    OnArc(minorRadius+15, 34+THICKNESS) CableGuide();
+
     if(withTC) {
         OnArc(minorRadius, RIB_TCBODY_POINT) translate([0,RIB_TCBODY_HEIGHT]) rotate([0,0,90-RIB_TCBODY_ANGLE])
             TCBody_Anchored() children();
+
+        OnArc(minorRadius+12, -40-THICKNESS) rotate([0,0,90]) CableGuide();
     }
 }
 
