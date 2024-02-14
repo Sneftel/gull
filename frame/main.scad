@@ -37,17 +37,17 @@ module RibAssembly(shift, minorRadius, cantAngle, numGuides, withTC)
 module Side(name)
 {
     pn_attach(str(name, "_front")) Pelvis() rotate([90,0,0])
-    color("#2B3499")
+    color("#5B64C9")
     translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) 
         pn_top() Spine_Anchored();
 
     pn_attach(str(name, "_rear")) Pelvis() rotate([90,0,0]) {
-        color("#2B3499") translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) 
+        color("#3B44A9") translate([0,0,-THICKNESS/2]) linear_extrude(ACTUAL_THICKNESS) 
             pn_top() Spine_Anchored();
 
         pn_attach("riserA") Spine_Anchored() RibAssembly(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 4, true);
         pn_attach("riserB") Spine_Anchored() RibAssembly(RIB_B_SHIFT, RIB_B_RADIUS, RIB_B_PITCH, 2, false);
-        pn_attach("riserC") Spine_Anchored() RibAssembly(RIB_C_SHIFT, RIB_C_RADIUS, RIB_C_PITCH, 1, false);
+        pn_attach("riserC") Spine_Anchored() RibAssembly(RIB_C_SHIFT, RIB_C_RADIUS, RIB_C_PITCH, 0, false);
     }
 }
 
