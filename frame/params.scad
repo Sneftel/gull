@@ -91,7 +91,7 @@ PELVIS_REAR_HALF_WIDTH = 40; //5
 SPINE_BASE_HEIGHT = 20;
 
 // The length of the capsule-shaped cable guide cutouts. Should be greater than the width of the FFC ribbons.
-CABLE_GUIDE_LENGTH = 7;
+CABLE_GUIDE_LENGTH = 6;
 
 // The width of the capsule-shaped cable guide cutouts. Should be wide enough to make inserting the FFC ribbons easy.
 CABLE_GUIDE_WIDTH = 2;
@@ -108,4 +108,4 @@ FINGERBOARD_REARWARD_EXTENT = 38;
 
 FINGERBOARD_THICKNESS = 0.8;
 FINGERBOARD_BOLT_DIAMETER = 3;
-FINGERBOARD_BOLT_LENGTH = 8;
+FINGERBOARD_BOLT_LENGTH = 10;
