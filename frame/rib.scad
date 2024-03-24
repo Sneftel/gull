@@ -138,7 +138,7 @@ module FingerboardPlatform(minorRadius, withTC)
     }
 }
 
-module Supports(shift, minorRadius, numGuides)
+module Supports(shift, minorRadius)
 {
     FINGERBOARD_MAJOR_RADIUS = minorRadius + RIB_THICKNESS;
     EXTRA=1;
@@ -154,25 +154,22 @@ module Supports(shift, minorRadius, numGuides)
 
     translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
     scale([-1,1,1]) translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
-
-    translate(FIRST_CABLE_GUIDE_LOC)
-        CableGuides(numGuides);
 }
 
-module Rib(shift, minorRadius, cantAngle, numGuides, withTC)
+module Rib(shift, minorRadius, cantAngle, withTC)
 {
-    Supports(shift, minorRadius, numGuides) children();
+    Supports(shift, minorRadius) children();
 
     translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT]) rotate([0,0,cantAngle])
         FingerboardPlatform(minorRadius, withTC) children();
 }
 
 
-module Rib_Anchored(shift, minorRadius, cantAngle, numGuides, withTC)
+module Rib_Anchored(shift, minorRadius, cantAngle, withTC)
 {
     rotate([0,0,90])
     translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, -2*SPINE_RIB_INTERCONNECT_OFFSET])
-        Rib(shift, minorRadius, cantAngle, numGuides, withTC) children();
+        Rib(shift, minorRadius, cantAngle, withTC) children();
 }
 
-Dekerf() pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, 3, true);
+Dekerf() pn_top() Rib_Anchored(RIB_A_SHIFT, RIB_A_RADIUS, RIB_A_PITCH, true);
