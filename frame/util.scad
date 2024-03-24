@@ -131,9 +131,9 @@ module CableGuide()
 {
     pn_neg() {
         hull() {
-            translate([0,CABLE_GUIDE_LENGTH/2 - CABLE_GUIDE_WIDTH])
+            translate([0,CABLE_GUIDE_LENGTH/2 - CABLE_GUIDE_WIDTH/2])
                 circle(d=CABLE_GUIDE_WIDTH);
-            translate([0,-CABLE_GUIDE_LENGTH/2 + CABLE_GUIDE_WIDTH])
+            translate([0,-CABLE_GUIDE_LENGTH/2 + CABLE_GUIDE_WIDTH/2])
                 circle(d=CABLE_GUIDE_WIDTH);
         }
     }
