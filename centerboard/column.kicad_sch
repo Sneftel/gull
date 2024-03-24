@@ -196,10 +196,48 @@
         )
       )
     )
+    (symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -6.35 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Value" "GND" (at 0 -3.81 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "global power" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Power symbol creates a global label with name \"GND\" , ground" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "GND_0_1"
+        (polyline
+          (pts
+            (xy 0 0)
+            (xy 0 -1.27)
+            (xy 1.27 -1.27)
+            (xy 0 -2.54)
+            (xy -1.27 -1.27)
+            (xy 0 -1.27)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "GND_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide
+          (name "GND" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
   )
 
-
-  (no_connect (at 154.94 140.97) (uuid dd77224d-e878-4559-9847-f290e4917259))
 
   (wire (pts (xy 160.02 123.19) (xy 160.02 125.73))
     (stroke (width 0) (type default))
@@ -418,6 +456,46 @@
     )
   )
 
+  (symbol (lib_id "power:GND") (at 154.94 140.97 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 3398a107-7c66-4855-8345-65f2f3852770)
+    (property "Reference" "#PWR011" (at 154.94 147.32 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 154.94 146.05 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 154.94 140.97 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 154.94 140.97 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 79a47afb-9c73-4110-9696-b918b09d2fb9))
+    (instances
+      (project "centerboard"
+        (path "/4cf5c873-f5e9-4261-911c-886f387fb0f3/e4834520-9e93-41c6-9dec-c6197700f3e4"
+          (reference "#PWR011") (unit 1)
+        )
+        (path "/4cf5c873-f5e9-4261-911c-886f387fb0f3/d5ae333b-0f58-41ed-b117-81002236c64e"
+          (reference "#PWR06") (unit 1)
+        )
+        (path "/4cf5c873-f5e9-4261-911c-886f387fb0f3/749b935f-fa28-4bb9-a8a4-52d11da1282b"
+          (reference "#PWR07") (unit 1)
+        )
+        (path "/4cf5c873-f5e9-4261-911c-886f387fb0f3/d2697422-b7a2-48ac-8df9-88c74b2a539c"
+          (reference "#PWR08") (unit 1)
+        )
+        (path "/4cf5c873-f5e9-4261-911c-886f387fb0f3/db47ecf8-444e-47be-ba3b-f44106296f93"
+          (reference "#PWR09") (unit 1)
+        )
+        (path "/4cf5c873-f5e9-4261-911c-886f387fb0f3/54cfab24-4a53-4928-8700-928a32a39479"
+          (reference "#PWR010") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Connector_Generic_MountingPin:Conn_01x10_MountingPin") (at 154.94 123.19 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 41400db6-b293-4600-80da-a3f2048ccc43)
@@ -427,7 +505,7 @@
     (property "Value" "Conn_01x10_MountingPin" (at 152.4 126.7206 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Custom:FFC_Clamshell_0.5mm_1x10" (at 154.94 123.19 0)
+    (property "Footprint" "Custom:GCT_FFC2A33-10-T-R_REVA" (at 154.94 123.19 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 154.94 123.19 0)
