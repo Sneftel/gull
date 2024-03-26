@@ -1,19 +1,76 @@
-// Parameters which are used by multiple parts
+// IMPORTANT PARAMETERS WHICH YOU MAY WELL WANT TO CUSTOMIZE
+//
+// These parameters are those you are most likely to want to customize because they relate directly to the positioning of the keys.
+// Each parameter in this section is annotated with which parts it affects:
+// S: spine
+// RA, RB, RC: ribs (centermost to outermost)
+// P: pelvis
+// T: stabilizers
+
+// The nominal thickness of the sheet material. Parts will still mate and work properly if they vary from this width by up to THICKNESS_TOLERANCE. (S)
+THICKNESS = 6; //0.1
+
+// The kerf width of the cutter. Determine this by subtracting the measured width of a cut piece from the nominal width. If your laser cutter software supports kerf correction including clearout of reflex corners, you may want to set this to zero. (ALL)
+KERF = 0.3;
+
+// The position of the join point between the inner ribs and the spine, in the plane of the spine (S)
+RIB_A_POS = [-40,45];
+// The angle in the plane of the spine by which the inner ribs are rolled away from the center (S)
+RIB_A_ANGLE = 30;
+// The distance by which the inner ribs are shifted backwards from having their lowest point centered between the spines (RA)
+RIB_A_SHIFT = 0;
+// The radius described by the fingerboards on the inner ribs (RA)
+RIB_A_RADIUS = 80; //5
+// The angle by which the fingerboards on the inner ribs are canted away from the user (RA)
+RIB_A_PITCH = 10;
+
+// The position of the join point between the second ribs and the spine, in the plane of the spine (S)
+RIB_B_POS = [-82,25];
+// The angle in the plane of the spine by which the second ribs are rolled away from the center (S)
+RIB_B_ANGLE = 20;
+// The distance by which the second ribs are shifted backwards from having their lowest point centered between the spines (RB)
+RIB_B_SHIFT = 0;
+// The radius described by the fingerboards on the second ribs (RB)
+RIB_B_RADIUS = 80; //5
+// The angle by which the fingerboards on the second ribs are canted away from the user (RB)
+RIB_B_PITCH = 0;
+
+// The position of the join point between the outer ribs and the spine, in the plane of the spine (S)
+RIB_C_POS = [-125,15];
+// The angle in the plane of the spine by which the outer ribs are rolled away from the center (S)
+RIB_C_ANGLE = 10;
+// The distance by which the outer ribs are shifted backwards from having their lowest point centered between the spines (RC)
+RIB_C_SHIFT = 0;
+// The radius described by the fingerboards on the outer ribs (RC)
+RIB_C_RADIUS = 80; //5
+// The angle by which the fingerboards on the outer ribs are canted away from the user (RC)
+RIB_C_PITCH = 10;
+
+// The angle by which each half of the keyboard is rotated backwards in the horizontal plane (P)
+PELVIS_HALF_ANGLE = 20;
+
+// Extra height added to the stabilizer beyond nominal height. This should be determined experimentally, to produce flat fingerboard ends (T)
+STABILIZER_EXTRA_HEIGHT = 0.8;
+
+
+
+
+
+
+// PARAMETERS WHICH ARE USED BY MULTIPLE PARTS
+//
+// These are here because they're used across multiple files, or were at one time. Most of them don't need to be customized.
 
 $fs = 0.1;
 $fa = 2;
 
-// The nominal thickness of the sheet material. Parts will still mate and work properly if they vary from this width (but see INTERCONNECT_BOLT_EXTRA_LENGTH).
-THICKNESS = 6; //0.1
-
+// Maximum allowed deviation from the nominal thickness
 THICKNESS_TOLERANCE = 1; //0.1
-
-// The kerf width of the cutter. Determine this by subtracting the measured width of a cut piece from the nominal width.
-KERF = 0.3;
 
 // The distance between the connection step and the middle of the bolt hole or T-slot on either side.
 PELVIS_SPINE_INTERCONNECT_OFFSET = 10;
 
+// The distance between the connection step and the middle of the bolt hole or T-slot on either side.
 SPINE_RIB_INTERCONNECT_OFFSET = 7;
 
 // The diameter of the bolt holes and minor width of the T-slots
@@ -37,52 +94,11 @@ $T_SLOT_NUT_DEPTH = 2; //0.1
 // The offset of the nut area above the end of the screw in the T-slot. This should be at least the taper length
 T_SLOT_NUT_OFFSET = 1.5; //0.1
 
+// The radius of the circular "bumpers" at the opening of the T-slot
 T_SLOT_BUMPER_RADIUS = 0.25;
 
 // The distance between the outer extents of the front and back legs
 SPINES_OUTER_SPACING = 50;
-
-
-LEG_SLOT_DEPTH = 2;
-LEG_SLOT_WIDTH = 2;
-
-
-// The position of the join point between the inner ribs and the spine, in the plane of the spine
-RIB_A_POS = [-40,45];
-// The angle in the plane of the spine by which the inner ribs are rolled away from the center
-RIB_A_ANGLE = 30;
-// The distance by which the inner ribs are shifted backwards from having their lowest point centered between the spines
-RIB_A_SHIFT = 0;
-// The radius described by the fingerboards on the inner ribs
-RIB_A_RADIUS = 80; //5
-// The angle by which the fingerboards on the inner ribs are canted away from the user
-RIB_A_PITCH = 10;
-
-
-// The position of the join point between the second ribs and the spine, in the plane of the spine
-RIB_B_POS = [-82,25];
-// The angle in the plane of the spine by which the second ribs are rolled away from the center
-RIB_B_ANGLE = 20;
-// The distance by which the second ribs are shifted backwards from having their lowest point centered between the spines
-RIB_B_SHIFT = 0;
-// The radius described by the fingerboards on the second ribs
-RIB_B_RADIUS = 80; //5
-// The angle by which the fingerboards on the second ribs are canted away from the user
-RIB_B_PITCH = 0;
-
-// The position of the join point between the outer ribs and the spine, in the plane of the spine
-RIB_C_POS = [-125,15];
-// The angle in the plane of the spine by which the outer ribs are rolled away from the center
-RIB_C_ANGLE = 10;
-// The distance by which the outer ribs are shifted backwards from having their lowest point centered between the spines
-RIB_C_SHIFT = 0;
-// The radius described by the fingerboards on the outer ribs
-RIB_C_RADIUS = 80; //5
-// The angle by which the fingerboards on the outer ribs are canted away from the user
-RIB_C_PITCH = 10;
-
-// The angle by which each half of the keyboard is rotated backwards in the horizontal plane
-PELVIS_HALF_ANGLE = 20;
 
 // The distance between the pelvis's rear center angle and its outer edges, measured along the spine angles
 PELVIS_REAR_HALF_WIDTH = 40; //5
@@ -109,3 +125,4 @@ FINGERBOARD_REARWARD_EXTENT = 38;
 FINGERBOARD_THICKNESS = 0.8;
 FINGERBOARD_BOLT_DIAMETER = 3;
 FINGERBOARD_BOLT_LENGTH = 10;
+

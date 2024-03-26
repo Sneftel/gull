@@ -4,8 +4,6 @@ include <util.scad>
 include <params.scad>
 include <pn.scad>
 
-// PARAMETERS SPECIFIC TO THIS ASSEMBLY
-
 SPINE_RISER_WIDTH = 20;
 SPINE_LENGTH = -RIB_C_POS.x;
 CABLE_TRUNK_HEIGHT = 10;

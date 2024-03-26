@@ -36,6 +36,18 @@ RIB_TCBODY_ANGLE = -5;
 
 CONNECTOR_CUTOUT_HEIGHT = 2;
 
+LEG_SLOT_DEPTH = 2;
+LEG_SLOT_WIDTH = 2;
+
+module LegSlot()
+{
+    EXTRA = 1;
+
+    pn_neg() {
+        translate([-LEG_SLOT_WIDTH/2, -LEG_SLOT_DEPTH, 0])
+            square([LEG_SLOT_DEPTH,LEG_SLOT_WIDTH+EXTRA], center=false);
+    }
+}
 
 module CableGuides(n)
 {

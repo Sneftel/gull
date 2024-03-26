@@ -4,6 +4,21 @@ include <util.scad>
 include <params.scad>
 include <pn.scad>
 
+// The shift of the PCB towards the rear
+CENTERBOARD_REARWARD_OFFSET = -7;
+
+// The distance between the rear PCB mounting hole centers
+REAR_MOUNTING_HOLE_DISTANCE = 25;
+
+// The distance between the front PCB mounting hole centers
+FRONT_MOUNTING_HOLE_DISTANCE = 22;
+
+// The distance between the front and rear PCB mounting hole centers
+FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE = 32;
+
+// Extra "guaranteed" material around the PCB mounting footprint
+PCB_MOUNT_MARGIN = 0;
+
 module PelvisSide(side)
 {
     EXTRA = 1;
@@ -39,12 +54,6 @@ module ClippedPelvisRightSide()
     scale([-1,1,1])
         ClippedPelvisSide("right") children();
 }
-
-CENTERBOARD_REARWARD_OFFSET = -7;
-REAR_MOUNTING_HOLE_DISTANCE = 25;
-FRONT_MOUNTING_HOLE_DISTANCE = 22;
-FRONT_TO_REAR_MOUNTING_HOLE_DISTANCE = 32;
-PCB_MOUNT_MARGIN = 0;
 
 module PCBMount()
 {

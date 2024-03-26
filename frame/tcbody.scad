@@ -5,8 +5,6 @@ include <util.scad>
 include <params.scad>
 include <tccommon.scad>
 
-// PARAMETERS SPECIFIC TO THIS ASSEMBLY
-
 module TCBodyLeftSide()
 {
     // body arm

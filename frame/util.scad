@@ -79,15 +79,6 @@ module Interconnect(name, offsetLength=-1)
         pn_anchor(name) children();
 }
 
-module LegSlot()
-{
-    EXTRA = 1;
-
-    pn_neg() {
-        translate([-LEG_SLOT_WIDTH/2, -LEG_SLOT_DEPTH, 0])
-            square([LEG_SLOT_DEPTH,LEG_SLOT_WIDTH+EXTRA], center=false);
-    }
-}
 
 module Wedge(radius, angle)
 {
