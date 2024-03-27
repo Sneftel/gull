@@ -49,6 +49,15 @@ RIB_C_PITCH = 10;
 // The angle by which each half of the keyboard is rotated backwards in the horizontal plane (P)
 PELVIS_HALF_ANGLE = 20;
 
+// The angle along the innermost ribs at which the thumb cluster starts
+RIB_TCBODY_POINT = -43;
+
+// The height of the base of the thumb cluster 
+RIB_TCBODY_HEIGHT = -5;
+
+// The vertical angle of the thumb cluster
+RIB_TCBODY_ANGLE = -5;
+
 // Extra height added to the stabilizer beyond nominal height. This should be determined experimentally, to produce flat fingerboard ends (T)
 STABILIZER_EXTRA_HEIGHT = 0.8;
 
