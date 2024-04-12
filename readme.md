@@ -24,35 +24,35 @@ The following parts are required:
 
 ### Hardware 
 
-34 14mm-long M3 bolts (not countersunk)
-22 10mm-long M3 bolts (not countersunk)
-52 6mm M3 square nuts
-4 4mm female-threaded hex spacers
-4 M3 hex nuts
+* 34 14mm-long M3 bolts (not countersunk)
+* 22 10mm-long M3 bolts (not countersunk)
+* 52 6mm M3 square nuts
+* 4 4mm female-threaded hex spacers
+* 4 M3 hex nuts
 
 ### Components
 
-56 Kailh Choc V1 low-profile keyswitches
-56 Choc V1 keycaps
-56 0805 diodes
-16 vertical FFC connectors, 10 pin, 0.5mm pitch
-8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch
-Pins and sockets for a Pro Micro MCU
-Pro Micro MCU (or pinout-compatible)
+* 56 Kailh Choc V1 low-profile keyswitches
+* 56 Choc V1 keycaps
+* 56 0805 diodes
+* 16 vertical FFC connectors, 10 pin, 0.5mm pitch
+* 8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch
+* Pins and sockets for a Pro Micro MCU
+* Pro Micro MCU (or pinout-compatible)
 
 ### Laser-cut pieces
 
-6 ribs, 2 for each position
-4 spines
-2 thumb cluster necks
-12 stabilizers
-1 pelvis
+* 6 ribs, 2 for each position
+* 4 spines
+* 2 thumb cluster necks
+* 12 stabilizers
+* 1 pelvis
 
 ### PCBs
 
-6 fingerboards, in 0.8mm FR4
-2 thumbboards, in 0.8mm FR4
-1 centerboard, in 1.6mm FR4 or similar
+* 6 fingerboards, in 0.8mm FR4
+* 2 thumbboards, in 0.8mm FR4
+* 1 centerboard, in 1.6mm FR4 or similar
 
 ## Fabrication
 
