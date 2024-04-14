@@ -39,7 +39,7 @@ The following parts are required:
 * 56 0805 diodes
 * 16 vertical FFC connectors, 10 pin, 0.5mm pitch
 ** IMPORTANT NOTE: Currently the fingerboards and centerboards use horizontal FFC connectors, with different footprints. Either replace these in the PCB design, or wait for me to do it.
-* 8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch
+* 8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch, type B (opposite side contacts)
 * Pins and sockets for a Pro Micro MCU
 * Pro Micro MCU (or pinout-compatible)
 
@@ -63,7 +63,7 @@ Most customization should be done through frame/params.scad. This file contains 
 
 To visualize the keyboard as a whole, open frame/main.scad. This file should not be used to generate shapes for laser cutting.
 
-The OpenSCAD files dilate some parts to account for the laser cutter's kerf. If your cutter's control software includes this as a feature, you should either disable it in the control software, or disable the dilation by setting the KERF parameter in params.scad to 0.
+The OpenSCAD files dilate some parts to account for the laser cutter's kerf. If your cutter's control software includes this as a feature, you should either disable it in the control software, or disable the dilation by setting the KERF parameter in params.scad to 0. Otherwise, cut a 10mm square, measure the average of its side lengths and subtract that from 10, and set KERF to that value. If the kerf is above 0.6 or so, you may have trouble getting things to fit firmly.
 
 For easy assembly, it's useful for the square nuts to firmly friction-fit into the T-slots. This requires a fairly tight tolerance. The "tnuttester.scad" file can be used to empirically determine the right parameters for this, given a particular laser cutter and material. See the comments in that file for how to use it.
 
@@ -85,4 +85,32 @@ The OpenSCAD files dilate some parts to account for laser-cut kerf.
 
 ## Assembly
 
-todo
+Follow the following steps for assembly:
+
+### Solder the PCBs
+
+The thumbboards should remain panelized until after both SM and TH components are soldered. Beyond that, no notes here.
+
+### Assemble the frame
+
+It's marginally easier to do this before attaching the thumb and finger PCBs. First attach the spines to the pelvis, then the ribs to the spine. (You will use only the 14mm bolts for these.)
+
+Ideally, the square nuts can be press-fit into the T-slots and will stay there for assembly. If a fit is too loose or tight, try a different nut, or try rotating the nut. A drop of glue, or a piece of tape, can also be used to keep things in position.
+
+### Mount thumbboards
+
+Break off the frames, then carefully bend the row of three keys to insert into the body of the thumb cluster frame. Go slow and make sure the PCB is slotting in correctly. The fit should be firm but there should be no need to force anything.
+
+Then fit square nuts into the thumb cluster necks and attach them. The left one will slide in from the bottom, the right one from the top. With 6mm material, the necks will not be flush against the stops on the PCB. Bolt the necks in while checking for centered and square positioning.
+
+### Mount fingerboards
+
+It's easiest to do this with two people, one bending the board to the frame and one inserting the 10mm bolts. Failing that, bend in as well as possible and attach the center bolt but do not fully tighten it. Then insert a stabilizer on each side (it will not yet fit firmly). Continue to bend and attach the other two bolts, then tighten everything down and adjust the stabilizers.
+
+### Mount centerboard
+
+Attach four 14mm bolts from the top of the centerboard and secure finger-tight with the 4mm spacers on the bottom. Insert the bolt shanks through the holes in the pelvis and secure with nuts.
+
+### Attach cables
+
+Insert and secure FFC ribbon cables in the centerboard one by one, fishing them through the frame and inserting them into the fingerboards and thumbbboards. Take care they are oriented properly, and if desired reverse them so the printing is on a consistent side.
