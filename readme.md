@@ -38,7 +38,7 @@ The following parts are required:
 * 56 Choc V1 keycaps
 * 56 0805 diodes
 * 16 vertical FFC connectors, 10 pin, 0.5mm pitch
-** IMPORTANT NOTE: Currently the fingerboards and centerboards use horizontal FFC connectors, with different footprints. Either replace these in the PCB design, or wait for me to do it.
+** IMPORTANT NOTE: Currently the fingerboards and centerboards use horizontal FFC connectors, with different footprints. Either use horizontal connectors for these, or wait for me to update the PCBs and the fingerboard design.
 * 8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch, type B (opposite side contacts)
 * Pins and sockets for a Pro Micro MCU
 * Pro Micro MCU (or pinout-compatible)
