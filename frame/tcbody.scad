@@ -30,22 +30,19 @@ module TCBodyRightSide()
 
 module TCBody()
 {
-    // Center body arm
-    BodyArm();
+    translate([0,TC_ARM_HEIGHT+5]) {
+        // Center body arm
+        BodyArm();
 
-    TCBodyLeftSide();
-    TCBodyRightSide();
+        TCBodyLeftSide();
+        TCBodyRightSide();
 
-    translate([0, -TC_ARM_HEIGHT]) {
-        InterconnectBoltHole();
-        pn_anchor("tcHole") children();
     }
-}
 
-module TCBody_Anchored()
-{
-    translate([0,TC_ARM_HEIGHT])
-        TCBody() children();
+    translate([-THICKNESS/2,0]) {
+        pn_pos() Rect(12,8,ANCHOR_RT,extraY=TC_ARM_HEIGHT);
+        translate([0,0]) rotate([0,0,-90]) InterconnectTSlot();
+    }
 }
 
 Dekerf() pn_top() TCBody();

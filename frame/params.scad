@@ -50,13 +50,13 @@ RIB_C_PITCH = 10;
 PELVIS_HALF_ANGLE = 20;
 
 // The angle along the innermost ribs at which the thumb cluster starts
-RIB_TCBODY_POINT = -43;
+RIB_TCBODY_POINT = -52;
 
 // The height of the base of the thumb cluster 
-RIB_TCBODY_HEIGHT = -5;
+RIB_TCBODY_HEIGHT = -20;
 
 // The vertical angle of the thumb cluster
-RIB_TCBODY_ANGLE = -5;
+RIB_TC_ANGLE = -5;
 
 // Extra height added to the stabilizer beyond nominal height. This should be determined experimentally, to produce flat fingerboard ends (T)
 STABILIZER_EXTRA_HEIGHT = 0.8;
@@ -90,6 +90,8 @@ INTERCONNECT_BOLT_LENGTH = 14;
 
 // The diameter of a positive area surrounding the interconnect bolt hole
 INTERCONNECT_WASHER_DIAMETER = 8;
+
+INTERCONNECT_KEEPOUT = 4;
 
 // The extra depth below the nut area of T-slots. This should be at least the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
 T_SLOT_EXTRA_DEPTH = 0.5;

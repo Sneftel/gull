@@ -10,9 +10,21 @@ use <rib.scad>
 use <fingerboard.scad>
 use <stabilizer.scad>
 use <tcneck.scad>
+use <tcbody.scad>
 
 ACTUAL_THICKNESS = THICKNESS;
 
+module TCAssembly()
+{
+    rotate([90,-90,0]) translate([0,0,0]) {
+        color("seagreen")
+        linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCNeck_Anchored();
+
+        pn_attach("TCBody") TCNeck_Anchored() {
+            rotate([0,90,0]) linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCBody();
+        }
+    }
+}
 module RibAssembly(shift, minorRadius, cantAngle, withTC)
 {
     rotate([90,0,0]) {
@@ -22,14 +34,13 @@ module RibAssembly(shift, minorRadius, cantAngle, withTC)
         pn_attach("pcb") Rib_Anchored(shift, minorRadius, cantAngle, withTC)
             FingerboardPCB(minorRadius);
 
-        {
-            pn_attach("stabilizer") Rib_Anchored(shift, minorRadius, cantAngle, withTC)
-            rotate([0,90,0])
-                linear_extrude(ACTUAL_THICKNESS, center=true) Stabilizer();
+        pn_attach("stabilizer") Rib_Anchored(shift, minorRadius, cantAngle, withTC)
+        rotate([0,90,0])
+            color("gray")
+            linear_extrude(ACTUAL_THICKNESS, center=true) Stabilizer();
 
-            pn_attach("tcHole") Rib_Anchored(shift, minorRadius, cantAngle, withTC)
-            rotate([0,-90,0]) translate([-ACTUAL_THICKNESS/2,0,0])
-                linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCNeck_Anchored();
+        if(withTC) {
+            pn_attach("TC") Rib_Anchored(shift, minorRadius, cantAngle, withTC) TCAssembly();
         }
     }
 }

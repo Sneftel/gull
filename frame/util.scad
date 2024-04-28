@@ -61,11 +61,10 @@ module InterconnectBoltHole()
     pn_neg() circle(d=INTERCONNECT_BOLT_DIAMETER);
 }
 
-module Interconnect(name, offsetLength=-1)
+module Interconnect(name, offsetLength=-1, horizontalKeepout=10)
 {
     assert(offsetLength > 0);
-    EXTRA = 1;
-    pn_neg() Rect(2*offsetLength, THICKNESS, ANCHOR_LB, extraX=EXTRA, extraY=THICKNESS_TOLERANCE);
+    pn_neg() Rect(2*offsetLength, THICKNESS, ANCHOR_LB, extraX=horizontalKeepout, extraY=THICKNESS_TOLERANCE);
     translate([2*offsetLength,THICKNESS])
         ClearedCorner(-45);
 
@@ -75,10 +74,17 @@ module Interconnect(name, offsetLength=-1)
     translate([offsetLength, THICKNESS]) rotate([0,0,180])
         InterconnectTSlot();
 
+    pn_pos() {
+        translate([0,THICKNESS]) Rect(2*offsetLength, INTERCONNECT_KEEPOUT, ANCHOR_LB);
+        translate([2*offsetLength,0]) Rect(INTERCONNECT_KEEPOUT, THICKNESS, ANCHOR_LB);
+        translate([2*offsetLength,THICKNESS]) circle(r=INTERCONNECT_KEEPOUT);
+    }
+
     translate([2*offsetLength, THICKNESS/2])
         pn_anchor(name) children();
 }
 
+//Dekerf() pn_top() Interconnect("foo", 5);
 
 module Wedge(radius, angle)
 {

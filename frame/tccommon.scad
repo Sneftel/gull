@@ -73,6 +73,17 @@ module BodyArm()
     PCBGuide();
 }
 
+module BodyHalfArm()
+{
+    BIG = 100;
+    pn_pos() intersection() {
+        Rect(TC_ARM_BASE_WIDTH, TC_ARM_HEIGHT, ANCHOR_CT);
+        Rect(BIG, BIG, ANCHOR_RC);
+    }
+
+    PCBGuide();
+}
+
 module TCElbow()
 {
     EXTRA_ANGLE = 0.1;
