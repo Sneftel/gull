@@ -30,7 +30,7 @@ module TCBodyRightSide()
 
 module TCBody()
 {
-    translate([0,TC_ARM_HEIGHT+5]) {
+    translate([0,TC_ARM_HEIGHT+TC_INTERCONNECT_OFFSET]) {
         // Center body arm
         BodyArm();
 

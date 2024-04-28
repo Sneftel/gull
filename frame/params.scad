@@ -50,7 +50,7 @@ RIB_C_PITCH = 10;
 PELVIS_HALF_ANGLE = 20;
 
 // The angle along the innermost ribs at which the thumb cluster starts
-RIB_TCBODY_POINT = -52;
+RIB_TCBODY_POINT = -36;
 
 // The height of the base of the thumb cluster 
 RIB_TCBODY_HEIGHT = -20;
@@ -62,7 +62,7 @@ RIB_TC_ANGLE = -5;
 STABILIZER_EXTRA_HEIGHT = 0.8;
 
 
-
+TC_PUSHOUT = 15;
 
 
 
@@ -72,6 +72,8 @@ STABILIZER_EXTRA_HEIGHT = 0.8;
 
 $fs = 0.1;
 $fa = 2;
+
+TC_INTERCONNECT_OFFSET = 5;
 
 // Maximum allowed deviation from the nominal thickness
 THICKNESS_TOLERANCE = 1; //0.1

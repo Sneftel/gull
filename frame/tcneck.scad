@@ -6,7 +6,7 @@ include <tccommon.scad>
 include <pn.scad>
 
 NECK_STEM_WIDTH = 30;
-NECK_STEM_LENGTH = 16;
+NECK_STEM_LENGTH = 14;
 
 // A hack, because the PCB assumes 8mm thickness
 TC_THICKNESS = 8;
@@ -35,18 +35,18 @@ module TCNeck()
 
     pn_neg() Rect(THICKNESS, TC_ARM_HEIGHT, ANCHOR_CT);
 
-    translate([0,-17]) {
+    translate([0,-TC_ARM_HEIGHT - TC_INTERCONNECT_OFFSET]) {
         InterconnectBoltHole();
         pn_anchor("TCBody") children();
     }
 
-    translate([-NECK_STEM_WIDTH, -24]) scale([1,-1,1]) rotate([0,0,-90])
-        Interconnect("foo", 4, horizontalKeepout=10) children();
+    translate([-NECK_STEM_WIDTH, 2*TC_INTERCONNECT_OFFSET-TC_PUSHOUT]) rotate([0,0,-90])
+        Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
 }
 
 module TCNeck_Anchored()
 {
-    translate([NECK_STEM_WIDTH-THICKNESS/2, 24-8])
+    translate([NECK_STEM_WIDTH-THICKNESS/2, TC_PUSHOUT])
         TCNeck() children();
 }
 

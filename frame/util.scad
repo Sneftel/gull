@@ -74,17 +74,13 @@ module Interconnect(name, offsetLength=-1, horizontalKeepout=10)
     translate([offsetLength, THICKNESS]) rotate([0,0,180])
         InterconnectTSlot();
 
-    pn_pos() {
-        translate([0,THICKNESS]) Rect(2*offsetLength, INTERCONNECT_KEEPOUT, ANCHOR_LB);
-        translate([2*offsetLength,0]) Rect(INTERCONNECT_KEEPOUT, THICKNESS, ANCHOR_LB);
-        translate([2*offsetLength,THICKNESS]) circle(r=INTERCONNECT_KEEPOUT);
-    }
+    pn_pos() Rect(4*offsetLength, THICKNESS, ANCHOR_LB);
 
     translate([2*offsetLength, THICKNESS/2])
         pn_anchor(name) children();
 }
 
-//Dekerf() pn_top() Interconnect("foo", 5);
+Dekerf() pn_top() Interconnect("foo", 5);
 
 module Wedge(radius, angle)
 {

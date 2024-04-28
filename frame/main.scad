@@ -16,7 +16,7 @@ ACTUAL_THICKNESS = THICKNESS;
 
 module TCAssembly()
 {
-    rotate([90,-90,0]) translate([0,0,0]) {
+    rotate([-90,-90,0]) translate([0,0,0]) {
         color("seagreen")
         linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCNeck_Anchored();
 
