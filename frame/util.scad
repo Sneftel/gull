@@ -43,6 +43,14 @@ module TSlot(diameter, innerLength)
         translate([diameter/2+T_SLOT_BUMPER_RADIUS, 0])
             circle(r=T_SLOT_BUMPER_RADIUS);
     }
+
+    pn_pos() {
+        minkowski() {
+            translate([0, -innerLength + T_SLOT_NUT_OFFSET])
+                Rect($T_SLOT_NUT_WIDTH, $T_SLOT_NUT_DEPTH, ANCHOR_CB);
+            circle(r=4);
+        }
+    }
 }
 
 module FingerboardTSlot()
