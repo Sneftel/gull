@@ -61,14 +61,13 @@ module CableSlot()
         square([LARGE,LEG_SLOT_DEPTH+EXTRA], center=false);
 }
 
-module RearwardStabilizerSlot()
+module RearwardStabilizerSlot(extraWidth=STABILIZER_SEAT_EXTRA_WIDTH)
 {
     EXTRA = 1;
-
-    WIDTH = THICKNESS + STABILIZER_SEAT_EXTRA_WIDTH;
+    WIDTH = THICKNESS + extraWidth;
 
     INNER_DEPTH = STABILIZER_HEIGHT + THICKNESS * tan(STABILIZER_SEAT_ANGLE);
-    OUTER_DEPTH = STABILIZER_HEIGHT - STABILIZER_SEAT_EXTRA_WIDTH * tan(STABILIZER_SEAT_ANGLE);
+    OUTER_DEPTH = STABILIZER_HEIGHT - extraWidth * tan(STABILIZER_SEAT_ANGLE);
 
     pn_neg() {
         polygon(points = [
@@ -83,13 +82,7 @@ module RearwardStabilizerSlot()
 
 module ForwardStabilizerSlot()
 {
-    scale([-1,1,1]) RearwardStabilizerSlot() children();
-}
-
-module Foot()
-{
-    EXTRA = 1;
-    pn_pos() Rect(FOOT_LENGTH, FOOT_HEIGHT, ANCHOR_RT, extraY=EXTRA);
+    scale([-1,1,1]) RearwardStabilizerSlot(extraWidth=10) children();
 }
 
 module ConnectorCutout()
@@ -108,10 +101,10 @@ module OnArc(radius, x)
 module FingerboardPlatform(minorRadius, withTC)
 {
     // The length of the rib's fingerboard platform forward of the center of the middle bolt hole
-    RIB_FORWARD_EXTENT = FINGERBOARD_FORWARD_EXTENT;
+    RIB_FORWARD_EXTENT = 30 + THICKNESS/2 + STABILIZER_SEAT_EXTRA_WIDTH;
 
     // The length of the rib's fingerboard platform forward of the center of the middle bolt hole
-    RIB_REARWARD_EXTENT = FINGERBOARD_REARWARD_EXTENT + FOOT_LENGTH + (withTC ? 10 : 0);
+    RIB_REARWARD_EXTENT = FINGERBOARD_REARWARD_EXTENT + (withTC ? 10 : 0);
 
 
     TOTAL_ANGLE = angleFromLen(minorRadius, RIB_FORWARD_EXTENT+RIB_REARWARD_EXTENT);
@@ -121,8 +114,6 @@ module FingerboardPlatform(minorRadius, withTC)
     pn_pos()
         CocktailSausage(minorRadius, TOTAL_ANGLE, RIB_THICKNESS);
         
-    OnArc(minorRadius, -FINGERBOARD_REARWARD_EXTENT) Foot();
-
     OnArc(minorRadius, -20) FingerboardTSlot();
     OnArc(minorRadius, -10) LegSlot();
     OnArc(minorRadius, 0) FingerboardTSlot();
@@ -135,7 +126,7 @@ module FingerboardPlatform(minorRadius, withTC)
 
     OnArc(minorRadius, 34) ConnectorCutout();
 
-    OnArc(minorRadius+15, 34+THICKNESS) CableGuide();
+    OnArc(minorRadius+15, 32+THICKNESS) CableGuide();
 
     if(withTC) {
         OnArc(minorRadius, RIB_TCBODY_POINT) translate([0,-RIB_THICKNESS]) rotate([0,0,-RIB_TC_ANGLE]) scale([-1,1,1])
