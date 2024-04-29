@@ -6,6 +6,8 @@
 // RA, RB, RC: ribs (centermost to outermost)
 // P: pelvis
 // T: stabilizers
+// N: TC neck
+// B: TC body
 
 // The nominal thickness of the sheet material. Parts will still mate and work properly if they vary from this width by up to THICKNESS_TOLERANCE. (S)
 THICKNESS = 6; //0.1
@@ -49,21 +51,20 @@ RIB_C_PITCH = 10;
 // The angle by which each half of the keyboard is rotated backwards in the horizontal plane (P)
 PELVIS_HALF_ANGLE = 20;
 
-// The angle along the innermost ribs at which the thumb cluster starts
-RIB_TCBODY_POINT = -36;
-
-// The height of the base of the thumb cluster 
-RIB_TCBODY_HEIGHT = -20;
-
-// The vertical angle of the thumb cluster
-RIB_TC_ANGLE = -5;
-
 // Extra height added to the stabilizer beyond nominal height. This should be determined experimentally, to produce flat fingerboard ends (T)
 STABILIZER_EXTRA_HEIGHT = 0.8;
 
+// The vertical angle of the thumb cluster (RA)
+TC_ELEVATION_ANGLE = 5;
 
-TC_PUSHOUT = 15;
+// The distance by which the thumb clusters are shifted inwards from the innermost ribs (N)
+TC_INWARD_SHIFT = 25;
 
+// The distance by which the thumb clusters are shifted rearwards (towards the user) (N)
+TC_REARWARD_SHIFT = 15;
+
+// The distance by which the thumb clusters are shifted downwards-ish (RA)
+TC_DOWNWARD_SHIFT = 5;
 
 
 // PARAMETERS WHICH ARE USED BY MULTIPLE PARTS

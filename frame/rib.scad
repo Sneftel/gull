@@ -12,22 +12,11 @@ FINGERBOARD_CENTER_HEIGHT = 35;
 // The thickness of the fingerboard body
 RIB_THICKNESS = 20;
 
-FOOT_HEIGHT = 1.0;
-
-FOOT_LENGTH = 2.0;
-
-
-FIRST_CABLE_GUIDE_LOC = [7,5];
-CABLE_GUIDE_OFFSET = [-4,0];
-
 FORWARD_STABILIZER_LOC = 30;
 
 STABILIZER_SEAT_ANGLE = 10;
 
 STABILIZER_SEAT_EXTRA_WIDTH = 2;
-
-
-CONNECTOR_CUTOUT_HEIGHT = 2;
 
 LEG_SLOT_DEPTH = 2;
 LEG_SLOT_WIDTH = 2;
@@ -39,15 +28,6 @@ module LegSlot()
     pn_neg() {
         translate([-LEG_SLOT_WIDTH/2, -LEG_SLOT_DEPTH, 0])
             square([LEG_SLOT_DEPTH,LEG_SLOT_WIDTH+EXTRA], center=false);
-    }
-}
-
-module CableGuides(n)
-{
-    if(n>0) {
-        CableGuide();
-        translate(CABLE_GUIDE_OFFSET)
-            CableGuides(n-1);
     }
 }
 
@@ -83,13 +63,6 @@ module ForwardStabilizerSlot()
     scale([-1,1,1]) RearwardStabilizerSlot(extraWidth=10) children();
 }
 
-module ConnectorCutout()
-{
-    EXTRA = 1;
-    LARGE = 100;
-    pn_neg() Rect(LARGE, CONNECTOR_CUTOUT_HEIGHT, ANCHOR_LT, extraY=EXTRA);
-}
-
 module OnArc(radius, x)
 {
     rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
@@ -122,15 +95,13 @@ module FingerboardPlatform(minorRadius, withTC)
     OnArc(minorRadius, 30) ForwardStabilizerSlot() children();
     OnArc(minorRadius, 0) pn_anchor("pcb") children();
 
-    OnArc(minorRadius, 34) ConnectorCutout();
-
     OnArc(minorRadius+15, 32+THICKNESS) CableGuide();
 
     if(withTC) {
-        OnArc(minorRadius, -RIB_REARWARD_EXTENT) translate([0,-8]) rotate([0,0,-RIB_TC_ANGLE])
+        OnArc(minorRadius, -RIB_REARWARD_EXTENT+4) translate([0,-TC_DOWNWARD_SHIFT]) rotate([0,0,-TC_ELEVATION_ANGLE])
         {
-            rotate([0,0,180]) Interconnect("TC", offsetLength=TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
             pn_pos() Rect(4*TC_INTERCONNECT_OFFSET, 20, ANCHOR_RT, extraX=5);
+            translate([-4*TC_INTERCONNECT_OFFSET,0]) scale([1,-1,1]) Interconnect("TC", offsetLength=TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
         }
 
         //OnArc(minorRadius+12, -40-THICKNESS) rotate([0,0,90]) CableGuide();

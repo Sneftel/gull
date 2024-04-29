@@ -5,13 +5,11 @@ include <params.scad>
 include <tccommon.scad>
 include <pn.scad>
 
-NECK_STEM_WIDTH = 30;
-NECK_STEM_LENGTH = 16;
 
 // A hack, because the PCB assumes 8mm thickness
 TC_THICKNESS = 8;
 
-module TCNeck()
+module TCNeckMain()
 {
     LARGE = 1000;
 
@@ -30,26 +28,32 @@ module TCNeck()
     }
 
     BodyHalfArm();
-    
-    pn_pos() translate([THICKNESS/2, -4*TC_INTERCONNECT_OFFSET+TC_PUSHOUT]) Rect(NECK_STEM_WIDTH, 4*TC_INTERCONNECT_OFFSET, ANCHOR_RT);
-
-    pn_neg() Rect(THICKNESS, TC_ARM_HEIGHT, ANCHOR_CT);
-
-    translate([-THICKNESS/2, -TC_ARM_HEIGHT]) ClearedCorner(225);
-
-    translate([0,-TC_ARM_HEIGHT - TC_INTERCONNECT_OFFSET]) {
-        InterconnectBoltHole();
-        pn_anchor("TCBody") children();
-    }
-
-    translate([-NECK_STEM_WIDTH, 2*TC_INTERCONNECT_OFFSET-TC_PUSHOUT]) rotate([0,0,-90])
-        Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
 }
 
-module TCNeck_Anchored()
+module NeckBodyInterconnect()
 {
-    translate([NECK_STEM_WIDTH-THICKNESS/2, TC_PUSHOUT])
-        TCNeck() children();
+    translate([TC_INWARD_SHIFT, TC_REARWARD_SHIFT])
+    {
+        translate([-THICKNESS/2,-TC_ARM_HEIGHT - TC_INTERCONNECT_OFFSET]) {
+            InterconnectBoltHole();
+            pn_anchor("TCBody") children();
+        }
+
+        pn_neg() Rect(THICKNESS, TC_ARM_HEIGHT, ANCHOR_RT);
+        translate([-THICKNESS, -TC_ARM_HEIGHT]) ClearedCorner(225);
+    }
 }
 
-Dekerf() pn_top() TCNeck_Anchored();
+module TCNeck()
+{
+    translate([TC_INWARD_SHIFT-THICKNESS/2, TC_REARWARD_SHIFT]) TCNeckMain();
+
+    translate([-THICKNESS/2, -2*TC_INTERCONNECT_OFFSET]) scale([1,-1,1]) rotate([0,0,-90])
+        Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
+
+    pn_pos() Rect(TC_INWARD_SHIFT, 4*TC_INTERCONNECT_OFFSET, ANCHOR_LC);
+
+    NeckBodyInterconnect() children();
+}
+
+Dekerf() pn_top() TCNeck();
