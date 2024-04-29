@@ -4,8 +4,6 @@
 include <util.scad>
 include <params.scad>
 
-use <tcbody.scad>
-
 // PARAMETERS SPECIFIC TO THIS ASSEMBLY
 
 // The height of the lowest point of the top side of the fingerboard (the fingerboard PCB will go as low as this)
