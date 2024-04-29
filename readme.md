@@ -26,9 +26,9 @@ The following parts are required:
 
 ### Hardware 
 
-* 34 14mm-long M3 bolts (not countersunk)
+* 38 14mm-long M3 bolts (not countersunk)
 * 22 10mm-long M3 bolts (not countersunk)
-* 52 6mm M3 square nuts
+* 56 6mm M3 square nuts
 * 4 4mm female-threaded hex spacers
 * 4 M3 hex nuts
 
@@ -48,6 +48,7 @@ The following parts are required:
 * 6 ribs, 2 for each position
 * 4 spines
 * 2 thumb cluster necks
+* 2 thumb cluster bodies
 * 12 stabilizers
 * 1 pelvis
 
@@ -89,7 +90,9 @@ Follow the following steps for assembly:
 
 ### Solder the PCBs
 
-The thumbboards should remain panelized until after both SM and TH components are soldered. Beyond that, no notes here.
+The thumbboards should remain panelized until after both SM and TH components are soldered. 
+
+Solder only one connector per thumbboard: J1 on one, J2 on the other.
 
 ### Assemble the frame
 
