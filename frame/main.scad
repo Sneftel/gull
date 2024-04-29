@@ -21,7 +21,7 @@ module TCAssembly()
         linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCNeck_Anchored();
 
         pn_attach("TCBody") TCNeck_Anchored() {
-            rotate([0,-90,0]) linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCBody();
+            rotate([0,90,0]) linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCBody();
         }
     }
 }

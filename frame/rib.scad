@@ -102,7 +102,7 @@ module FingerboardPlatform(minorRadius, withTC)
     RIB_FORWARD_EXTENT = 30 + THICKNESS/2 + STABILIZER_SEAT_EXTRA_WIDTH;
 
     // The length of the rib's fingerboard platform forward of the center of the middle bolt hole
-    RIB_REARWARD_EXTENT = FINGERBOARD_REARWARD_EXTENT + (withTC ? 10 : 0);
+    RIB_REARWARD_EXTENT = FINGERBOARD_REARWARD_EXTENT;
 
 
     TOTAL_ANGLE = angleFromLen(minorRadius, RIB_FORWARD_EXTENT+RIB_REARWARD_EXTENT);
@@ -127,8 +127,11 @@ module FingerboardPlatform(minorRadius, withTC)
     OnArc(minorRadius+15, 32+THICKNESS) CableGuide();
 
     if(withTC) {
-        OnArc(minorRadius, RIB_TCBODY_POINT) translate([0,-RIB_THICKNESS]) rotate([0,0,-RIB_TC_ANGLE]) scale([-1,1,1])
-            Interconnect("TC", offsetLength=TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
+        OnArc(minorRadius, -RIB_REARWARD_EXTENT) translate([0,-8]) rotate([0,0,-RIB_TC_ANGLE])
+        {
+            rotate([0,0,180]) Interconnect("TC", offsetLength=TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
+            pn_pos() Rect(4*TC_INTERCONNECT_OFFSET, 20, ANCHOR_RT, extraX=5);
+        }
 
         //OnArc(minorRadius+12, -40-THICKNESS) rotate([0,0,90]) CableGuide();
     }
