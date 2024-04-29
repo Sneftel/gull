@@ -6,7 +6,7 @@ include <tccommon.scad>
 include <pn.scad>
 
 NECK_STEM_WIDTH = 30;
-NECK_STEM_LENGTH = 14;
+NECK_STEM_LENGTH = 16;
 
 // A hack, because the PCB assumes 8mm thickness
 TC_THICKNESS = 8;
@@ -31,9 +31,11 @@ module TCNeck()
 
     BodyHalfArm();
     
-    pn_pos() translate([THICKNESS/2, 0]) Rect(NECK_STEM_WIDTH, TC_ARM_HEIGHT + NECK_STEM_LENGTH, ANCHOR_RT);
+    pn_pos() translate([THICKNESS/2, -4*TC_INTERCONNECT_OFFSET+TC_PUSHOUT]) Rect(NECK_STEM_WIDTH, 4*TC_INTERCONNECT_OFFSET, ANCHOR_RT);
 
     pn_neg() Rect(THICKNESS, TC_ARM_HEIGHT, ANCHOR_CT);
+
+    translate([-THICKNESS/2, -TC_ARM_HEIGHT]) ClearedCorner(225);
 
     translate([0,-TC_ARM_HEIGHT - TC_INTERCONNECT_OFFSET]) {
         InterconnectBoltHole();

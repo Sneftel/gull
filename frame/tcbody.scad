@@ -40,8 +40,9 @@ module TCBody()
     }
 
     translate([-THICKNESS/2,0]) {
-        pn_pos() Rect(12,8,ANCHOR_RT,extraY=TC_ARM_HEIGHT);
+        pn_pos() Rect(14,TC_INTERCONNECT_OFFSET+2,ANCHOR_RT,extraY=TC_ARM_HEIGHT);
         translate([0,0]) rotate([0,0,-90]) InterconnectTSlot();
+        translate([0, TC_INTERCONNECT_OFFSET]) ClearedCorner(135, r=0.01);
     }
 }
 
