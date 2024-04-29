@@ -5,6 +5,8 @@ include <util.scad>
 include <params.scad>
 include <tccommon.scad>
 
+TCBODY_STEM_WIDTH = 14;
+
 module TCBodyLeftSide()
 {
     // body arm
@@ -28,6 +30,7 @@ module TCBodyRightSide()
     scale([-1,1,1]) TCBodyLeftSide();
 }
 
+
 module TCBody()
 {
     translate([0,TC_ARM_HEIGHT+TC_INTERCONNECT_OFFSET]) {
@@ -36,12 +39,11 @@ module TCBody()
 
         TCBodyLeftSide();
         TCBodyRightSide();
-
     }
 
     translate([-THICKNESS/2,0]) {
-        pn_pos() Rect(14,TC_INTERCONNECT_OFFSET+2,ANCHOR_RT,extraY=TC_ARM_HEIGHT);
-        translate([0,0]) rotate([0,0,-90]) InterconnectTSlot();
+        pn_pos() Rect(TCBODY_STEM_WIDTH,TC_INTERCONNECT_OFFSET,ANCHOR_RT,extraY=TC_ARM_HEIGHT);
+        rotate([0,0,-90]) InterconnectTSlot();
         translate([0, TC_INTERCONNECT_OFFSET]) ClearedCorner(135, r=0.01);
     }
 }

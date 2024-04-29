@@ -30,6 +30,12 @@ module TCNeckMain()
     BodyHalfArm();
 }
 
+module RibNeckInterconnect()
+{
+    translate([-THICKNESS/2, -2*TC_INTERCONNECT_OFFSET]) scale([1,-1,1]) rotate([0,0,-90])
+        Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
+}
+
 module NeckBodyInterconnect()
 {
     translate([TC_INWARD_SHIFT, TC_REARWARD_SHIFT])
@@ -46,10 +52,9 @@ module NeckBodyInterconnect()
 
 module TCNeck()
 {
-    translate([TC_INWARD_SHIFT-THICKNESS/2, TC_REARWARD_SHIFT]) TCNeckMain();
+    RibNeckInterconnect();
 
-    translate([-THICKNESS/2, -2*TC_INTERCONNECT_OFFSET]) scale([1,-1,1]) rotate([0,0,-90])
-        Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
+    translate([TC_INWARD_SHIFT-THICKNESS/2, TC_REARWARD_SHIFT]) TCNeckMain();
 
     pn_pos() Rect(TC_INWARD_SHIFT, 4*TC_INTERCONNECT_OFFSET, ANCHOR_LC);
 
