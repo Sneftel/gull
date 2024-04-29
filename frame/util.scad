@@ -80,7 +80,7 @@ module Interconnect(name, offsetLength=-1, horizontalKeepout=10)
         pn_anchor(name) children();
 }
 
-Dekerf() pn_top() Interconnect("foo", 5);
+//Dekerf() pn_top() Interconnect("foo", 5);
 
 module Wedge(radius, angle)
 {
