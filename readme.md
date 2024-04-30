@@ -100,15 +100,15 @@ It's marginally easier to do this before attaching the thumb and finger PCBs. Fi
 
 Ideally, the square nuts can be press-fit into the T-slots and will stay there for assembly. If a fit is too loose or tight, try a different nut, or try rotating the nut. A drop of glue, or a piece of tape, can also be used to keep things in position.
 
-### Mount thumbboards
-
-Break off the frames, then carefully bend the row of three keys to insert into the body of the thumb cluster frame. Go slow and make sure the PCB is slotting in correctly. The fit should be firm but there should be no need to force anything.
-
-Then fit square nuts into the thumb cluster necks and attach them. The left one will slide in from the bottom, the right one from the top. With 6mm material, the necks will not be flush against the stops on the PCB. Bolt the necks in while checking for centered and square positioning.
-
 ### Mount fingerboards
 
 It's easiest to do this with two people, one bending the board to the frame and one inserting the 10mm bolts. Failing that, bend in as well as possible and attach the center bolt but do not fully tighten it. Then insert a stabilizer on each side (it will not yet fit firmly). Continue to bend and attach the other two bolts, then tighten everything down and adjust the stabilizers.
+
+### Mount thumbboards
+
+Break off the frames. Fit square nuts into the thumb cluster bodies for later. Carefully bend the row of three keys to insert into the body of the thumb cluster, with the PCB inserted from the same side as the T-slot is on. Go slow and make sure the PCB is slotting in correctly. The fit should be firm but there should be no need to force anything.
+
+Then attach the necks. Both will slide in from the bottom. Bolt the necks in while checking for centered and square positioning. Then attach the thumb clusters to the rest of the frame.
 
 ### Mount centerboard
 
