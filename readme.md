@@ -6,7 +6,7 @@ The raison d'etre of Gull is to be rapidly assembled, tweaked, and remade. The f
 
 The key layout is essentially 3x6 on each side. There are six additional keys per side, two in the bottom center of each side and four (relatively inaccessible) keys at the top corners of each side.
 
-PCB layout is in KiCad. Frame shapes are in OpenSCAD.
+PCB layout is in KiCad. Frame shapes are in OpenSCAD. The firmware is QMK; the fork is available at https://github.com/Sneftel/qmk_firmware/tree/gull , and will be PR'd back when I get some time to clean it up.
 
 ## Tools
 
