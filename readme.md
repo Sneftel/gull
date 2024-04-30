@@ -1,12 +1,22 @@
 # Gull
 
+![Full-frame, three-quarters angle photo of a sweet-ass keyboard](images/full_left.jpg)
+
+**NOTE:** These images are from Gull V1. V2 is quite similar, but the thumb cluster attaches to the rib rather than being a part of it.
+
 Gull is a dished ergonomic keyboard. It contains no 3D-printed parts and no hand-wired circuitry, and is designed for rapid constructibility rather than aesthetics. Keys are inserted into thin FR4 PCBs which are bent to the frame.
+
+
 
 The raison d'etre of Gull is to be rapidly assembled, tweaked, and remade. The frame is fully parameterized, and changing a parameter generally only requires recutting one shape. PCBs can be reused after changing almost any parameters. The exposed ribbon cables make it potentially impractical for portable use.
 
 The key layout is essentially 3x6 on each side. There are six additional keys per side, two in the bottom center of each side and four (relatively inaccessible) keys at the top corners of each side.
 
+![Diagram of the alignment of the QWERTY layout with the key layout](images/qwert.png)
+
 PCB layout is in KiCad. Frame shapes are in OpenSCAD. The firmware is QMK; the fork is available at https://github.com/Sneftel/qmk_firmware/tree/gull , and will be PR'd back when I get some time to clean it up.
+
+![Screenshot of editing the keyboard in OpenSCAD](images/openscad.png)
 
 ## Tools
 
@@ -95,6 +105,8 @@ Solder only one connector per thumbboard: J1 on one, J2 on the other. The thumb 
 
 ### Assemble the frame
 
+![Closeup of the frame interconnects](images/interconnect.jpg)
+
 It's marginally easier to do this before attaching the thumb and finger PCBs. First attach the spines to the pelvis, then the ribs to the spine. (You will use only the 14mm bolts for these.)
 
 Ideally, the square nuts can be press-fit into the T-slots and will stay there for assembly. If a fit is too loose or tight, try a different nut, or try rotating the nut. A drop of glue, or a piece of tape, can also be used to keep things in position.
@@ -112,6 +124,8 @@ The thumb cluster PCBs should have the connector facing away from the user; swap
 Then attach the necks. Both will slide in from the bottom. Bolt the necks in while checking for centered and square positioning. Then attach the thumb clusters to the rest of the frame.
 
 ### Mount centerboard
+
+![Closeup of the centerboard](images/centerboard.jpg)
 
 Attach four 14mm bolts from the top of the centerboard and secure finger-tight with the 4mm spacers on the bottom. Insert the bolt shanks through the holes in the pelvis and secure with nuts.
 
