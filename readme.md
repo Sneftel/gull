@@ -81,9 +81,9 @@ For easy assembly, it's useful for the square nuts to firmly friction-fit into t
 
 ### PCBs
 
-The fingerboards and centerboard may be panelized or printed as-is. 
+The fingerboards and centerboard may be panelized or printed as-is. To build Gerber files which should be acceptable at most fabs (I use Elecrow), run makeall.bat or "make" in the board directory.
 
-The thumbboard has delicately narrow areas and should be carefully panelized for fabrication. I use KiKit for this, with "panelize.json" containing the necessary presets. (I'll add the pre-panelized version in a couple of days.) Make sure to mention the need for V-cuts to the PCB fabricator. Mousebites would also work.
+The thumbboard has delicately narrow areas and should be carefully panelized for fabrication. I use KiKit for this, with "panelize.json" containing the necessary presets. The auto-built Gerbers are panelized in this way. Make sure to mention the need for V-cuts to the PCB fabricator. Mousebites would also work.
 
 ### Laser-cut shapes
 
