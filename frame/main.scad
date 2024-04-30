@@ -21,6 +21,7 @@ module TCAssembly()
         linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCNeck();
 
         pn_attach("TCBody") TCNeck() {
+            color("teal")
             rotate([0,-90,0]) linear_extrude(ACTUAL_THICKNESS, center=true) pn_top() TCBody();
         }
     }
