@@ -92,7 +92,7 @@ Follow the following steps for assembly:
 
 The thumbboards should remain panelized until after both SM and TH components are soldered. 
 
-Solder only one connector per thumbboard: J1 on one, J2 on the other.
+Solder only one connector per thumbboard: J1 on one, J2 on the other. The thumb cluster switches will be on the opposite side from the connector.
 
 ### Assemble the frame
 
@@ -106,7 +106,9 @@ It's easiest to do this with two people, one bending the board to the frame and 
 
 ### Mount thumbboards
 
-Break off the frames. Fit square nuts into the thumb cluster bodies for later. Carefully bend the row of three keys to insert into the body of the thumb cluster, with the PCB inserted from the same side as the T-slot is on. Go slow and make sure the PCB is slotting in correctly. The fit should be firm but there should be no need to force anything.
+Break off the frames. Fit square nuts into the thumb cluster bodies for later. 
+
+The thumb cluster PCBs should have the connector facing away from the user; swap left and right if this is not the case. Carefully bend the row of three keys to insert into the body of the thumb cluster, with the PCB inserted from the same side as the T-slot is on. Go slow and make sure the PCB is slotting in correctly. The fit should be firm but there should be no need to force anything.
 
 Then attach the necks. Both will slide in from the bottom. Bolt the necks in while checking for centered and square positioning. Then attach the thumb clusters to the rest of the frame.
 
