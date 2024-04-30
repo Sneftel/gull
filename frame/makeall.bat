@@ -10,3 +10,7 @@ set PARTS=pelvis spine rib_a rib_b rib_c tcneck tcbody stabilizer tnuttester
 if not exist %FORMAT% mkdir %FORMAT%
 
 for %%p in (%PARTS%) do %OPENSCAD% -o %FORMAT%\%%p.%FORMAT% %%p.scad
+
+if exist %FORMAT%.zip del %FORMAT%.zip
+
+7z a %FORMAT%.zip %FORMAT%
