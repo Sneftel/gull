@@ -15,6 +15,9 @@ THICKNESS = 6; //0.1
 // The kerf width of the cutter. Determine this by subtracting the measured width of a cut piece from the nominal width. If your laser cutter software supports kerf correction including clearout of reflex corners, you may want to set this to zero. (ALL)
 KERF = 0.3;
 
+// Whether certain inside corners with parts fitting into them should be cleared with dogbone fillets. Disabling this may prevent pieces from fitting together as cleanly, and increase the risk of cracking in T-slots.
+CLEAR_INNER_CORNERS = true;
+
 // The position of the join point between the inner ribs and the spine, in the plane of the spine (S)
 RIB_A_POS = [-40,45];
 // The angle in the plane of the spine by which the inner ribs are rolled away from the center (S)

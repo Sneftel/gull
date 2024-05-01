@@ -142,8 +142,11 @@ module CableGuide()
 
 module ClearedCorner(angle, r=0.01)
 {
-    rotate([0,0,angle])
-        pn_neg() Rect(KERF+2*r, KERF/2+r, ANCHOR_CB, extraY=KERF/2+r);
+    if(CLEAR_INNER_CORNERS)
+    {
+        rotate([0,0,angle])
+            pn_neg() Rect(KERF+2*r, KERF/2+r, ANCHOR_CB, extraY=KERF/2+r);
+    }
 }
 
 module Dekerf()
