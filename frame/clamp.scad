@@ -57,7 +57,6 @@ module Endhook()
 		translate([-ENDHOOK_OVERHANG+ENDHOOK_PAD_WIDTH/2,ENDHOOK_CLEARANCE])
 			pn_pos() Capsule(ENDHOOK_PAD_WIDTH, ENDHOOK_CLEARANCE-THICKNESS);
 	}
-	translate([0,ENDHOOK_CLEARANCE]) ClearedCorner(45);
 }
 
 module Undercut()
