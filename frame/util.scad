@@ -21,6 +21,19 @@ module Rect(width, height, anchor, extraX=0, extraY=0)
         square([width+extraX, height+extraY], center=false);
 }
 
+module RotX(angle, pivot=[0,0])
+{
+    translate(pivot) rotate([angle,0,0]) translate(-pivot) children();
+}
+module RotY(angle, pivot=[0,0])
+{
+    translate(pivot) rotate([0,angle,0]) translate(-pivot) children();
+}
+module RotZ(angle, pivot=[0,0])
+{
+    translate(pivot) rotate([0,0,angle]) translate(-pivot) children();
+}
+
 module TSlot(diameter, innerLength)
 {
     EXTRA = 1;
@@ -37,7 +50,7 @@ module TSlot(diameter, innerLength)
         ClearedCorner(135);
 
 
-    pn_pos() {
+    pn_pospos() {
         translate([-diameter/2-T_SLOT_BUMPER_RADIUS, 0])
             circle(r=T_SLOT_BUMPER_RADIUS);
         translate([diameter/2+T_SLOT_BUMPER_RADIUS, 0])
@@ -79,7 +92,7 @@ module Interconnect(name, offsetLength=-1, horizontalKeepout=10)
     translate([3*offsetLength, THICKNESS/2])
         InterconnectBoltHole();
 
-    translate([offsetLength, THICKNESS]) rotate([0,0,180])
+    translate([offsetLength, THICKNESS]) RotZ(180)
         InterconnectTSlot();
 
     pn_pos() Rect(4*offsetLength, THICKNESS, ANCHOR_LB);
@@ -127,24 +140,24 @@ module Sausage(minorRadius, angle, thickness)
 
 function angleFromLen(radius, length) = length / radius * 180 / PI;
 
+module Capsule(width, height)
+{
+    hull() {
+        translate([0,height/2-width/2]) circle(d=width);
+        translate([0,-height/2+width/2]) circle(d=width);
+    }
+}
 
 module CableGuide()
 {
-    pn_neg() {
-        hull() {
-            translate([0,CABLE_GUIDE_LENGTH/2 - CABLE_GUIDE_WIDTH/2])
-                circle(d=CABLE_GUIDE_WIDTH);
-            translate([0,-CABLE_GUIDE_LENGTH/2 + CABLE_GUIDE_WIDTH/2])
-                circle(d=CABLE_GUIDE_WIDTH);
-        }
-    }
+    pn_neg() Capsule(CABLE_GUIDE_WIDTH, CABLE_GUIDE_LENGTH);
 }
 
 module ClearedCorner(angle, r=0.01)
 {
     if(CLEAR_INNER_CORNERS)
     {
-        rotate([0,0,angle])
+        RotZ(angle)
             pn_neg() Rect(KERF+2*r, KERF/2+r, ANCHOR_CB, extraY=KERF/2+r);
     }
 }

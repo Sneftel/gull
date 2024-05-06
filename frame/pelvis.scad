@@ -38,7 +38,7 @@ module ClippedPelvisSide(side)
     LARGE = 1000;
 
     difference() {
-        rotate([0,0,-PELVIS_HALF_ANGLE])
+        RotZ(-PELVIS_HALF_ANGLE)
             PelvisSide(side) children();
         pn_pos() Rect(LARGE, LARGE, ANCHOR_LC);
     }

@@ -16,7 +16,7 @@ module SpineBase()
 
     pn_pos() Rect(SPINE_LENGTH, SPINE_BASE_HEIGHT, ANCHOR_RB);
 
-    translate([0,SPINE_BASE_HEIGHT]) rotate([0,0,180]) {
+    translate([0,SPINE_BASE_HEIGHT]) RotZ(180) {
         Interconnect("foo", PELVIS_SPINE_INTERCONNECT_OFFSET) children();
     }
 }
@@ -28,10 +28,10 @@ module SpineRiser(name)
     translate([THICKNESS/2, 0])
         pn_pos() Rect(SPINE_RISER_WIDTH, LARGE, ANCHOR_RT, extraY=2*SPINE_RIB_INTERCONNECT_OFFSET);
 
-    translate([-SPINE_RISER_WIDTH/2,0]) rotate([0,0,90])
+    translate([-SPINE_RISER_WIDTH/2,0]) RotZ(90)
         CableGuide();
 
-    translate([THICKNESS/2,2*SPINE_RIB_INTERCONNECT_OFFSET]) scale([-1,1,1]) rotate([0,0,-90])
+    translate([THICKNESS/2,2*SPINE_RIB_INTERCONNECT_OFFSET]) scale([-1,1,1]) RotZ(-90)
         Interconnect(name, SPINE_RIB_INTERCONNECT_OFFSET) children();
 }
 
@@ -39,9 +39,9 @@ module SpineRisers()
 {
     LARGE = 1000;
 
-    translate(RIB_A_POS) rotate([0,0,RIB_A_ANGLE]) SpineRiser("riserA") children();
-    translate(RIB_B_POS) rotate([0,0,RIB_B_ANGLE]) SpineRiser("riserB") children();
-    translate(RIB_C_POS) rotate([0,0,RIB_C_ANGLE]) scale([-1, 1,1]) SpineRiser("riserC") children();
+    translate(RIB_A_POS) RotZ(RIB_A_ANGLE) SpineRiser("riserA") children();
+    translate(RIB_B_POS) RotZ(RIB_B_ANGLE) SpineRiser("riserB") children();
+    translate(RIB_C_POS) RotZ(RIB_C_ANGLE) scale([-1, 1,1]) SpineRiser("riserC") children();
 
     pn_neg() Rect(LARGE, LARGE, ANCHOR_CT);
 }

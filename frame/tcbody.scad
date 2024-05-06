@@ -11,7 +11,7 @@ module TCBodyLeftSide()
 {
     // body arm
     translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
-    rotate([0,0,-TC_INTER_PADDLE_ANGLE])
+    RotZ(-TC_INTER_PADDLE_ANGLE)
     translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS]) {
         BodyArm();
 
@@ -21,7 +21,7 @@ module TCBodyLeftSide()
 
     // elbow
     translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
-    rotate([0,0,-TC_INTER_PADDLE_ANGLE/2])
+    RotZ(-TC_INTER_PADDLE_ANGLE/2)
         TCElbow();
 }
 
@@ -43,7 +43,7 @@ module TCBody()
 
     translate([-THICKNESS/2,0]) {
         pn_pos() Rect(TCBODY_STEM_WIDTH,TC_INTERCONNECT_OFFSET,ANCHOR_RT,extraY=TC_ARM_HEIGHT);
-        rotate([0,0,-90]) InterconnectTSlot();
+        RotZ(-90) InterconnectTSlot();
         translate([0, TC_INTERCONNECT_OFFSET]) ClearedCorner(135, r=0.01);
     }
 }

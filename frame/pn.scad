@@ -56,13 +56,33 @@ module pn_neg()
 	_pn_label("neg") children();
 }
 
+// Marks the child geometry as being especially positive geometry, which will override mere pn_neg()s.
+// This should always have pn_top or pn_attach as an ancestor. 
+module pn_pospos()
+{
+	_pn_label("pospos") children();
+}
+
+// Marks the child geometry as being especially negative geometry, which will override all geometry,
+// even pn_pospos(). This should always have pn_top or pn_attach as an ancestor. 
+module pn_negneg()
+{
+	_pn_label("negneg") children();
+}
+
 // Outputs the positive geometry, minus the negative geometry. All geometry under this should be wrapped
 // in pn_pos or pn_neg.
 module pn_top()
 {
 	difference() {
-		_pn_filter("pos") children();
-		_pn_filter("neg") children();
+		union() {
+			difference() {
+				_pn_filter("pos") children();
+				_pn_filter("neg") children();
+			}
+			_pn_filter("pospos") children();
+		}
+		_pn_filter("negneg") children();
 	}
 }
 

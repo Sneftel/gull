@@ -14,11 +14,11 @@ module TCNeckMain()
     LARGE = 1000;
 
     translate([-TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
-    rotate([0,0,-TC_INTER_PADDLE_ANGLE])
+    RotZ(-TC_INTER_PADDLE_ANGLE)
     translate([-TC_PCB_WIDTH/2,-TC_INTER_PADDLE_RADIUS]) {
         BodyArm();
         translate([TC_PCB_WIDTH/2,TC_INTER_PADDLE_RADIUS])
-        rotate([0,0,TC_INTER_PADDLE_ANGLE/2])
+        RotZ(TC_INTER_PADDLE_ANGLE/2)
             TCElbow();
 
         pn_pos() {
@@ -32,7 +32,7 @@ module TCNeckMain()
 
 module RibNeckInterconnect()
 {
-    translate([-THICKNESS/2, -2*TC_INTERCONNECT_OFFSET]) scale([1,-1,1]) rotate([0,0,-90])
+    translate([-THICKNESS/2, -2*TC_INTERCONNECT_OFFSET]) scale([1,-1,1]) RotZ(-90)
         Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
 }
 

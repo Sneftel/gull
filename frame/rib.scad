@@ -65,7 +65,7 @@ module ForwardStabilizerSlot()
 
 module OnArc(radius, x)
 {
-    rotate([0,0,angleFromLen(radius, x)]) translate([0,-radius,0])
+    RotZ(angleFromLen(radius, x)) translate([0,-radius,0])
         children();
 }
 
@@ -81,7 +81,7 @@ module FingerboardPlatform(minorRadius, withTC)
     TOTAL_ANGLE = angleFromLen(minorRadius, RIB_FORWARD_EXTENT+RIB_REARWARD_EXTENT);
     ANGLE_BIAS = angleFromLen(minorRadius, (RIB_FORWARD_EXTENT-RIB_REARWARD_EXTENT)/2);
     
-    rotate([0,0,ANGLE_BIAS])
+    RotZ(ANGLE_BIAS)
     pn_pos()
         CocktailSausage(minorRadius, TOTAL_ANGLE, RIB_THICKNESS);
         
@@ -98,13 +98,13 @@ module FingerboardPlatform(minorRadius, withTC)
     OnArc(minorRadius+15, 32+THICKNESS) CableGuide();
 
     if(withTC) {
-        OnArc(minorRadius, -RIB_REARWARD_EXTENT+4) translate([0,-TC_DOWNWARD_SHIFT]) rotate([0,0,-TC_ELEVATION_ANGLE])
+        OnArc(minorRadius, -RIB_REARWARD_EXTENT+4) translate([0,-TC_DOWNWARD_SHIFT]) RotZ(-TC_ELEVATION_ANGLE)
         {
             pn_pos() Rect(4*TC_INTERCONNECT_OFFSET, 20, ANCHOR_RT, extraX=5);
             translate([-4*TC_INTERCONNECT_OFFSET,0]) scale([1,-1,1]) Interconnect("TC", offsetLength=TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
         }
 
-        //OnArc(minorRadius+12, -40-THICKNESS) rotate([0,0,90]) CableGuide();
+        //OnArc(minorRadius+12, -40-THICKNESS) RotZ(90) CableGuide();
     }
 }
 
@@ -122,22 +122,22 @@ module Supports(shift, minorRadius)
         }
     }
 
-    translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
-    scale([-1,1,1]) translate([SPINES_OUTER_SPACING/2,0]) rotate([0,0,90]) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
+    translate([SPINES_OUTER_SPACING/2,0]) RotZ(90) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
+    scale([-1,1,1]) translate([SPINES_OUTER_SPACING/2,0]) RotZ(90) Interconnect("foo", SPINE_RIB_INTERCONNECT_OFFSET);
 }
 
 module Rib(shift, minorRadius, cantAngle, withTC)
 {
     Supports(shift, minorRadius) children();
 
-    translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT]) rotate([0,0,cantAngle])
+    translate([shift,minorRadius+FINGERBOARD_CENTER_HEIGHT]) RotZ(cantAngle)
         FingerboardPlatform(minorRadius, withTC) children();
 }
 
 
 module Rib_Anchored(shift, minorRadius, cantAngle, withTC)
 {
-    rotate([0,0,90])
+    RotZ(90)
     translate([-SPINES_OUTER_SPACING/2+THICKNESS/2, -2*SPINE_RIB_INTERCONNECT_OFFSET])
         Rib(shift, minorRadius, cantAngle, withTC) children();
 }

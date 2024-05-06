@@ -5,9 +5,6 @@
 include <util.scad>
 include <params.scad>
 
-STABILIZER_OUTER_WIDTH = 29;
-STABILIZER_INNER_WIDTH = 24;
-STABILIZER_VERTICAL_INSET = 2.5;
 
 module Stabilizer()
 {
