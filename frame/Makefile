@@ -1,23 +1,27 @@
-.PHONY: dxfs svgs clean
+.PHONY: clean default
+
+default: svg.zip
 
 include $(wildcard deps/*.deps)
 
 OPENSCAD = openscad
+ZIP = zip
 
 PARTS = pelvis spine rib_a rib_b rib_c tcneck tcbody stabilizer tnuttester
-dxfs: $(addprefix dxf/, $(PARTS:=.dxf))
-svgs: $(addprefix svg/, $(PARTS:=.svg))
 
-dxf/%.dxf : %.scad
-	mkdir -p dxf
-	mkdir -p deps
-	$(OPENSCAD) -m make -o $@ -d deps/$(@F).deps $<
+svg.zip: $(addprefix svg/, $(PARTS:=.svg))
+	$(ZIP) $@ -FS $^
+
+dxf.zip: $(addprefix dxf/, $(PARTS:=.dxf))
+	$(ZIP) $@ -FS $^
 
 svg/%.svg : %.scad
-	mkdir -p svg
-	mkdir -p deps
+	@mkdir -p deps svg
+	$(OPENSCAD) -m make -o $@ -d deps/$(@F).deps $<
+
+dxf/%.dxf : %.scad
+	@mkdir -p deps dxf
 	$(OPENSCAD) -m make -o $@ -d deps/$(@F).deps $<
 
 clean:
-	rm -rf dxf
-	rm -rf svg
+	rm -rf svg dxf svg.zip dxf.zip
