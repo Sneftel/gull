@@ -37,9 +37,10 @@ The following parts are required:
 ### Hardware 
 
 * 38 14mm-long M3 bolts (not countersunk)
-* 22 10mm-long M3 bolts (not countersunk)
+* 26 10mm-long M3 bolts (not countersunk)
 * 56 6mm M3 square nuts
 * 4 4mm female-threaded hex spacers
+* 2 15mm female-threaded hex spacers (optional, for the bending clamp)
 * 4 M3 hex nuts
 
 ### Components
@@ -60,6 +61,7 @@ The following parts are required:
 * 2 thumb cluster bodies
 * 12 stabilizers
 * 1 pelvis
+* 2 bending clamps (optional, discussed below)
 
 ### PCBs
 
@@ -111,9 +113,19 @@ It's marginally easier to do this before attaching the thumb and finger PCBs. Fi
 
 Ideally, the square nuts can be press-fit into the T-slots and will stay there for assembly. If a fit is too loose or tight, try a different nut, or try rotating the nut. A drop of glue, or a piece of tape, can also be used to keep things in position.
 
+### Assemble the bending clamp
+
+The shapes include a clamp for use when mounting the fingerboards to the ribs. You can insert each fingerboard into the clamp (keys towards the clamp) and bend and hold it in place with one hand. This makes it easier to bolt it down. 
+
+However, this clamp requires 15mm spacers, which you otherwise wouldn't need, so you can keep your BOM down a bit by bending the fingerboards without one; this option is discussed below.
+
+To assemble the clamp, insert a 10mm bolt in each hole and screw down to a 15mm spacer on the other side. Then put the other clamp on the other side of the spacers and bolt to the spacers with two more 10mm bolts.
+
 ### Mount fingerboards
 
-It's easiest to do this with two people, one bending the board to the frame and one inserting the 10mm bolts. Failing that, bend in as well as possible and attach the center bolt but do not fully tighten it. Then insert a stabilizer on each side (it will not yet fit firmly). Continue to bend and attach the other two bolts, then tighten everything down and adjust the stabilizers.
+If you have the bending clamp: Insert each fingerboard all the way into the clamp and bend and hold it to the curve with your non-dominant hand.  Use your other hand to insert the bolts and screw them down, but only fully screw down the center bolt; screw down the others only far enough to catch the nut. You can then release your grip on the clamp. Then insert a stabilizer on each side (it will not yet fit firmly). Then tighten everything down and adjust the stabilizers.
+
+If you don't have the bending clamp: It's easiest to mount the fingerboards with two people, one bending the board to the frame and one inserting the 10mm bolts. Failing that, bend in as well as possible and attach the center bolt but do not fully tighten it. Then insert a stabilizer on each side (it will not yet fit firmly). Continue to bend and attach the other two bolts, then tighten everything down and adjust the stabilizers.
 
 ### Mount thumbboards
 
