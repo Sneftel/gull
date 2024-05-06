@@ -7,7 +7,7 @@ include $(wildcard deps/*.deps)
 OPENSCAD = openscad
 ZIP = zip
 
-PARTS = pelvis spine rib_a rib_b rib_c tcneck tcbody stabilizer tnuttester
+PARTS = pelvis spine rib_a rib_b rib_c tcneck tcbody stabilizer clamp tnuttester
 
 svg.zip: $(addprefix svg/, $(PARTS:=.svg))
 	$(ZIP) $@ -FS $^
