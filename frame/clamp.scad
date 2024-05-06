@@ -20,10 +20,8 @@ ENDHOOK_OVERHANG = 6;
 ENDHOOK_CLEARANCE = 3;
 ENDHOOK_PAD_WIDTH = 3;
 
-UNDERCUT_WIDTH = 15;
+UNDERCUT_WIDTH = 16.5;
 UNDERCUT_DEPTH = 4;
-
-END_SUPPORT_WIDTH = 15;
 
 module OnArc(x)
 {
@@ -61,7 +59,7 @@ module Endhook()
 
 module Undercut()
 {
-	pn_neg() translate([0, -PCB_SUPPORT_HEIGHT]) RotZ(90) Capsule(UNDERCUT_DEPTH*2, UNDERCUT_WIDTH);
+	pn_neg() translate([-UNDERCUT_WIDTH/2, -PCB_SUPPORT_HEIGHT]) RotZ(90) Capsule(UNDERCUT_DEPTH*2, UNDERCUT_WIDTH);
 }
 
 module BenderBody()
@@ -89,7 +87,7 @@ module BenderBody()
 	OnArc(FINGERBOARD_PCB_LENGTH/2 + ENDHOOK_WIDTH/2) translate([0,ENDHOOK_WIDTH])
 		InterconnectBoltHole();
 
-	OnArc(FINGERBOARD_PCB_LENGTH/2 - UNDERCUT_WIDTH/2) Undercut();
+	OnArc(FINGERBOARD_PCB_LENGTH/2) Undercut();
 }
 
 Dekerf() pn_top() BenderBody();
