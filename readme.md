@@ -40,7 +40,7 @@ The following parts are required:
 * 26 10mm-long M3 bolts (not countersunk)
 * 56 6mm M3 square nuts
 * 4 4mm female-threaded hex spacers
-* 2 15mm female-threaded hex spacers (optional, for the bending clamp)
+* 2 15mm female-threaded hex spacers for each bending clamp (optional, discussed below)
 * 4 M3 hex nuts
 
 ### Components
@@ -61,7 +61,7 @@ The following parts are required:
 * 2 thumb cluster bodies
 * 12 stabilizers
 * 1 pelvis
-* 2 bending clamps (optional, discussed below)
+* 2 bending clamps for each distinct rib radius (optional, discussed below)
 
 ### PCBs
 
@@ -71,13 +71,23 @@ The following parts are required:
 
 ## Customization
 
+### Basic development
+
 Most customization should be done through frame/params.scad. This file contains almost all parameters one might want to tweak, and documents which pieces are affected by which parameters. 
 
 To visualize the keyboard as a whole, open frame/main.scad. This file should not be used to generate shapes for laser cutting.
 
+### Dilation
+
 The OpenSCAD files dilate some parts to account for the laser cutter's kerf. If your cutter's control software includes this as a feature, you should either disable it in the control software, or disable the dilation by setting the KERF parameter in params.scad to 0. Otherwise, cut a 10mm square, measure the average of its side lengths and subtract that from 10, and set KERF to that value. If the kerf is above 0.6 or so, you may have trouble getting things to fit firmly.
 
+### Customizing the T-slots
+
 For easy assembly, it's useful for the square nuts to firmly friction-fit into the T-slots. This requires a fairly tight tolerance. The "tnuttester.scad" file can be used to empirically determine the right parameters for this, given a particular laser cutter and material. See the comments in that file for how to use it.
+
+### Customizing the bending clamp
+
+If you have customized the rib radii, you will need to customize the bending clamp radius to match (the parameter BEND_RADIUS in clamp.scad), and you will need to fabricate separate clamp shapes for each distinct rib radius. 
 
 ## Fabrication
 
@@ -93,7 +103,7 @@ Execute "make svg" or (on Windows) "makeall.bat svg" to generate SVG shapes for 
 
 I use Deepnest.io to nest the pieces for printing. Consider manually nesting the stabilizers and printing them separately.
 
-The OpenSCAD files dilate some parts to account for laser-cut kerf.
+The OpenSCAD files dilate some parts to account for laser-cut kerf. See the discussion of kerf in the "customization" section.
 
 ## Assembly
 
