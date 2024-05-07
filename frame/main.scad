@@ -33,7 +33,7 @@ module RibAssembly(shift, minorRadius, cantAngle, withTC)
             pn_top() Rib_Anchored(shift, minorRadius, cantAngle, withTC);
 
         pn_attach("pcb") Rib_Anchored(shift, minorRadius, cantAngle, withTC)
-            FingerboardPCB(minorRadius);
+            pn_top() FingerboardPCB(minorRadius);
 
         pn_attach("stabilizer") Rib_Anchored(shift, minorRadius, cantAngle, withTC)
         rotate([0,90,0])
