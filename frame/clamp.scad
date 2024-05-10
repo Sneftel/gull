@@ -1,6 +1,9 @@
 include <params.scad>
 include <util.scad>
 
+use <fingerboard.scad>
+use <stabilizer.scad>
+
 BEND_RADIUS = 80;
 
 FINGERBOARD_PCB_LENGTH = FINGERBOARD_FORWARD_EXTENT + FINGERBOARD_REARWARD_EXTENT;
@@ -13,15 +16,16 @@ PCB_SUPPORT_BOTTOM_WIDTH = 8;
 
 BODY_RADIUS = BEND_RADIUS - PCB_SUPPORT_HEIGHT;
 
-BODY_THICKNESS = 10;
+BODY_THICKNESS = 15;
 
-ENDHOOK_WIDTH = 5;
-ENDHOOK_OVERHANG = 6;
-ENDHOOK_CLEARANCE = 3;
+ENDHOOK_WIDTH = 10;
+ENDHOOK_OVERHANG = 10;
 ENDHOOK_PAD_WIDTH = 3;
 
-UNDERCUT_WIDTH = 16.5;
+UNDERCUT_WIDTH = 15.5;
 UNDERCUT_DEPTH = 5;
+
+SEPARATION = 15;
 
 module OnArc(x)
 {
@@ -50,13 +54,10 @@ module Endhook()
 {
 	MINOR_HEIGHT = BODY_THICKNESS + PCB_SUPPORT_HEIGHT;
 	pn_pos() {
-		Rect(ENDHOOK_WIDTH, ENDHOOK_WIDTH+ENDHOOK_CLEARANCE, ANCHOR_LB, extraY=MINOR_HEIGHT);
-		translate([0,ENDHOOK_CLEARANCE]) Rect(ENDHOOK_OVERHANG, ENDHOOK_WIDTH, ANCHOR_RB);
+		Rect(ENDHOOK_WIDTH, ENDHOOK_WIDTH + STABILIZER_HEIGHT, ANCHOR_LB, extraY=MINOR_HEIGHT);
+		translate([0,STABILIZER_HEIGHT]) Rect(ENDHOOK_OVERHANG, ENDHOOK_WIDTH, ANCHOR_RB);
 	}
-	pn_pospos() {
-		translate([-ENDHOOK_OVERHANG+ENDHOOK_PAD_WIDTH/2,ENDHOOK_CLEARANCE])
-			Capsule(ENDHOOK_PAD_WIDTH, ENDHOOK_CLEARANCE-THICKNESS);
-	}
+
 }
 
 module Undercut()
@@ -64,7 +65,7 @@ module Undercut()
 	pn_neg() translate([-UNDERCUT_WIDTH/2, -PCB_SUPPORT_HEIGHT]) RotZ(90) Capsule(UNDERCUT_DEPTH*2, UNDERCUT_WIDTH);
 }
 
-module BenderBody()
+module Clamp()
 {
 	LARGE = 1000;
 
@@ -76,20 +77,38 @@ module BenderBody()
 		}
 		polygon([
 			[0,0],
-			[LARGE*tan(FINGERBOARD_PCB_ANGLE/2), LARGE],
-			[-LARGE*tan(FINGERBOARD_PCB_ANGLE/2), LARGE]]);
+			[0, LARGE],
+			[-LARGE*tan(FINGERBOARD_PCB_ANGLE), LARGE]]);
 	}
 
-	OnArc(-19) PCBSupport();
-	OnArc(0) PCBSupport();
-	OnArc(19) PCBSupport();
-	OnArc(FINGERBOARD_PCB_LENGTH/2) Endhook();
-	OnArc(-FINGERBOARD_PCB_LENGTH/2 + BODY_THICKNESS/2) translate([0,-PCB_SUPPORT_HEIGHT-BODY_THICKNESS/2])
+	OnArc(-57.5) PCBSupport();
+	OnArc(-37.5) PCBSupport();
+	OnArc(-17.5) PCBSupport();
+	OnArc(0) Endhook();
+	OnArc(-FINGERBOARD_PCB_LENGTH + BODY_THICKNESS/2) translate([0,-PCB_SUPPORT_HEIGHT-BODY_THICKNESS/2])
 		InterconnectBoltHole();
-	OnArc(FINGERBOARD_PCB_LENGTH/2 + ENDHOOK_WIDTH/2) translate([0,ENDHOOK_WIDTH])
+	OnArc(0) translate([ENDHOOK_WIDTH/2,0])
 		InterconnectBoltHole();
 
 	OnArc(FINGERBOARD_PCB_LENGTH/2) Undercut();
 }
 
-Dekerf() pn_top() BenderBody();
+module ClampMain()
+{
+	color("teal")
+	translate([0, -BEND_RADIUS, SEPARATION/2])
+		linear_extrude(THICKNESS) pn_top() Clamp();
+	color("teal")
+	translate([0, -BEND_RADIUS, -SEPARATION/2 - THICKNESS]) 
+		linear_extrude(THICKNESS) pn_top() Clamp();
+
+	translate([0, FINGERBOARD_THICKNESS]) 
+	RotZ(FINGERBOARD_PCB_ANGLE/2, pivot=[0, -BEND_RADIUS])
+	scale([1,-1,1]) pn_top() FingerboardPCB(BEND_RADIUS);
+
+	translate([0,-BEND_RADIUS+FINGERBOARD_THICKNESS]) OnArc(-5) RotZ(180) RotY(90) linear_extrude(THICKNESS) Stabilizer();
+}
+
+//ClampMain();
+
+Dekerf() pn_top() Clamp();

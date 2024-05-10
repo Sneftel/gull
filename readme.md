@@ -133,7 +133,7 @@ To assemble the clamp, insert a 10mm bolt in each hole and screw down to a 15mm 
 
 ### Mount fingerboards
 
-If you have the bending clamp: Insert each fingerboard all the way into the clamp and bend and hold it to the curve with your non-dominant hand.  Use your other hand to insert the bolts and screw them down, but only fully screw down the center bolt; screw down the others only far enough to catch the nut. You can then release your grip on the clamp. Then insert a stabilizer on each side (it will not yet fit firmly). Then tighten everything down and adjust the stabilizers.
+If you have the bending clamp: Insert a fingerboard all the way into the back of the clamp (the FFC connector will be towards the back, and facing the curved surfaces of the clamp), place a stabilizer on the fingerboard (under the hooks at the end) and bend and hold it to the curve with your non-dominant hand.  Use your other hand to insert the bolts and screw them down, inserting a second stabilizer on the other side as you do so. Then tighten everything down and adjust the stabilizers.
 
 If you don't have the bending clamp: It's easiest to mount the fingerboards with two people, one bending the board to the frame and one inserting the 10mm bolts. Failing that, bend in as well as possible and attach the center bolt but do not fully tighten it. Then insert a stabilizer on each side (it will not yet fit firmly). Continue to bend and attach the other two bolts, then tighten everything down and adjust the stabilizers.
 
