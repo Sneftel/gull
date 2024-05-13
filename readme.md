@@ -97,6 +97,8 @@ The fingerboards and centerboard may be panelized or printed as-is. To build Ger
 
 The thumbboard has delicately narrow areas and should be carefully panelized for fabrication. I use KiKit for this, with "panelize.json" containing the necessary presets. The auto-built Gerbers are panelized in this way. Make sure to mention the need for V-cuts to the PCB fabricator. Mousebites would also work.
 
+The center FFC connector on the centerboard, just below the MCU, is for future expansion and does not need to be populated.
+
 ### Laser-cut shapes
 
 Execute "make svg" or (on Windows) "makeall.bat svg" to generate SVG shapes for all laser-cut pieces. DXF and PDF outputs are also supported.
