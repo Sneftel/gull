@@ -38,7 +38,7 @@ The following parts are required:
 
 * 38 14mm-long M3 bolts (not countersunk)
 * 26 10mm-long M3 bolts (not countersunk)
-* 56 6mm M3 square nuts
+* 56 M3 square nuts. I used 6mm width, 2mm thickness, but other sizes will also work.
 * 4 4mm female-threaded hex spacers
 * 2 15mm female-threaded hex spacers for each bending clamp (optional, discussed below)
 * 4 M3 hex nuts
@@ -48,8 +48,8 @@ The following parts are required:
 * 56 Kailh Choc V1 low-profile keyswitches
 * 56 Choc V1 keycaps
 * 56 0805 diodes
-* 16 vertical FFC connectors, 10 pin, 0.5mm pitch
-* 8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch, type B (opposite side contacts)
+* 16 vertical FFC connectors, 10 pin, 0.5mm pitch. I used GCT FFC2A33 connectors. Other brands will likely work, but check that the land pattern is roughly equivalent. In particular, check that the upper pins are skewed right of the lower pins.
+* 8 FFC ribbon cables in various lengths from 10cm to 25cm, 10pin, 0.5mm pitch. I used type B (opposite side contacts) because that gives more flexibility to orient them with the marked side hidden, but type A will also work.
 * Pins and sockets for a Pro Micro MCU
 * Pro Micro MCU (or pinout-compatible)
 
@@ -117,6 +117,8 @@ The thumbboards should remain panelized until after both SM and TH components ar
 
 Solder only one connector per thumbboard: J1 on one, J2 on the other. The thumb cluster switches will be on the opposite side from the connector.
 
+The FFC connectors have pin 1 indicators that are subtle at best. Make sure to solder them consistently; the connections will work when reversed if the column pin mapping is reversed.
+
 ### Assemble the frame
 
 ![Closeup of the frame interconnects](images/interconnect.jpg)
@@ -155,15 +157,17 @@ Attach four 14mm bolts from the top of the centerboard and secure finger-tight w
 
 ### Attach cables
 
-Insert and secure FFC ribbon cables in the centerboard one by one, fishing them through the frame and inserting them into the fingerboards and thumbbboards. Take care they are oriented properly, and if desired reverse them so the printing is on a consistent side.
+Insert and secure FFC ribbon cables in the centerboard one by one, fishing them through the frame and inserting them into the fingerboards and thumbbboards. Take care they are oriented properly, and if desired reverse them so the printing is on a consistent side. The thumb cluster cables must be connected to the two side connectors closest to the user. The other cables are intended to be connected with the outermost fingerboards on the connectors further from the user, but row pins can be remapped to compensate if they are connected differently.
 
 ## SOWGull
 
 SOWGull is a split variant of Gull, with a 3.5mm TRRS cable used to connect the halves.
 
+Most of SOWGull is the same as a normal Gull, and it is easy to convert a Gull into a SOWGull (or vice versa). Only the centerboard and pelvis differ.
+
 ### Parts
 
-Most of SOWGull is the same as a normal Gull. The BOM has the following differences:
+The BOM has the following differences:
 
 * PCBs: Two SOW boards instead of one centerboard.
 * Laser-cut shapes: Two sowpelvis shapes instead of one pelvis shape.
