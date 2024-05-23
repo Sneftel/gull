@@ -156,3 +156,20 @@ Attach four 14mm bolts from the top of the centerboard and secure finger-tight w
 ### Attach cables
 
 Insert and secure FFC ribbon cables in the centerboard one by one, fishing them through the frame and inserting them into the fingerboards and thumbbboards. Take care they are oriented properly, and if desired reverse them so the printing is on a consistent side.
+
+## SOWGull
+
+SOWGull is a split variant of Gull, with a 3.5mm TRRS cable used to connect the halves.
+
+### Parts
+
+Most of SOWGull is the same as a normal Gull. The BOM has the following differences:
+
+* PCBs: Two SOW boards instead of one centerboard.
+* Laser-cut shapes: Two sowpelvis shapes instead of one pelvis shape.
+* Hardware: Two additional 10mm-long M3 bolts, two additional 4mm hex spacers, and two additional hex nuts.
+* Components: Two PJ-320A 3.5mm TRRS jacks; two Pro Micro boards instead of one; a TRRS cable for connection.
+
+### Assembly
+
+The SOW board is a reversible PCB. The microcontroller board should be mounted with the USB port facing away from the user, and as far away as possible from the user (with four through-holes towards the user left unused). The TRRS jack is mounted closer to the user.
