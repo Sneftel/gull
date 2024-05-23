@@ -9,6 +9,12 @@ CALL makeall.bat
 COPY /Y gerbers.zip ..\gull\centerboard.zip
 POPD
 
+ECHO Building split centerboard PCBs...
+PUSHD sowboard
+CALL makeall.bat
+COPY /Y gerbers.zip ..\gull\sowboard.zip
+POPD
+
 ECHO Building fingerboard PCBs...
 PUSHD fingerboard
 CALL makeall.bat
