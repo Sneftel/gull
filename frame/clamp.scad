@@ -16,14 +16,16 @@ PCB_SUPPORT_BOTTOM_WIDTH = 8;
 
 BODY_RADIUS = BEND_RADIUS - PCB_SUPPORT_HEIGHT;
 
-BODY_THICKNESS = 15;
+BODY_THICKNESS = 8;
 
-ENDHOOK_WIDTH = 10;
-ENDHOOK_OVERHANG = 12;
+ENDHOOK_WIDTH = 8;
+ENDHOOK_OVERHANG = 10;
 ENDHOOK_PAD_WIDTH = 3;
 
-UNDERCUT_WIDTH = 15;
+UNDERCUT_WIDTH = 17.5;
 UNDERCUT_DEPTH = 5;
+
+UNDERCUT_FILL = 12;
 
 SEPARATION = 15;
 
@@ -62,7 +64,14 @@ module Endhook()
 
 module Undercut()
 {
-	pn_neg() translate([-UNDERCUT_WIDTH/2, -PCB_SUPPORT_HEIGHT]) RotZ(90) Capsule(UNDERCUT_DEPTH*2, UNDERCUT_WIDTH);
+LARGE = 1000;
+	translate([-UNDERCUT_WIDTH/2, -PCB_SUPPORT_HEIGHT]) RotZ(90) {
+		pn_neg() Capsule(UNDERCUT_DEPTH*2, UNDERCUT_WIDTH);
+		pn_pos() intersection() {
+			Capsule(UNDERCUT_FILL*2, UNDERCUT_WIDTH);
+			translate([-UNDERCUT_DEPTH,0])Rect(LARGE, LARGE, ANCHOR_RC);
+		}
+	}
 }
 
 module Clamp()
@@ -81,9 +90,9 @@ module Clamp()
 			[-LARGE*tan(FINGERBOARD_PCB_ANGLE), LARGE]]);
 	}
 
-	OnArc(-57.5) PCBSupport();
-	OnArc(-37.5) PCBSupport();
-	OnArc(-17.5) PCBSupport();
+	OnArc(-60) PCBSupport();
+	OnArc(-40) PCBSupport();
+	OnArc(-20) PCBSupport();
 	OnArc(0) Endhook();
 	OnArc(-FINGERBOARD_PCB_LENGTH + BODY_THICKNESS/2) translate([0,-PCB_SUPPORT_HEIGHT-BODY_THICKNESS/2])
 		InterconnectBoltHole();
