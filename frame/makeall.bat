@@ -5,7 +5,7 @@ set FORMAT=%1
 if '%FORMAT%'=='' set /p FORMAT="Generate what format (dxf, svg, pdf)? "
 
 set OPENSCAD="c:\Program Files\OpenSCAD\openscad.exe"
-set PARTS=pelvis spine rib_a rib_b rib_c tcneck tcbody stabilizer clamp tnuttester
+set PARTS=pelvis spine rib_a rib_b rib_c tcneck tcbody stabilizer clamp sowpelvis tnuttester
 
 if not exist %FORMAT% mkdir %FORMAT%
 
