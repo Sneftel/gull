@@ -40,7 +40,7 @@ The following parts are required:
 * 26 10mm-long M3 bolts (not countersunk)
 * 56 M3 square nuts. I used 6mm width, 2mm thickness, but other sizes will also work.
 * 4 4mm female-threaded hex spacers
-* 2 15mm female-threaded hex spacers for each bending clamp (optional, discussed below)
+* 2 20mm female-threaded hex spacers for each bending clamp (optional, discussed below)
 * 4 M3 hex nuts
 
 ### Components
@@ -131,9 +131,9 @@ Ideally, the square nuts can be press-fit into the T-slots and will stay there f
 
 The shapes include a clamp for use when mounting the fingerboards to the ribs. You can insert each fingerboard into the clamp (keys towards the clamp) and bend and hold it in place with one hand. This makes it easier to bolt it down. 
 
-However, this clamp requires 15mm spacers, which you otherwise wouldn't need, so you can keep your BOM down a bit by bending the fingerboards without one; this option is discussed below.
+However, this clamp requires 20mm spacers, which you otherwise wouldn't need, so you can keep your BOM down a bit by bending the fingerboards without one; this option is discussed below.
 
-To assemble the clamp, insert a 10mm bolt in each hole and screw down to a 15mm spacer on the other side. Then put the other clamp on the other side of the spacers and bolt to the spacers with two more 10mm bolts.
+To assemble the clamp, insert a 10mm bolt in each hole and screw down to a 20mm spacer on the other side. Then put the other clamp on the other side of the spacers and bolt to the spacers with two more 10mm bolts.
 
 ### Mount fingerboards
 
