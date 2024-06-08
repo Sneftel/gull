@@ -98,7 +98,7 @@ module FingerboardPlatform(minorRadius, withTC)
     OnArc(minorRadius+15, 32+THICKNESS) CableGuide();
 
     if(withTC) {
-        OnArc(minorRadius, -RIB_REARWARD_EXTENT+4) translate([0,-TC_DOWNWARD_SHIFT]) RotZ(-TC_ELEVATION_ANGLE)
+        OnArc(minorRadius, -RIB_REARWARD_EXTENT+3) translate([0,-TC_DOWNWARD_SHIFT]) RotZ(-TC_ELEVATION_ANGLE)
         {
             pn_pos() Rect(4*TC_INTERCONNECT_OFFSET, 20, ANCHOR_RT, extraX=5);
             translate([-4*TC_INTERCONNECT_OFFSET,0]) scale([1,-1,1]) Interconnect("TC", offsetLength=TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
