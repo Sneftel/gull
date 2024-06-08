@@ -97,8 +97,6 @@ INTERCONNECT_BOLT_LENGTH = 14;
 // The diameter of a positive area surrounding the interconnect bolt hole
 INTERCONNECT_WASHER_DIAMETER = 8;
 
-INTERCONNECT_KEEPOUT = 4;
-
 // The extra depth below the nut area of T-slots. This should be at least the maximum variance of the actual sheet material thickness below the nominal thickness, plus the maximum variance of the bolt length above the nominal length.
 T_SLOT_EXTRA_DEPTH = 0.5;
 
@@ -132,8 +130,13 @@ CABLE_GUIDE_WIDTH = 2;
 // The height of the stabilizers.
 STABILIZER_HEIGHT = 8;
 
+// The major width of the stabilizers, which must sit between the outer mounting posts of the keyswitches.
 STABILIZER_OUTER_WIDTH = 29;
+
+// The minor with of the stabilizers, which must sit outside the center posts of the keyswitches.
 STABILIZER_INNER_WIDTH = 24;
+
+// The vertical clearance of the middle of the stabilizers below the fingerboards. 
 STABILIZER_VERTICAL_INSET = 2.5;
 
 // The length of the fingerboard forward of the center of the middle bolt hole
@@ -142,9 +145,14 @@ FINGERBOARD_FORWARD_EXTENT = 38;
 // The length of the fingerboard rearward of the center of the middle bolt hole
 FINGERBOARD_REARWARD_EXTENT = 38;
 
-
+// The thickness of the fingerboard PCBs. This probably doesn't need to be changed even if a different PCB is used, as long as it's no more than 1.2 or so.
 FINGERBOARD_THICKNESS = 0.8;
+
+// The diameter of the bolt holes and minor width of the T-slots used to connect the fingerboard PCBs.
 FINGERBOARD_BOLT_DIAMETER = 3;
+
+// The nominal length of the bolts used to connect the fingerboard PCBs.
 FINGERBOARD_BOLT_LENGTH = 10;
 
+// The width of the fingerboard PCBs (this is used only for preview rendering).
 FINGERBOARD_PCB_WIDTH = 36;
