@@ -61,7 +61,7 @@ STABILIZER_EXTRA_HEIGHT = 0.8;
 TC_ELEVATION_ANGLE = 5;
 
 // The distance by which the thumb clusters are shifted inwards from the innermost ribs (N)
-TC_INWARD_SHIFT = 25;
+TC_INWARD_SHIFT = 28;
 
 // The distance by which the thumb clusters are shifted rearwards (towards the user) (N)
 TC_REARWARD_SHIFT = 15;
