@@ -6,8 +6,6 @@
 
 Gull is a dished ergonomic keyboard. It contains no 3D-printed parts and no hand-wired circuitry, and is designed for rapid constructibility rather than aesthetics. Keys are inserted into thin FR4 PCBs which are bent to the frame.
 
-
-
 The raison d'etre of Gull is to be rapidly assembled, tweaked, and remade. The frame is fully parameterized, and changing a parameter generally only requires recutting one shape. PCBs can be reused after changing almost any parameters. The exposed ribbon cables make it potentially impractical for portable use.
 
 The key layout is essentially 3x6 on each side. There are six additional keys per side, two in the bottom center of each side and four (relatively inaccessible) keys at the top corners of each side.
@@ -23,6 +21,8 @@ PCB layout is in KiCad. Frame shapes are in OpenSCAD. The firmware is QMK; the f
 The frame for Gull must be cut from acrylic or similar using a laser cutter.
 
 The PCBs have surface-mount components. A hotplate is the best tool for soldering these, but hand soldering is also possible. Hot air reflow can be used but be aware of temperature limits for the FFC connectors.
+
+Good tweezers are useful for working with the FFC cables, particularly with SOWgull.
 
 ## Materials
 
@@ -155,13 +155,21 @@ Then attach the necks. Both will slide in from the bottom. Bolt the necks in whi
 
 Attach four 14mm bolts from the top of the centerboard and secure finger-tight with the 4mm spacers on the bottom. Insert the bolt shanks through the holes in the pelvis and secure with nuts.
 
-### Attach cables
+### Attach cables and microcontroller.
 
 Insert and secure FFC ribbon cables in the centerboard one by one, fishing them through the frame and inserting them into the fingerboards and thumbbboards. Take care they are oriented properly, and if desired reverse them so the printing is on a consistent side. The thumb cluster cables must be connected to the two side connectors closest to the user. The other cables are intended to be connected with the outermost fingerboards on the connectors further from the user, but row pins can be remapped to compensate if they are connected differently.
 
+Finally, insert the microcontroller. (It's easiest to do this last, so there's more room to connect the cables.)
+
+### Fix row/column mappings
+
+There's a decent chance that the row/column mappings in info.json won't be correct, depending on which FFC cables you used and how you mounted the connectors. If you add 
+
 ## SOWGull
 
-SOWGull is a split variant of Gull, with a 3.5mm TRRS cable used to connect the halves.
+![Gull, but split](images/sowgull.png)
+
+SOWGull is a split variant of Gull, with a 3.5mm audio cable used to connect the halves.
 
 Most of SOWGull is the same as a normal Gull, and it is easy to convert a Gull into a SOWGull (or vice versa). Only the centerboard and pelvis differ.
 
@@ -172,7 +180,7 @@ The BOM has the following differences:
 * PCBs: Two SOW boards instead of one centerboard.
 * Laser-cut shapes: Two sowpelvis shapes instead of one pelvis shape.
 * Hardware: Two additional 10mm-long M3 bolts, two additional 4mm hex spacers, and two additional hex nuts.
-* Components: Two PJ-320A 3.5mm TRRS jacks; two Pro Micro boards instead of one; a TRRS cable for connection.
+* Components: Two PJ-320A 3.5mm TRRS jacks; two Pro Micro boards instead of one; a TRS or TRRS cable for connection.
 
 ### Assembly
 
