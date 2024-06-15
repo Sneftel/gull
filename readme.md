@@ -167,7 +167,7 @@ There's a decent chance that the row/column mappings in info.json won't be corre
 
 ## SOWGull
 
-![Gull, but split](images/sowgull.png)
+![Gull, but split](images/sowgull.jpg)
 
 SOWGull is a split variant of Gull, with a 3.5mm audio cable used to connect the halves.
 
