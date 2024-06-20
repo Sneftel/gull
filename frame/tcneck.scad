@@ -32,7 +32,7 @@ module TCNeckMain()
 
 module RibNeckInterconnect()
 {
-    translate([-THICKNESS/2, -2*TC_INTERCONNECT_OFFSET]) scale([1,-1,1]) RotZ(-90)
+    translate([-THICKNESS/2, 0]) scale([1,-1,1]) RotZ(-90)
         Interconnect("foo", TC_INTERCONNECT_OFFSET, horizontalKeepout=0) children();
 }
 
@@ -42,6 +42,7 @@ module NeckBodyInterconnect()
     {
         translate([-THICKNESS/2,-TC_ARM_HEIGHT - TC_INTERCONNECT_OFFSET]) {
             InterconnectBoltHole();
+            pn_pos() Rect(TC_INWARD_SHIFT-THICKNESS, TC_INTERCONNECT_OFFSET*2, ANCHOR_RB, extraX=THICKNESS/2, extraY=INTERCONNECT_WASHER_DIAMETER/2);
             pn_anchor("TCBody") children();
         }
 
@@ -52,13 +53,13 @@ module NeckBodyInterconnect()
 
 module TCNeck()
 {
-    RibNeckInterconnect();
+    translate([0,-TC_INTERCONNECT_OFFSET*2]) {
+        RibNeckInterconnect();
 
-    translate([TC_INWARD_SHIFT-THICKNESS/2, TC_REARWARD_SHIFT]) TCNeckMain();
+        translate([TC_INWARD_SHIFT-THICKNESS/2, TC_REARWARD_SHIFT]) TCNeckMain();
 
-    pn_pos() Rect(TC_INWARD_SHIFT, 4*TC_INTERCONNECT_OFFSET, ANCHOR_LC);
-
-    NeckBodyInterconnect() children();
+        NeckBodyInterconnect() children();
+    }
 }
 
 Dekerf() pn_top() TCNeck();
